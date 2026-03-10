@@ -33,12 +33,12 @@ export const Step1 = ({ data, updateAdditionalData }: StepProps) => {
     <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
       <div className="space-y-2">
         <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Seus Dados</h2>
-        <p className="text-slate-500 text-lg">Para um atendimento exclusivo e personalizado.</p>
+        <p className="text-slate-600 text-lg">Para um atendimento exclusivo e personalizado.</p>
       </div>
       <div className="space-y-4 pt-2">
         <div className="space-y-2">
-          <Label className="text-slate-700 font-medium">
-            Nome Completo <span className="text-red-500">*</span>
+          <Label className="text-slate-900 font-medium">
+            Nome Completo <span className="text-red-600">*</span>
           </Label>
           <Input
             autoFocus
@@ -55,14 +55,14 @@ export const Step1 = ({ data, updateAdditionalData }: StepProps) => {
             onChange={(e) => updateAdditionalData({ name: e.target.value })}
           />
           {nameError && (
-            <p className="text-red-500 text-sm animate-in fade-in slide-in-from-top-1">
+            <p className="text-red-600 text-sm animate-in fade-in slide-in-from-top-1">
               O nome deve ter pelo menos 3 caracteres.
             </p>
           )}
         </div>
         <div className="space-y-2">
-          <Label className="text-slate-700 font-medium">
-            Melhor E-mail <span className="text-red-500">*</span>
+          <Label className="text-slate-900 font-medium">
+            Melhor E-mail <span className="text-red-600">*</span>
           </Label>
           <Input
             type="email"
@@ -79,7 +79,7 @@ export const Step1 = ({ data, updateAdditionalData }: StepProps) => {
             onChange={(e) => updateAdditionalData({ email: e.target.value })}
           />
           {emailError && (
-            <p className="text-red-500 text-sm animate-in fade-in slide-in-from-top-1">
+            <p className="text-red-600 text-sm animate-in fade-in slide-in-from-top-1">
               Insira um e-mail válido.
             </p>
           )}
@@ -93,7 +93,7 @@ export const Step2 = ({ data, updateAdditionalData }: StepProps) => (
   <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
     <div className="space-y-2 text-center">
       <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Mensagem Importante</h2>
-      <p className="text-slate-500 text-lg">
+      <p className="text-slate-600 text-lg">
         Assista ao vídeo abaixo para entender nossa metodologia.
       </p>
     </div>
@@ -104,7 +104,7 @@ export const Step2 = ({ data, updateAdditionalData }: StepProps) => (
       />
     </div>
     {data.additionalData.vslWatched && (
-      <div className="max-w-[600px] mx-auto mt-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-center gap-2 text-green-700 animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <div className="max-w-[600px] mx-auto mt-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-center gap-2 text-green-800 animate-in fade-in slide-in-from-bottom-2 duration-500">
         <CheckCircle2 className="h-5 w-5" />
         <span className="font-medium">Vídeo concluído! Você já pode continuar.</span>
       </div>
@@ -125,7 +125,7 @@ const PROFESSIONS = [
 export const Step3 = ({ data, updateData }: StepProps) => (
   <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
     <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Sua Área de Atuação</h2>
-    <p className="text-slate-500 text-lg">
+    <p className="text-slate-600 text-lg">
       Selecione sua profissão para personalizarmos sua experiência.
     </p>
     <RadioCards
@@ -187,7 +187,7 @@ export const Step4 = ({ data, updateData }: StepProps) => {
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
       <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Interesses e Casos de Uso</h2>
-      <p className="text-slate-500 text-lg">
+      <p className="text-slate-600 text-lg">
         Como {data.profession}, o que mais faz sentido para você hoje?
       </p>
       {options.length > 0 ? (
@@ -197,7 +197,7 @@ export const Step4 = ({ data, updateData }: StepProps) => {
           options={options}
         />
       ) : (
-        <div className="p-4 bg-amber-50 text-amber-700 rounded-xl">
+        <div className="p-4 bg-amber-50 text-amber-800 rounded-xl">
           Por favor, volte e selecione uma profissão primeiro.
         </div>
       )}
@@ -209,10 +209,10 @@ export const Step5 = ({ data, updateAdditionalData }: StepProps) => (
   <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
     <div className="space-y-4">
       <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Seu Perfil Financeiro</h2>
-      <p className="text-slate-500 text-lg">Para entendermos seu momento atual.</p>
+      <p className="text-slate-600 text-lg">Para entendermos seu momento atual.</p>
     </div>
     <div className="space-y-4">
-      <h3 className="text-xl font-medium text-slate-800">1. Volume de Portfólio</h3>
+      <h3 className="text-xl font-medium text-slate-900">1. Volume de Portfólio</h3>
       <RadioCards
         value={data.additionalData.portfolio}
         onChange={(v) => updateAdditionalData({ portfolio: v })}
@@ -221,8 +221,8 @@ export const Step5 = ({ data, updateAdditionalData }: StepProps) => (
       />
     </div>
     {data.additionalData.portfolio && (
-      <div className="space-y-4 pt-6 border-t border-slate-100 animate-in fade-in slide-in-from-top-4 duration-500">
-        <h3 className="text-xl font-medium text-slate-800">2. Perfil de Risco</h3>
+      <div className="space-y-4 pt-6 border-t border-slate-200 animate-in fade-in slide-in-from-top-4 duration-500">
+        <h3 className="text-xl font-medium text-slate-900">2. Perfil de Risco</h3>
         <RadioCards
           value={data.additionalData.risk}
           onChange={(v) => updateAdditionalData({ risk: v })}
@@ -237,8 +237,8 @@ export const Step5 = ({ data, updateAdditionalData }: StepProps) => (
 export const Step6 = ({ data }: StepProps) => (
   <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
     <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Revisão Final</h2>
-    <p className="text-slate-500 text-lg">Confirme seus dados antes de enviar sua solicitação.</p>
-    <div className="space-y-3 bg-slate-50 p-6 rounded-xl border border-slate-100 text-sm sm:text-base shadow-inner">
+    <p className="text-slate-600 text-lg">Confirme seus dados antes de enviar sua solicitação.</p>
+    <div className="space-y-3 bg-slate-50 p-6 rounded-xl border border-slate-200 text-sm sm:text-base shadow-inner">
       {Object.entries({
         Nome: data.additionalData.name,
         'E-mail': data.additionalData.email,
@@ -251,7 +251,7 @@ export const Step6 = ({ data }: StepProps) => (
           key={k}
           className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200 last:border-0 pb-3 pt-1 last:pb-0 gap-1"
         >
-          <span className="text-slate-500">{k}</span>
+          <span className="text-slate-600">{k}</span>
           <span className="font-medium text-slate-900 sm:text-right sm:w-2/3">{v || '-'}</span>
         </div>
       ))}

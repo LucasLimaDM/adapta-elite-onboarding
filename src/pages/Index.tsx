@@ -203,14 +203,14 @@ export default function Index() {
       <header className="w-full bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-10">
         <div className="max-w-3xl mx-auto flex items-center justify-between mb-4">
           <div className="font-bold text-xl text-primary tracking-tight">Adapta Elite</div>
-          <div className="text-sm font-medium text-slate-500">
+          <div className="text-sm font-medium text-slate-600">
             {step < 7 ? (
               <>
                 Etapa {step} de 6{' '}
-                <span className="ml-1 text-slate-400">({Math.round((step / 6) * 100)}%)</span>
+                <span className="ml-1 text-slate-500">({Math.round((step / 6) * 100)}%)</span>
               </>
             ) : (
-              <span className="text-green-600 font-semibold flex items-center gap-1">
+              <span className="text-green-700 font-semibold flex items-center gap-1">
                 <Check className="w-4 h-4" /> Concluído
               </span>
             )}
@@ -237,7 +237,7 @@ export default function Index() {
                       ? 'bg-primary text-primary-foreground ring-4 ring-primary/20 scale-110 shadow-md'
                       : isCompleted
                         ? 'bg-primary text-primary-foreground scale-100'
-                        : 'bg-slate-200 text-slate-500 opacity-60 scale-95',
+                        : 'bg-slate-200 text-slate-700 opacity-80 scale-95',
                   )}
                 >
                   {isCompleted ? (

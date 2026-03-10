@@ -73,16 +73,16 @@ export const Step7 = ({ data }: StepProps) => {
   if (meetingId) {
     return (
       <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500 text-center py-8">
-        <div className="mx-auto w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 shadow-sm">
+        <div className="mx-auto w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mb-6 shadow-sm">
           <CheckCircle2 className="w-8 h-8" />
         </div>
         <h2 className="text-2xl sm:text-3xl font-semibold text-primary">Consulta Confirmada!</h2>
-        <p className="text-slate-500 text-lg max-w-md mx-auto">
+        <p className="text-slate-600 text-lg max-w-md mx-auto">
           Sua consultoria foi agendada com sucesso. Nossa equipe entrará em contato em breve.
         </p>
         <div className="mt-8 p-6 bg-slate-50 rounded-xl border border-slate-200 max-w-sm mx-auto shadow-inner">
-          <div className="text-sm text-slate-500 mb-1 font-medium">ID da Reunião</div>
-          <div className="text-xl font-mono font-bold text-slate-800">{meetingId}</div>
+          <div className="text-sm text-slate-600 mb-1 font-medium">ID da Reunião</div>
+          <div className="text-xl font-mono font-bold text-slate-900">{meetingId}</div>
         </div>
       </div>
     )
@@ -96,7 +96,7 @@ export const Step7 = ({ data }: StepProps) => {
       <h2 className="text-2xl sm:text-3xl font-semibold text-primary">
         Tudo certo com seus dados!
       </h2>
-      <p className="text-slate-500 text-lg max-w-md mx-auto">
+      <p className="text-slate-600 text-lg max-w-md mx-auto">
         Agora, escolha o melhor horário para conversarmos sobre suas necessidades e objetivos.
       </p>
 
@@ -120,13 +120,13 @@ export const Step7 = ({ data }: StepProps) => {
         <DialogContent className="sm:max-w-[425px] p-6">
           <DialogHeader>
             <DialogTitle className="text-xl">Escolha um horário</DialogTitle>
-            <DialogDescription className="text-base">
+            <DialogDescription className="text-base text-slate-600">
               Selecione a data e horário de sua preferência para a consultoria.
             </DialogDescription>
           </DialogHeader>
           <div className="py-6 space-y-6">
             <div className="space-y-3">
-              <Label className="text-base font-medium">Data</Label>
+              <Label className="text-base font-medium text-slate-900">Data</Label>
               <div className="grid grid-cols-3 gap-2">
                 {['Hoje', 'Amanhã', 'Depois'].map((d) => (
                   <Button
@@ -145,7 +145,7 @@ export const Step7 = ({ data }: StepProps) => {
             </div>
             {selectedDate && (
               <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-300">
-                <Label className="text-base font-medium">Horário</Label>
+                <Label className="text-base font-medium text-slate-900">Horário</Label>
                 <div className="grid grid-cols-3 gap-2">
                   {['09:00', '10:30', '14:00', '15:30', '17:00'].map((t) => (
                     <Button

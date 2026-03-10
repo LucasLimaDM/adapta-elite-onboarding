@@ -1,0 +1,3054 @@
+import { C as useToast, D as require_react, E as require_react_dom, O as __toESM, S as composeEventHandlers, _ as createSlot, a as cn, b as require_jsx_runtime, c as createLucideIcon, d as Presence, f as Portal, g as createCollection, h as Primitive, i as useId, l as cva, m as useCallbackRef$1, n as createSlot$1, o as X, p as DismissableLayer, r as useSize, s as CircleAlert, t as Button, u as useControllableState, v as createContext2, x as useComposedRefs, y as createContextScope } from "./index-o8alFzVo.js";
+var CalendarDays = createLucideIcon("calendar-days", [
+	["path", {
+		d: "M8 2v4",
+		key: "1cmpym"
+	}],
+	["path", {
+		d: "M16 2v4",
+		key: "4m81vk"
+	}],
+	["rect", {
+		width: "18",
+		height: "18",
+		x: "3",
+		y: "4",
+		rx: "2",
+		key: "1hopcy"
+	}],
+	["path", {
+		d: "M3 10h18",
+		key: "8toen8"
+	}],
+	["path", {
+		d: "M8 14h.01",
+		key: "6423bh"
+	}],
+	["path", {
+		d: "M12 14h.01",
+		key: "1etili"
+	}],
+	["path", {
+		d: "M16 14h.01",
+		key: "1gbofw"
+	}],
+	["path", {
+		d: "M8 18h.01",
+		key: "lrp35t"
+	}],
+	["path", {
+		d: "M12 18h.01",
+		key: "mhygvu"
+	}],
+	["path", {
+		d: "M16 18h.01",
+		key: "kzsmim"
+	}]
+]);
+var Calendar = createLucideIcon("calendar", [
+	["path", {
+		d: "M8 2v4",
+		key: "1cmpym"
+	}],
+	["path", {
+		d: "M16 2v4",
+		key: "4m81vk"
+	}],
+	["rect", {
+		width: "18",
+		height: "18",
+		x: "3",
+		y: "4",
+		rx: "2",
+		key: "1hopcy"
+	}],
+	["path", {
+		d: "M3 10h18",
+		key: "8toen8"
+	}]
+]);
+var Check = createLucideIcon("check", [["path", {
+	d: "M20 6 9 17l-5-5",
+	key: "1gmf2c"
+}]]);
+var ChevronLeft = createLucideIcon("chevron-left", [["path", {
+	d: "m15 18-6-6 6-6",
+	key: "1wnfg3"
+}]]);
+var ChevronRight = createLucideIcon("chevron-right", [["path", {
+	d: "m9 18 6-6-6-6",
+	key: "mthhwq"
+}]]);
+var CircleCheck = createLucideIcon("circle-check", [["circle", {
+	cx: "12",
+	cy: "12",
+	r: "10",
+	key: "1mglay"
+}], ["path", {
+	d: "m9 12 2 2 4-4",
+	key: "dzmm74"
+}]]);
+var Circle = createLucideIcon("circle", [["circle", {
+	cx: "12",
+	cy: "12",
+	r: "10",
+	key: "1mglay"
+}]]);
+var LoaderCircle = createLucideIcon("loader-circle", [["path", {
+	d: "M21 12a9 9 0 1 1-6.219-8.56",
+	key: "13zald"
+}]]);
+var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
+var import_jsx_runtime = /* @__PURE__ */ __toESM(require_jsx_runtime(), 1);
+var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+		"data-uid": "src/components/ui/input.tsx:9:7",
+		"data-prohibitions": "[editContent]",
+		type,
+		className: cn("flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm", className),
+		ref,
+		...props
+	});
+});
+Input.displayName = "Input";
+require_react_dom();
+var Primitive$1 = [
+	"a",
+	"button",
+	"div",
+	"form",
+	"h2",
+	"h3",
+	"img",
+	"input",
+	"label",
+	"li",
+	"nav",
+	"ol",
+	"p",
+	"select",
+	"span",
+	"svg",
+	"ul"
+].reduce((primitive, node) => {
+	const Slot$1 = createSlot$1(`Primitive.${node}`);
+	const Node$1 = import_react.forwardRef((props, forwardedRef) => {
+		const { asChild, ...primitiveProps } = props;
+		const Comp = asChild ? Slot$1 : node;
+		if (typeof window !== "undefined") window[Symbol.for("radix-ui")] = true;
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
+			...primitiveProps,
+			ref: forwardedRef
+		});
+	});
+	Node$1.displayName = `Primitive.${node}`;
+	return {
+		...primitive,
+		[node]: Node$1
+	};
+}, {});
+var NAME$1 = "Label";
+var Label$1 = import_react.forwardRef((props, forwardedRef) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.label, {
+		...props,
+		ref: forwardedRef,
+		onMouseDown: (event) => {
+			if (event.target.closest("button, input, select, textarea")) return;
+			props.onMouseDown?.(event);
+			if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
+		}
+	});
+});
+Label$1.displayName = NAME$1;
+var Root$3 = Label$1;
+var labelVariants = cva("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70");
+var Label = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$3, {
+	"data-uid": "src/components/ui/label.tsx:16:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn(labelVariants(), className),
+	...props
+}));
+Label.displayName = Root$3.displayName;
+var alertVariants = cva("relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground", {
+	variants: { variant: {
+		default: "bg-background text-foreground",
+		destructive: "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive"
+	} },
+	defaultVariants: { variant: "default" }
+});
+var Alert = import_react.forwardRef(({ className, variant, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+	"data-uid": "src/components/ui/alert.tsx:27:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	role: "alert",
+	className: cn(alertVariants({ variant }), className),
+	...props
+}));
+Alert.displayName = "Alert";
+var AlertTitle = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h5", {
+	"data-uid": "src/components/ui/alert.tsx:33:5",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn("mb-1 font-medium leading-none tracking-tight", className),
+	...props
+}));
+AlertTitle.displayName = "AlertTitle";
+var AlertDescription = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+	"data-uid": "src/components/ui/alert.tsx:46:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn("text-sm [&_p]:leading-relaxed", className),
+	...props
+}));
+AlertDescription.displayName = "AlertDescription";
+var NAME = "AspectRatio";
+var AspectRatio$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { ratio = 1 / 1, style, ...aspectRatioProps } = props;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		style: {
+			position: "relative",
+			width: "100%",
+			paddingBottom: `${100 / ratio}%`
+		},
+		"data-radix-aspect-ratio-wrapper": "",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.div, {
+			...aspectRatioProps,
+			ref: forwardedRef,
+			style: {
+				...style,
+				position: "absolute",
+				top: 0,
+				right: 0,
+				bottom: 0,
+				left: 0
+			}
+		})
+	});
+});
+AspectRatio$1.displayName = NAME;
+var AspectRatio = AspectRatio$1;
+function VslVideo({ isCompleted, onComplete }) {
+	const [error, setError] = (0, import_react.useState)(null);
+	const videoRef = (0, import_react.useRef)(null);
+	const handleTimeUpdate = (e) => {
+		const video = e.currentTarget;
+		localStorage.setItem("adapta_vsl_progress", video.currentTime.toString());
+		if (video.duration) {
+			if (video.currentTime / video.duration >= .98 && !isCompleted) onComplete();
+		}
+	};
+	const handleLoadedMetadata = (e) => {
+		const video = e.currentTarget;
+		const savedProgress = localStorage.getItem("adapta_vsl_progress");
+		if (savedProgress) {
+			const time = parseFloat(savedProgress);
+			if (time > 0 && time < video.duration) video.currentTime = time;
+		}
+	};
+	const handleError = (e) => {
+		const target = e.currentTarget;
+		if (!target.error) return;
+		switch (target.error.code) {
+			case target.error.MEDIA_ERR_NETWORK:
+				setError("Verifique sua conexão de internet.");
+				break;
+			case target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
+				setError("Você não tem permissão para acessar este vídeo.");
+				break;
+			default: setError("Não foi possível carregar o vídeo. Tente novamente.");
+		}
+	};
+	(0, import_react.useEffect)(() => {
+		const progress = localStorage.getItem("adapta_vsl_progress");
+		if (progress && videoRef.current && isCompleted) videoRef.current.currentTime = parseFloat(progress);
+	}, [isCompleted]);
+	if (error) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Alert, {
+		"data-uid": "src/components/onboarding/VslVideo.tsx:64:7",
+		"data-prohibitions": "[editContent]",
+		variant: "destructive",
+		className: "mb-4 bg-red-50 border-red-200 text-red-800",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, {
+				"data-uid": "src/components/onboarding/VslVideo.tsx:65:9",
+				"data-prohibitions": "[editContent]",
+				className: "h-4 w-4",
+				color: "currentColor"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertTitle, {
+				"data-uid": "src/components/onboarding/VslVideo.tsx:66:9",
+				"data-prohibitions": "[]",
+				children: "Erro na reprodução"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(AlertDescription, {
+				"data-uid": "src/components/onboarding/VslVideo.tsx:67:9",
+				"data-prohibitions": "[editContent]",
+				children: error
+			})
+		]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/components/onboarding/VslVideo.tsx:73:5",
+		"data-prohibitions": "[]",
+		className: "w-full max-w-[600px] mx-auto rounded-xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AspectRatio, {
+			"data-uid": "src/components/onboarding/VslVideo.tsx:74:7",
+			"data-prohibitions": "[]",
+			ratio: 16 / 9,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("video", {
+				"data-uid": "src/components/onboarding/VslVideo.tsx:75:9",
+				"data-prohibitions": "[editContent]",
+				ref: videoRef,
+				src: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+				controls: true,
+				className: "w-full h-full object-cover bg-black",
+				controlsList: "nodownload",
+				onTimeUpdate: handleTimeUpdate,
+				onLoadedMetadata: handleLoadedMetadata,
+				onError: handleError
+			})
+		})
+	});
+}
+var DirectionContext = import_react.createContext(void 0);
+function useDirection(localDir) {
+	const globalDir = import_react.useContext(DirectionContext);
+	return localDir || globalDir || "ltr";
+}
+var ENTRY_FOCUS = "rovingFocusGroup.onEntryFocus";
+var EVENT_OPTIONS$1 = {
+	bubbles: false,
+	cancelable: true
+};
+var GROUP_NAME = "RovingFocusGroup";
+var [Collection, useCollection, createCollectionScope] = createCollection(GROUP_NAME);
+var [createRovingFocusGroupContext, createRovingFocusGroupScope] = createContextScope(GROUP_NAME, [createCollectionScope]);
+var [RovingFocusProvider, useRovingFocusContext] = createRovingFocusGroupContext(GROUP_NAME);
+var RovingFocusGroup = import_react.forwardRef((props, forwardedRef) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Provider, {
+		scope: props.__scopeRovingFocusGroup,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Slot, {
+			scope: props.__scopeRovingFocusGroup,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RovingFocusGroupImpl, {
+				...props,
+				ref: forwardedRef
+			})
+		})
+	});
+});
+RovingFocusGroup.displayName = GROUP_NAME;
+var RovingFocusGroupImpl = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRovingFocusGroup, orientation, loop = false, dir, currentTabStopId: currentTabStopIdProp, defaultCurrentTabStopId, onCurrentTabStopIdChange, onEntryFocus, preventScrollOnEntryFocus = false, ...groupProps } = props;
+	const ref = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, ref);
+	const direction = useDirection(dir);
+	const [currentTabStopId, setCurrentTabStopId] = useControllableState({
+		prop: currentTabStopIdProp,
+		defaultProp: defaultCurrentTabStopId ?? null,
+		onChange: onCurrentTabStopIdChange,
+		caller: GROUP_NAME
+	});
+	const [isTabbingBackOut, setIsTabbingBackOut] = import_react.useState(false);
+	const handleEntryFocus = useCallbackRef$1(onEntryFocus);
+	const getItems = useCollection(__scopeRovingFocusGroup);
+	const isClickFocusRef = import_react.useRef(false);
+	const [focusableItemsCount, setFocusableItemsCount] = import_react.useState(0);
+	import_react.useEffect(() => {
+		const node = ref.current;
+		if (node) {
+			node.addEventListener(ENTRY_FOCUS, handleEntryFocus);
+			return () => node.removeEventListener(ENTRY_FOCUS, handleEntryFocus);
+		}
+	}, [handleEntryFocus]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RovingFocusProvider, {
+		scope: __scopeRovingFocusGroup,
+		orientation,
+		dir: direction,
+		loop,
+		currentTabStopId,
+		onItemFocus: import_react.useCallback((tabStopId) => setCurrentTabStopId(tabStopId), [setCurrentTabStopId]),
+		onItemShiftTab: import_react.useCallback(() => setIsTabbingBackOut(true), []),
+		onFocusableItemAdd: import_react.useCallback(() => setFocusableItemsCount((prevCount) => prevCount + 1), []),
+		onFocusableItemRemove: import_react.useCallback(() => setFocusableItemsCount((prevCount) => prevCount - 1), []),
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			tabIndex: isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0,
+			"data-orientation": orientation,
+			...groupProps,
+			ref: composedRefs,
+			style: {
+				outline: "none",
+				...props.style
+			},
+			onMouseDown: composeEventHandlers(props.onMouseDown, () => {
+				isClickFocusRef.current = true;
+			}),
+			onFocus: composeEventHandlers(props.onFocus, (event) => {
+				const isKeyboardFocus = !isClickFocusRef.current;
+				if (event.target === event.currentTarget && isKeyboardFocus && !isTabbingBackOut) {
+					const entryFocusEvent = new CustomEvent(ENTRY_FOCUS, EVENT_OPTIONS$1);
+					event.currentTarget.dispatchEvent(entryFocusEvent);
+					if (!entryFocusEvent.defaultPrevented) {
+						const items = getItems().filter((item) => item.focusable);
+						focusFirst$1([
+							items.find((item) => item.active),
+							items.find((item) => item.id === currentTabStopId),
+							...items
+						].filter(Boolean).map((item) => item.ref.current), preventScrollOnEntryFocus);
+					}
+				}
+				isClickFocusRef.current = false;
+			}),
+			onBlur: composeEventHandlers(props.onBlur, () => setIsTabbingBackOut(false))
+		})
+	});
+});
+var ITEM_NAME$1 = "RovingFocusGroupItem";
+var RovingFocusGroupItem = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRovingFocusGroup, focusable = true, active = false, tabStopId, children, ...itemProps } = props;
+	const autoId = useId();
+	const id = tabStopId || autoId;
+	const context = useRovingFocusContext(ITEM_NAME$1, __scopeRovingFocusGroup);
+	const isCurrentTabStop = context.currentTabStopId === id;
+	const getItems = useCollection(__scopeRovingFocusGroup);
+	const { onFocusableItemAdd, onFocusableItemRemove, currentTabStopId } = context;
+	import_react.useEffect(() => {
+		if (focusable) {
+			onFocusableItemAdd();
+			return () => onFocusableItemRemove();
+		}
+	}, [
+		focusable,
+		onFocusableItemAdd,
+		onFocusableItemRemove
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.ItemSlot, {
+		scope: __scopeRovingFocusGroup,
+		id,
+		focusable,
+		active,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+			tabIndex: isCurrentTabStop ? 0 : -1,
+			"data-orientation": context.orientation,
+			...itemProps,
+			ref: forwardedRef,
+			onMouseDown: composeEventHandlers(props.onMouseDown, (event) => {
+				if (!focusable) event.preventDefault();
+				else context.onItemFocus(id);
+			}),
+			onFocus: composeEventHandlers(props.onFocus, () => context.onItemFocus(id)),
+			onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
+				if (event.key === "Tab" && event.shiftKey) {
+					context.onItemShiftTab();
+					return;
+				}
+				if (event.target !== event.currentTarget) return;
+				const focusIntent = getFocusIntent(event, context.orientation, context.dir);
+				if (focusIntent !== void 0) {
+					if (event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+					event.preventDefault();
+					let candidateNodes = getItems().filter((item) => item.focusable).map((item) => item.ref.current);
+					if (focusIntent === "last") candidateNodes.reverse();
+					else if (focusIntent === "prev" || focusIntent === "next") {
+						if (focusIntent === "prev") candidateNodes.reverse();
+						const currentIndex = candidateNodes.indexOf(event.currentTarget);
+						candidateNodes = context.loop ? wrapArray(candidateNodes, currentIndex + 1) : candidateNodes.slice(currentIndex + 1);
+					}
+					setTimeout(() => focusFirst$1(candidateNodes));
+				}
+			}),
+			children: typeof children === "function" ? children({
+				isCurrentTabStop,
+				hasTabStop: currentTabStopId != null
+			}) : children
+		})
+	});
+});
+RovingFocusGroupItem.displayName = ITEM_NAME$1;
+var MAP_KEY_TO_FOCUS_INTENT = {
+	ArrowLeft: "prev",
+	ArrowUp: "prev",
+	ArrowRight: "next",
+	ArrowDown: "next",
+	PageUp: "first",
+	Home: "first",
+	PageDown: "last",
+	End: "last"
+};
+function getDirectionAwareKey(key, dir) {
+	if (dir !== "rtl") return key;
+	return key === "ArrowLeft" ? "ArrowRight" : key === "ArrowRight" ? "ArrowLeft" : key;
+}
+function getFocusIntent(event, orientation, dir) {
+	const key = getDirectionAwareKey(event.key, dir);
+	if (orientation === "vertical" && ["ArrowLeft", "ArrowRight"].includes(key)) return void 0;
+	if (orientation === "horizontal" && ["ArrowUp", "ArrowDown"].includes(key)) return void 0;
+	return MAP_KEY_TO_FOCUS_INTENT[key];
+}
+function focusFirst$1(candidates, preventScroll = false) {
+	const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
+	for (const candidate of candidates) {
+		if (candidate === PREVIOUSLY_FOCUSED_ELEMENT) return;
+		candidate.focus({ preventScroll });
+		if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) return;
+	}
+}
+function wrapArray(array, startIndex) {
+	return array.map((_, index) => array[(startIndex + index) % array.length]);
+}
+var Root$1 = RovingFocusGroup;
+var Item = RovingFocusGroupItem;
+function usePrevious(value) {
+	const ref = import_react.useRef({
+		value,
+		previous: value
+	});
+	return import_react.useMemo(() => {
+		if (ref.current.value !== value) {
+			ref.current.previous = ref.current.value;
+			ref.current.value = value;
+		}
+		return ref.current.previous;
+	}, [value]);
+}
+var RADIO_NAME = "Radio";
+var [createRadioContext, createRadioScope] = createContextScope(RADIO_NAME);
+var [RadioProvider, useRadioContext] = createRadioContext(RADIO_NAME);
+var Radio = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRadio, name, checked = false, required, disabled, value = "on", onCheck, form, ...radioProps } = props;
+	const [button, setButton] = import_react.useState(null);
+	const composedRefs = useComposedRefs(forwardedRef, (node) => setButton(node));
+	const hasConsumerStoppedPropagationRef = import_react.useRef(false);
+	const isFormControl = button ? form || !!button.closest("form") : true;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(RadioProvider, {
+		scope: __scopeRadio,
+		checked,
+		disabled,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+			type: "button",
+			role: "radio",
+			"aria-checked": checked,
+			"data-state": getState$1(checked),
+			"data-disabled": disabled ? "" : void 0,
+			disabled,
+			value,
+			...radioProps,
+			ref: composedRefs,
+			onClick: composeEventHandlers(props.onClick, (event) => {
+				if (!checked) onCheck?.();
+				if (isFormControl) {
+					hasConsumerStoppedPropagationRef.current = event.isPropagationStopped();
+					if (!hasConsumerStoppedPropagationRef.current) event.stopPropagation();
+				}
+			})
+		}), isFormControl && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioBubbleInput, {
+			control: button,
+			bubbles: !hasConsumerStoppedPropagationRef.current,
+			name,
+			value,
+			checked,
+			required,
+			disabled,
+			form,
+			style: { transform: "translateX(-100%)" }
+		})]
+	});
+});
+Radio.displayName = RADIO_NAME;
+var INDICATOR_NAME = "RadioIndicator";
+var RadioIndicator = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRadio, forceMount, ...indicatorProps } = props;
+	const context = useRadioContext(INDICATOR_NAME, __scopeRadio);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+		present: forceMount || context.checked,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+			"data-state": getState$1(context.checked),
+			"data-disabled": context.disabled ? "" : void 0,
+			...indicatorProps,
+			ref: forwardedRef
+		})
+	});
+});
+RadioIndicator.displayName = INDICATOR_NAME;
+var BUBBLE_INPUT_NAME = "RadioBubbleInput";
+var RadioBubbleInput = import_react.forwardRef(({ __scopeRadio, control, checked, bubbles = true, ...props }, forwardedRef) => {
+	const ref = import_react.useRef(null);
+	const composedRefs = useComposedRefs(ref, forwardedRef);
+	const prevChecked = usePrevious(checked);
+	const controlSize = useSize(control);
+	import_react.useEffect(() => {
+		const input = ref.current;
+		if (!input) return;
+		const inputProto = window.HTMLInputElement.prototype;
+		const setChecked = Object.getOwnPropertyDescriptor(inputProto, "checked").set;
+		if (prevChecked !== checked && setChecked) {
+			const event = new Event("click", { bubbles });
+			setChecked.call(input, checked);
+			input.dispatchEvent(event);
+		}
+	}, [
+		prevChecked,
+		checked,
+		bubbles
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.input, {
+		type: "radio",
+		"aria-hidden": true,
+		defaultChecked: checked,
+		...props,
+		tabIndex: -1,
+		ref: composedRefs,
+		style: {
+			...props.style,
+			...controlSize,
+			position: "absolute",
+			pointerEvents: "none",
+			opacity: 0,
+			margin: 0
+		}
+	});
+});
+RadioBubbleInput.displayName = BUBBLE_INPUT_NAME;
+function getState$1(checked) {
+	return checked ? "checked" : "unchecked";
+}
+var ARROW_KEYS = [
+	"ArrowUp",
+	"ArrowDown",
+	"ArrowLeft",
+	"ArrowRight"
+];
+var RADIO_GROUP_NAME = "RadioGroup";
+var [createRadioGroupContext, createRadioGroupScope] = createContextScope(RADIO_GROUP_NAME, [createRovingFocusGroupScope, createRadioScope]);
+var useRovingFocusGroupScope = createRovingFocusGroupScope();
+var useRadioScope = createRadioScope();
+var [RadioGroupProvider, useRadioGroupContext] = createRadioGroupContext(RADIO_GROUP_NAME);
+var RadioGroup$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRadioGroup, name, defaultValue, value: valueProp, required = false, disabled = false, orientation, dir, loop = true, onValueChange, ...groupProps } = props;
+	const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeRadioGroup);
+	const direction = useDirection(dir);
+	const [value, setValue] = useControllableState({
+		prop: valueProp,
+		defaultProp: defaultValue ?? null,
+		onChange: onValueChange,
+		caller: RADIO_GROUP_NAME
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioGroupProvider, {
+		scope: __scopeRadioGroup,
+		name,
+		required,
+		disabled,
+		value,
+		onValueChange: setValue,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$1, {
+			asChild: true,
+			...rovingFocusGroupScope,
+			orientation,
+			dir: direction,
+			loop,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+				role: "radiogroup",
+				"aria-required": required,
+				"aria-orientation": orientation,
+				"data-disabled": disabled ? "" : void 0,
+				dir: direction,
+				...groupProps,
+				ref: forwardedRef
+			})
+		})
+	});
+});
+RadioGroup$1.displayName = RADIO_GROUP_NAME;
+var ITEM_NAME = "RadioGroupItem";
+var RadioGroupItem$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRadioGroup, disabled, ...itemProps } = props;
+	const context = useRadioGroupContext(ITEM_NAME, __scopeRadioGroup);
+	const isDisabled = context.disabled || disabled;
+	const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeRadioGroup);
+	const radioScope = useRadioScope(__scopeRadioGroup);
+	const ref = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, ref);
+	const checked = context.value === itemProps.value;
+	const isArrowKeyPressedRef = import_react.useRef(false);
+	import_react.useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (ARROW_KEYS.includes(event.key)) isArrowKeyPressedRef.current = true;
+		};
+		const handleKeyUp = () => isArrowKeyPressedRef.current = false;
+		document.addEventListener("keydown", handleKeyDown);
+		document.addEventListener("keyup", handleKeyUp);
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+			document.removeEventListener("keyup", handleKeyUp);
+		};
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item, {
+		asChild: true,
+		...rovingFocusGroupScope,
+		focusable: !isDisabled,
+		active: checked,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Radio, {
+			disabled: isDisabled,
+			required: context.required,
+			checked,
+			...radioScope,
+			...itemProps,
+			name: context.name,
+			ref: composedRefs,
+			onCheck: () => context.onValueChange(itemProps.value),
+			onKeyDown: composeEventHandlers((event) => {
+				if (event.key === "Enter") event.preventDefault();
+			}),
+			onFocus: composeEventHandlers(itemProps.onFocus, () => {
+				if (isArrowKeyPressedRef.current) ref.current?.click();
+			})
+		})
+	});
+});
+RadioGroupItem$1.displayName = ITEM_NAME;
+var INDICATOR_NAME2 = "RadioGroupIndicator";
+var RadioGroupIndicator = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeRadioGroup, ...indicatorProps } = props;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioIndicator, {
+		...useRadioScope(__scopeRadioGroup),
+		...indicatorProps,
+		ref: forwardedRef
+	});
+});
+RadioGroupIndicator.displayName = INDICATOR_NAME2;
+var Root2 = RadioGroup$1;
+var Item2 = RadioGroupItem$1;
+var Indicator = RadioGroupIndicator;
+var RadioGroup = import_react.forwardRef(({ className, ...props }, ref) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root2, {
+		"data-uid": "src/components/ui/radio-group.tsx:12:10",
+		"data-prohibitions": "[editContent]",
+		className: cn("grid gap-2", className),
+		...props,
+		ref
+	});
+});
+RadioGroup.displayName = Root2.displayName;
+var RadioGroupItem = import_react.forwardRef(({ className, ...props }, ref) => {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Item2, {
+		"data-uid": "src/components/ui/radio-group.tsx:21:5",
+		"data-prohibitions": "[editContent]",
+		ref,
+		className: cn("aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className),
+		...props,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Indicator, {
+			"data-uid": "src/components/ui/radio-group.tsx:29:7",
+			"data-prohibitions": "[]",
+			className: "flex items-center justify-center",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Circle, {
+				"data-uid": "src/components/ui/radio-group.tsx:30:9",
+				"data-prohibitions": "[editContent]",
+				className: "h-2.5 w-2.5 fill-current text-current"
+			})
+		})
+	});
+});
+RadioGroupItem.displayName = Item2.displayName;
+function RadioCards({ value, onChange, options: options$1, columns = 1 }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioGroup, {
+		"data-uid": "src/components/onboarding/Cards.tsx:18:5",
+		"data-prohibitions": "[editContent]",
+		value,
+		onValueChange: onChange,
+		className: cn("grid gap-3 pt-2", columns === 2 && "sm:grid-cols-2"),
+		children: options$1.map((opt) => {
+			const isSelected = value === opt;
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Label, {
+				"data-uid": "src/components/onboarding/Cards.tsx:26:11",
+				"data-prohibitions": "[editContent]",
+				className: cn("flex items-center justify-between p-4 sm:p-5 rounded-xl border cursor-pointer transition-all duration-300 min-h-[56px] shadow-sm", isSelected ? "border-green-500 bg-green-50 ring-1 ring-green-500 text-green-700 scale-[1.02]" : "border-slate-200 text-slate-700 bg-white hover:border-slate-300 hover:bg-slate-50"),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/components/onboarding/Cards.tsx:35:13",
+					"data-prohibitions": "[editContent]",
+					className: "flex items-center gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioGroupItem, {
+						"data-uid": "src/components/onboarding/Cards.tsx:36:15",
+						"data-prohibitions": "[editContent]",
+						value: opt,
+						id: opt,
+						className: "sr-only"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						"data-uid": "src/components/onboarding/Cards.tsx:37:15",
+						"data-prohibitions": "[editContent]",
+						className: "text-base sm:text-lg font-medium",
+						children: opt
+					})]
+				}), isSelected ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {
+					"data-uid": "src/components/onboarding/Cards.tsx:40:15",
+					"data-prohibitions": "[editContent]",
+					className: "h-5 w-5 text-green-500 animate-in zoom-in duration-300 shrink-0"
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Circle, {
+					"data-uid": "src/components/onboarding/Cards.tsx:42:15",
+					"data-prohibitions": "[editContent]",
+					className: "h-5 w-5 text-slate-300 shrink-0"
+				})]
+			}, opt);
+		})
+	});
+}
+function CheckboxCards({ values, onChange, options: options$1 }) {
+	const toggle = (opt) => {
+		onChange(values.includes(opt) ? values.filter((v) => v !== opt) : [...values, opt]);
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/components/onboarding/Cards.tsx:65:5",
+		"data-prohibitions": "[editContent]",
+		className: "grid sm:grid-cols-2 gap-3 pt-2",
+		children: options$1.map((opt) => {
+			const isSelected = values.includes(opt);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/onboarding/Cards.tsx:69:11",
+				"data-prohibitions": "[editContent]",
+				role: "checkbox",
+				"aria-checked": isSelected,
+				tabIndex: 0,
+				onKeyDown: (e) => {
+					if (e.key === "Enter" || e.key === " ") {
+						e.preventDefault();
+						toggle(opt);
+					}
+				},
+				onClick: () => toggle(opt),
+				className: cn("flex items-center justify-between p-4 sm:p-5 rounded-xl border cursor-pointer transition-all duration-300 min-h-[56px] shadow-sm outline-none", isSelected ? "border-green-500 bg-green-50 ring-1 ring-green-500 text-green-700 scale-[1.02]" : "border-slate-200 text-slate-700 bg-white hover:border-slate-300 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-primary"),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					"data-uid": "src/components/onboarding/Cards.tsx:88:13",
+					"data-prohibitions": "[editContent]",
+					className: "text-base sm:text-lg font-medium",
+					children: opt
+				}), isSelected ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {
+					"data-uid": "src/components/onboarding/Cards.tsx:90:15",
+					"data-prohibitions": "[editContent]",
+					className: "h-5 w-5 text-green-500 animate-in zoom-in duration-300 shrink-0 ml-3"
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Circle, {
+					"data-uid": "src/components/onboarding/Cards.tsx:92:15",
+					"data-prohibitions": "[editContent]",
+					className: "h-5 w-5 text-slate-300 shrink-0 ml-3"
+				})]
+			}, opt);
+		})
+	});
+}
+const Step1 = ({ data, updateAdditionalData }) => {
+	const { name, email } = data.additionalData;
+	const nameError = name.length > 0 && name.trim().length < 3;
+	const emailError = email.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/onboarding/Steps.tsx:33:5",
+		"data-prohibitions": "[editContent]",
+		className: "space-y-6 animate-in fade-in slide-in-from-right-4 duration-500",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:34:7",
+			"data-prohibitions": "[]",
+			className: "space-y-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				"data-uid": "src/components/onboarding/Steps.tsx:35:9",
+				"data-prohibitions": "[]",
+				className: "text-2xl sm:text-3xl font-semibold text-primary",
+				children: "Seus Dados"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				"data-uid": "src/components/onboarding/Steps.tsx:36:9",
+				"data-prohibitions": "[]",
+				className: "text-slate-600 text-lg",
+				children: "Para um atendimento exclusivo e personalizado."
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:38:7",
+			"data-prohibitions": "[editContent]",
+			className: "space-y-4 pt-2",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/onboarding/Steps.tsx:39:9",
+				"data-prohibitions": "[editContent]",
+				className: "space-y-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Label, {
+						"data-uid": "src/components/onboarding/Steps.tsx:40:11",
+						"data-prohibitions": "[]",
+						className: "text-slate-900 font-medium",
+						children: ["Nome Completo ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							"data-uid": "src/components/onboarding/Steps.tsx:41:27",
+							"data-prohibitions": "[]",
+							className: "text-red-600",
+							children: "*"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						"data-uid": "src/components/onboarding/Steps.tsx:43:11",
+						"data-prohibitions": "[editContent]",
+						autoFocus: true,
+						className: cn("h-14 text-lg bg-white rounded-xl transition-all duration-300", nameError ? "border-red-500 focus-visible:ring-red-500" : name.trim().length >= 3 ? "border-green-500 focus-visible:ring-green-500" : ""),
+						placeholder: "Ex: João Silva",
+						value: name,
+						onChange: (e) => updateAdditionalData({ name: e.target.value })
+					}),
+					nameError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						"data-uid": "src/components/onboarding/Steps.tsx:58:13",
+						"data-prohibitions": "[]",
+						className: "text-red-600 text-sm animate-in fade-in slide-in-from-top-1",
+						children: "O nome deve ter pelo menos 3 caracteres."
+					})
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/onboarding/Steps.tsx:63:9",
+				"data-prohibitions": "[editContent]",
+				className: "space-y-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Label, {
+						"data-uid": "src/components/onboarding/Steps.tsx:64:11",
+						"data-prohibitions": "[]",
+						className: "text-slate-900 font-medium",
+						children: ["Melhor E-mail ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							"data-uid": "src/components/onboarding/Steps.tsx:65:27",
+							"data-prohibitions": "[]",
+							className: "text-red-600",
+							children: "*"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+						"data-uid": "src/components/onboarding/Steps.tsx:67:11",
+						"data-prohibitions": "[editContent]",
+						type: "email",
+						className: cn("h-14 text-lg bg-white rounded-xl transition-all duration-300", emailError ? "border-red-500 focus-visible:ring-red-500" : email.length > 0 && !emailError ? "border-green-500 focus-visible:ring-green-500" : ""),
+						placeholder: "nome@exemplo.com",
+						value: email,
+						onChange: (e) => updateAdditionalData({ email: e.target.value })
+					}),
+					emailError && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						"data-uid": "src/components/onboarding/Steps.tsx:82:13",
+						"data-prohibitions": "[]",
+						className: "text-red-600 text-sm animate-in fade-in slide-in-from-top-1",
+						children: "Insira um e-mail válido."
+					})
+				]
+			})]
+		})]
+	});
+};
+const Step2 = ({ data, updateAdditionalData }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	"data-uid": "src/components/onboarding/Steps.tsx:93:3",
+	"data-prohibitions": "[editContent]",
+	className: "space-y-6 animate-in fade-in slide-in-from-right-4 duration-500",
+	children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:94:5",
+			"data-prohibitions": "[]",
+			className: "space-y-2 text-center",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				"data-uid": "src/components/onboarding/Steps.tsx:95:7",
+				"data-prohibitions": "[]",
+				className: "text-2xl sm:text-3xl font-semibold text-primary",
+				children: "Mensagem Importante"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				"data-uid": "src/components/onboarding/Steps.tsx:96:7",
+				"data-prohibitions": "[]",
+				className: "text-slate-600 text-lg",
+				children: "Assista ao vídeo abaixo para entender nossa metodologia."
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:100:5",
+			"data-prohibitions": "[]",
+			className: "pt-4",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(VslVideo, {
+				"data-uid": "src/components/onboarding/Steps.tsx:101:7",
+				"data-prohibitions": "[editContent]",
+				isCompleted: data.additionalData.vslWatched,
+				onComplete: () => updateAdditionalData({ vslWatched: true })
+			})
+		}),
+		data.additionalData.vslWatched && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:107:7",
+			"data-prohibitions": "[]",
+			className: "max-w-[600px] mx-auto mt-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-center gap-2 text-green-800 animate-in fade-in slide-in-from-bottom-2 duration-500",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {
+				"data-uid": "src/components/onboarding/Steps.tsx:108:9",
+				"data-prohibitions": "[editContent]",
+				className: "h-5 w-5"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				"data-uid": "src/components/onboarding/Steps.tsx:109:9",
+				"data-prohibitions": "[]",
+				className: "font-medium",
+				children: "Vídeo concluído! Você já pode continuar."
+			})]
+		})
+	]
+});
+var PROFESSIONS = [
+	"Médico",
+	"Advogado",
+	"Empresário",
+	"Gestor",
+	"Contador",
+	"Engenheiro",
+	"Desenvolvedor"
+];
+const Step3 = ({ data, updateData }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	"data-uid": "src/components/onboarding/Steps.tsx:126:3",
+	"data-prohibitions": "[]",
+	className: "space-y-4 animate-in fade-in slide-in-from-right-4 duration-500",
+	children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+			"data-uid": "src/components/onboarding/Steps.tsx:127:5",
+			"data-prohibitions": "[]",
+			className: "text-2xl sm:text-3xl font-semibold text-primary",
+			children: "Sua Área de Atuação"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			"data-uid": "src/components/onboarding/Steps.tsx:128:5",
+			"data-prohibitions": "[]",
+			className: "text-slate-600 text-lg",
+			children: "Selecione sua profissão para personalizarmos sua experiência."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioCards, {
+			"data-uid": "src/components/onboarding/Steps.tsx:131:5",
+			"data-prohibitions": "[editContent]",
+			value: data.profession,
+			onChange: (v) => updateData({
+				profession: v,
+				useCases: []
+			}),
+			options: PROFESSIONS,
+			columns: 2
+		})
+	]
+});
+var USE_CASES_MAP = {
+	Médico: [
+		"Gestão de Clínicas",
+		"Otimização de Impostos",
+		"Proteção Patrimonial",
+		"Investimentos Seguros"
+	],
+	Advogado: [
+		"Gestão de Honorários",
+		"Planejamento Sucessório",
+		"Holding Familiar",
+		"Diversificação"
+	],
+	Empresário: [
+		"Expansão de Negócios",
+		"Sucessão Empresarial",
+		"Gestão de Caixa",
+		"Holding Estruturada"
+	],
+	Gestor: [
+		"Alocação de Ativos",
+		"Previdência Privada",
+		"Diversificação Internacional",
+		"Proteção contra Inflação"
+	],
+	Contador: [
+		"Estruturação Tributária",
+		"Planejamento Financeiro",
+		"Parcerias Estratégicas",
+		"Gestão de Patrimônio"
+	],
+	Engenheiro: [
+		"Investimentos Imobiliários",
+		"Gestão de Projetos Pessoais",
+		"Proteção de Ativos",
+		"Aposentadoria Antecipada"
+	],
+	Desenvolvedor: [
+		"Recebimentos Internacionais",
+		"Startups & Equity",
+		"Criptoativos",
+		"Independência Financeira"
+	]
+};
+const Step4 = ({ data, updateData }) => {
+	const options$1 = USE_CASES_MAP[data.profession] || [];
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/onboarding/Steps.tsx:188:5",
+		"data-prohibitions": "[editContent]",
+		className: "space-y-4 animate-in fade-in slide-in-from-right-4 duration-500",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				"data-uid": "src/components/onboarding/Steps.tsx:189:7",
+				"data-prohibitions": "[]",
+				className: "text-2xl sm:text-3xl font-semibold text-primary",
+				children: "Interesses e Casos de Uso"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				"data-uid": "src/components/onboarding/Steps.tsx:190:7",
+				"data-prohibitions": "[editContent]",
+				className: "text-slate-600 text-lg",
+				children: [
+					"Como ",
+					data.profession,
+					", o que mais faz sentido para você hoje?"
+				]
+			}),
+			options$1.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CheckboxCards, {
+				"data-uid": "src/components/onboarding/Steps.tsx:194:9",
+				"data-prohibitions": "[editContent]",
+				values: data.useCases,
+				onChange: (v) => updateData({ useCases: v }),
+				options: options$1
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"data-uid": "src/components/onboarding/Steps.tsx:200:9",
+				"data-prohibitions": "[]",
+				className: "p-4 bg-amber-50 text-amber-800 rounded-xl",
+				children: "Por favor, volte e selecione uma profissão primeiro."
+			})
+		]
+	});
+};
+const Step5 = ({ data, updateAdditionalData }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	"data-uid": "src/components/onboarding/Steps.tsx:209:3",
+	"data-prohibitions": "[editContent]",
+	className: "space-y-8 animate-in fade-in slide-in-from-right-4 duration-500",
+	children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:210:5",
+			"data-prohibitions": "[]",
+			className: "space-y-4",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				"data-uid": "src/components/onboarding/Steps.tsx:211:7",
+				"data-prohibitions": "[]",
+				className: "text-2xl sm:text-3xl font-semibold text-primary",
+				children: "Seu Perfil Financeiro"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				"data-uid": "src/components/onboarding/Steps.tsx:212:7",
+				"data-prohibitions": "[]",
+				className: "text-slate-600 text-lg",
+				children: "Para entendermos seu momento atual."
+			})]
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:214:5",
+			"data-prohibitions": "[]",
+			className: "space-y-4",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+				"data-uid": "src/components/onboarding/Steps.tsx:215:7",
+				"data-prohibitions": "[]",
+				className: "text-xl font-medium text-slate-900",
+				children: "1. Volume de Portfólio"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioCards, {
+				"data-uid": "src/components/onboarding/Steps.tsx:216:7",
+				"data-prohibitions": "[editContent]",
+				value: data.additionalData.portfolio,
+				onChange: (v) => updateAdditionalData({ portfolio: v }),
+				options: [
+					"R$ 1M - R$ 5M",
+					"R$ 5M - R$ 15M",
+					"R$ 15M - R$ 50M",
+					"Acima de R$ 50M"
+				],
+				columns: 2
+			})]
+		}),
+		data.additionalData.portfolio && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:224:7",
+			"data-prohibitions": "[]",
+			className: "space-y-4 pt-6 border-t border-slate-200 animate-in fade-in slide-in-from-top-4 duration-500",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+				"data-uid": "src/components/onboarding/Steps.tsx:225:9",
+				"data-prohibitions": "[]",
+				className: "text-xl font-medium text-slate-900",
+				children: "2. Perfil de Risco"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RadioCards, {
+				"data-uid": "src/components/onboarding/Steps.tsx:226:9",
+				"data-prohibitions": "[editContent]",
+				value: data.additionalData.risk,
+				onChange: (v) => updateAdditionalData({ risk: v }),
+				options: [
+					"Conservador",
+					"Moderado",
+					"Arrojado",
+					"Agressivo"
+				],
+				columns: 2
+			})]
+		})
+	]
+});
+const Step6 = ({ data }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	"data-uid": "src/components/onboarding/Steps.tsx:238:3",
+	"data-prohibitions": "[editContent]",
+	className: "space-y-6 animate-in fade-in slide-in-from-right-4 duration-500",
+	children: [
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+			"data-uid": "src/components/onboarding/Steps.tsx:239:5",
+			"data-prohibitions": "[]",
+			className: "text-2xl sm:text-3xl font-semibold text-primary",
+			children: "Revisão Final"
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			"data-uid": "src/components/onboarding/Steps.tsx:240:5",
+			"data-prohibitions": "[]",
+			className: "text-slate-600 text-lg",
+			children: "Confirme seus dados antes de enviar sua solicitação."
+		}),
+		/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			"data-uid": "src/components/onboarding/Steps.tsx:241:5",
+			"data-prohibitions": "[editContent]",
+			className: "space-y-3 bg-slate-50 p-6 rounded-xl border border-slate-200 text-sm sm:text-base shadow-inner",
+			children: Object.entries({
+				Nome: data.additionalData.name,
+				"E-mail": data.additionalData.email,
+				Profissão: data.profession,
+				Interesses: data.useCases.join(", "),
+				Portfólio: data.additionalData.portfolio,
+				Risco: data.additionalData.risk
+			}).map(([k, v]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/onboarding/Steps.tsx:250:9",
+				"data-prohibitions": "[editContent]",
+				className: "flex flex-col sm:flex-row sm:justify-between border-b border-slate-200 last:border-0 pb-3 pt-1 last:pb-0 gap-1",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					"data-uid": "src/components/onboarding/Steps.tsx:254:11",
+					"data-prohibitions": "[editContent]",
+					className: "text-slate-600",
+					children: k
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					"data-uid": "src/components/onboarding/Steps.tsx:255:11",
+					"data-prohibitions": "[editContent]",
+					className: "font-medium text-slate-900 sm:text-right sm:w-2/3",
+					children: v || "-"
+				})]
+			}, k))
+		})
+	]
+});
+var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
+var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
+var EVENT_OPTIONS = {
+	bubbles: false,
+	cancelable: true
+};
+var FOCUS_SCOPE_NAME = "FocusScope";
+var FocusScope = import_react.forwardRef((props, forwardedRef) => {
+	const { loop = false, trapped = false, onMountAutoFocus: onMountAutoFocusProp, onUnmountAutoFocus: onUnmountAutoFocusProp, ...scopeProps } = props;
+	const [container, setContainer] = import_react.useState(null);
+	const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
+	const onUnmountAutoFocus = useCallbackRef$1(onUnmountAutoFocusProp);
+	const lastFocusedElementRef = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, (node) => setContainer(node));
+	const focusScope = import_react.useRef({
+		paused: false,
+		pause() {
+			this.paused = true;
+		},
+		resume() {
+			this.paused = false;
+		}
+	}).current;
+	import_react.useEffect(() => {
+		if (trapped) {
+			let handleFocusIn2 = function(event) {
+				if (focusScope.paused || !container) return;
+				const target = event.target;
+				if (container.contains(target)) lastFocusedElementRef.current = target;
+				else focus(lastFocusedElementRef.current, { select: true });
+			}, handleFocusOut2 = function(event) {
+				if (focusScope.paused || !container) return;
+				const relatedTarget = event.relatedTarget;
+				if (relatedTarget === null) return;
+				if (!container.contains(relatedTarget)) focus(lastFocusedElementRef.current, { select: true });
+			}, handleMutations2 = function(mutations) {
+				if (document.activeElement !== document.body) return;
+				for (const mutation of mutations) if (mutation.removedNodes.length > 0) focus(container);
+			};
+			document.addEventListener("focusin", handleFocusIn2);
+			document.addEventListener("focusout", handleFocusOut2);
+			const mutationObserver = new MutationObserver(handleMutations2);
+			if (container) mutationObserver.observe(container, {
+				childList: true,
+				subtree: true
+			});
+			return () => {
+				document.removeEventListener("focusin", handleFocusIn2);
+				document.removeEventListener("focusout", handleFocusOut2);
+				mutationObserver.disconnect();
+			};
+		}
+	}, [
+		trapped,
+		container,
+		focusScope.paused
+	]);
+	import_react.useEffect(() => {
+		if (container) {
+			focusScopesStack.add(focusScope);
+			const previouslyFocusedElement = document.activeElement;
+			if (!container.contains(previouslyFocusedElement)) {
+				const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS);
+				container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+				container.dispatchEvent(mountEvent);
+				if (!mountEvent.defaultPrevented) {
+					focusFirst(removeLinks(getTabbableCandidates(container)), { select: true });
+					if (document.activeElement === previouslyFocusedElement) focus(container);
+				}
+			}
+			return () => {
+				container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+				setTimeout(() => {
+					const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS);
+					container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+					container.dispatchEvent(unmountEvent);
+					if (!unmountEvent.defaultPrevented) focus(previouslyFocusedElement ?? document.body, { select: true });
+					container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+					focusScopesStack.remove(focusScope);
+				}, 0);
+			};
+		}
+	}, [
+		container,
+		onMountAutoFocus,
+		onUnmountAutoFocus,
+		focusScope
+	]);
+	const handleKeyDown = import_react.useCallback((event) => {
+		if (!loop && !trapped) return;
+		if (focusScope.paused) return;
+		const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
+		const focusedElement = document.activeElement;
+		if (isTabKey && focusedElement) {
+			const container2 = event.currentTarget;
+			const [first, last] = getTabbableEdges(container2);
+			if (!(first && last)) {
+				if (focusedElement === container2) event.preventDefault();
+			} else if (!event.shiftKey && focusedElement === last) {
+				event.preventDefault();
+				if (loop) focus(first, { select: true });
+			} else if (event.shiftKey && focusedElement === first) {
+				event.preventDefault();
+				if (loop) focus(last, { select: true });
+			}
+		}
+	}, [
+		loop,
+		trapped,
+		focusScope.paused
+	]);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		tabIndex: -1,
+		...scopeProps,
+		ref: composedRefs,
+		onKeyDown: handleKeyDown
+	});
+});
+FocusScope.displayName = FOCUS_SCOPE_NAME;
+function focusFirst(candidates, { select = false } = {}) {
+	const previouslyFocusedElement = document.activeElement;
+	for (const candidate of candidates) {
+		focus(candidate, { select });
+		if (document.activeElement !== previouslyFocusedElement) return;
+	}
+}
+function getTabbableEdges(container) {
+	const candidates = getTabbableCandidates(container);
+	return [findVisible(candidates, container), findVisible(candidates.reverse(), container)];
+}
+function getTabbableCandidates(container) {
+	const nodes = [];
+	const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, { acceptNode: (node) => {
+		const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
+		if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
+		return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+	} });
+	while (walker.nextNode()) nodes.push(walker.currentNode);
+	return nodes;
+}
+function findVisible(elements, container) {
+	for (const element of elements) if (!isHidden(element, { upTo: container })) return element;
+}
+function isHidden(node, { upTo }) {
+	if (getComputedStyle(node).visibility === "hidden") return true;
+	while (node) {
+		if (upTo !== void 0 && node === upTo) return false;
+		if (getComputedStyle(node).display === "none") return true;
+		node = node.parentElement;
+	}
+	return false;
+}
+function isSelectableInput(element) {
+	return element instanceof HTMLInputElement && "select" in element;
+}
+function focus(element, { select = false } = {}) {
+	if (element && element.focus) {
+		const previouslyFocusedElement = document.activeElement;
+		element.focus({ preventScroll: true });
+		if (element !== previouslyFocusedElement && isSelectableInput(element) && select) element.select();
+	}
+}
+var focusScopesStack = createFocusScopesStack();
+function createFocusScopesStack() {
+	let stack = [];
+	return {
+		add(focusScope) {
+			const activeFocusScope = stack[0];
+			if (focusScope !== activeFocusScope) activeFocusScope?.pause();
+			stack = arrayRemove(stack, focusScope);
+			stack.unshift(focusScope);
+		},
+		remove(focusScope) {
+			stack = arrayRemove(stack, focusScope);
+			stack[0]?.resume();
+		}
+	};
+}
+function arrayRemove(array, item) {
+	const updatedArray = [...array];
+	const index = updatedArray.indexOf(item);
+	if (index !== -1) updatedArray.splice(index, 1);
+	return updatedArray;
+}
+function removeLinks(items) {
+	return items.filter((item) => item.tagName !== "A");
+}
+var count = 0;
+function useFocusGuards() {
+	import_react.useEffect(() => {
+		const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
+		document.body.insertAdjacentElement("afterbegin", edgeGuards[0] ?? createFocusGuard());
+		document.body.insertAdjacentElement("beforeend", edgeGuards[1] ?? createFocusGuard());
+		count++;
+		return () => {
+			if (count === 1) document.querySelectorAll("[data-radix-focus-guard]").forEach((node) => node.remove());
+			count--;
+		};
+	}, []);
+}
+function createFocusGuard() {
+	const element = document.createElement("span");
+	element.setAttribute("data-radix-focus-guard", "");
+	element.tabIndex = 0;
+	element.style.outline = "none";
+	element.style.opacity = "0";
+	element.style.position = "fixed";
+	element.style.pointerEvents = "none";
+	return element;
+}
+var __assign = function() {
+	__assign = Object.assign || function __assign$1(t) {
+		for (var s, i = 1, n = arguments.length; i < n; i++) {
+			s = arguments[i];
+			for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+		}
+		return t;
+	};
+	return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+	var t = {};
+	for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+	if (s != null && typeof Object.getOwnPropertySymbols === "function") {
+		for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+	}
+	return t;
+}
+function __spreadArray(to, from, pack) {
+	if (pack || arguments.length === 2) {
+		for (var i = 0, l = from.length, ar; i < l; i++) if (ar || !(i in from)) {
+			if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+			ar[i] = from[i];
+		}
+	}
+	return to.concat(ar || Array.prototype.slice.call(from));
+}
+var zeroRightClassName = "right-scroll-bar-position";
+var fullWidthClassName = "width-before-scroll-bar";
+var noScrollbarsClassName = "with-scroll-bars-hidden";
+var removedBarSizeVariable = "--removed-body-scroll-bar-size";
+function assignRef(ref, value) {
+	if (typeof ref === "function") ref(value);
+	else if (ref) ref.current = value;
+	return ref;
+}
+function useCallbackRef(initialValue, callback) {
+	var ref = (0, import_react.useState)(function() {
+		return {
+			value: initialValue,
+			callback,
+			facade: {
+				get current() {
+					return ref.value;
+				},
+				set current(value) {
+					var last = ref.value;
+					if (last !== value) {
+						ref.value = value;
+						ref.callback(value, last);
+					}
+				}
+			}
+		};
+	})[0];
+	ref.callback = callback;
+	return ref.facade;
+}
+var useIsomorphicLayoutEffect = typeof window !== "undefined" ? import_react.useLayoutEffect : import_react.useEffect;
+var currentValues = /* @__PURE__ */ new WeakMap();
+function useMergeRefs(refs, defaultValue) {
+	var callbackRef = useCallbackRef(defaultValue || null, function(newValue) {
+		return refs.forEach(function(ref) {
+			return assignRef(ref, newValue);
+		});
+	});
+	useIsomorphicLayoutEffect(function() {
+		var oldValue = currentValues.get(callbackRef);
+		if (oldValue) {
+			var prevRefs_1 = new Set(oldValue);
+			var nextRefs_1 = new Set(refs);
+			var current_1 = callbackRef.current;
+			prevRefs_1.forEach(function(ref) {
+				if (!nextRefs_1.has(ref)) assignRef(ref, null);
+			});
+			nextRefs_1.forEach(function(ref) {
+				if (!prevRefs_1.has(ref)) assignRef(ref, current_1);
+			});
+		}
+		currentValues.set(callbackRef, refs);
+	}, [refs]);
+	return callbackRef;
+}
+function ItoI(a) {
+	return a;
+}
+function innerCreateMedium(defaults, middleware) {
+	if (middleware === void 0) middleware = ItoI;
+	var buffer = [];
+	var assigned = false;
+	return {
+		read: function() {
+			if (assigned) throw new Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
+			if (buffer.length) return buffer[buffer.length - 1];
+			return defaults;
+		},
+		useMedium: function(data) {
+			var item = middleware(data, assigned);
+			buffer.push(item);
+			return function() {
+				buffer = buffer.filter(function(x) {
+					return x !== item;
+				});
+			};
+		},
+		assignSyncMedium: function(cb) {
+			assigned = true;
+			while (buffer.length) {
+				var cbs = buffer;
+				buffer = [];
+				cbs.forEach(cb);
+			}
+			buffer = {
+				push: function(x) {
+					return cb(x);
+				},
+				filter: function() {
+					return buffer;
+				}
+			};
+		},
+		assignMedium: function(cb) {
+			assigned = true;
+			var pendingQueue = [];
+			if (buffer.length) {
+				var cbs = buffer;
+				buffer = [];
+				cbs.forEach(cb);
+				pendingQueue = buffer;
+			}
+			var executeQueue = function() {
+				var cbs$1 = pendingQueue;
+				pendingQueue = [];
+				cbs$1.forEach(cb);
+			};
+			var cycle = function() {
+				return Promise.resolve().then(executeQueue);
+			};
+			cycle();
+			buffer = {
+				push: function(x) {
+					pendingQueue.push(x);
+					cycle();
+				},
+				filter: function(filter) {
+					pendingQueue = pendingQueue.filter(filter);
+					return buffer;
+				}
+			};
+		}
+	};
+}
+function createSidecarMedium(options$1) {
+	if (options$1 === void 0) options$1 = {};
+	var medium = innerCreateMedium(null);
+	medium.options = __assign({
+		async: true,
+		ssr: false
+	}, options$1);
+	return medium;
+}
+var SideCar = function(_a) {
+	var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
+	if (!sideCar) throw new Error("Sidecar: please provide `sideCar` property to import the right car");
+	var Target = sideCar.read();
+	if (!Target) throw new Error("Sidecar medium not found");
+	return import_react.createElement(Target, __assign({}, rest));
+};
+SideCar.isSideCarExport = true;
+function exportSidecar(medium, exported) {
+	medium.useMedium(exported);
+	return SideCar;
+}
+var effectCar = createSidecarMedium();
+var nothing = function() {};
+var RemoveScroll = import_react.forwardRef(function(props, parentRef) {
+	var ref = import_react.useRef(null);
+	var _a = import_react.useState({
+		onScrollCapture: nothing,
+		onWheelCapture: nothing,
+		onTouchMoveCapture: nothing
+	}), callbacks = _a[0], setCallbacks = _a[1];
+	var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noRelative = props.noRelative, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = __rest(props, [
+		"forwardProps",
+		"children",
+		"className",
+		"removeScrollBar",
+		"enabled",
+		"shards",
+		"sideCar",
+		"noRelative",
+		"noIsolation",
+		"inert",
+		"allowPinchZoom",
+		"as",
+		"gapMode"
+	]);
+	var SideCar$1 = sideCar;
+	var containerRef = useMergeRefs([ref, parentRef]);
+	var containerProps = __assign(__assign({}, rest), callbacks);
+	return import_react.createElement(import_react.Fragment, null, enabled && import_react.createElement(SideCar$1, {
+		sideCar: effectCar,
+		removeScrollBar,
+		shards,
+		noRelative,
+		noIsolation,
+		inert,
+		setCallbacks,
+		allowPinchZoom: !!allowPinchZoom,
+		lockRef: ref,
+		gapMode
+	}), forwardProps ? import_react.cloneElement(import_react.Children.only(children), __assign(__assign({}, containerProps), { ref: containerRef })) : import_react.createElement(Container, __assign({}, containerProps, {
+		className,
+		ref: containerRef
+	}), children));
+});
+RemoveScroll.defaultProps = {
+	enabled: true,
+	removeScrollBar: true,
+	inert: false
+};
+RemoveScroll.classNames = {
+	fullWidth: fullWidthClassName,
+	zeroRight: zeroRightClassName
+};
+var currentNonce;
+var getNonce = function() {
+	if (currentNonce) return currentNonce;
+	if (typeof __webpack_nonce__ !== "undefined") return __webpack_nonce__;
+};
+function makeStyleTag() {
+	if (!document) return null;
+	var tag = document.createElement("style");
+	tag.type = "text/css";
+	var nonce = getNonce();
+	if (nonce) tag.setAttribute("nonce", nonce);
+	return tag;
+}
+function injectStyles(tag, css) {
+	if (tag.styleSheet) tag.styleSheet.cssText = css;
+	else tag.appendChild(document.createTextNode(css));
+}
+function insertStyleTag(tag) {
+	(document.head || document.getElementsByTagName("head")[0]).appendChild(tag);
+}
+var stylesheetSingleton = function() {
+	var counter = 0;
+	var stylesheet = null;
+	return {
+		add: function(style) {
+			if (counter == 0) {
+				if (stylesheet = makeStyleTag()) {
+					injectStyles(stylesheet, style);
+					insertStyleTag(stylesheet);
+				}
+			}
+			counter++;
+		},
+		remove: function() {
+			counter--;
+			if (!counter && stylesheet) {
+				stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
+				stylesheet = null;
+			}
+		}
+	};
+};
+var styleHookSingleton = function() {
+	var sheet = stylesheetSingleton();
+	return function(styles, isDynamic) {
+		import_react.useEffect(function() {
+			sheet.add(styles);
+			return function() {
+				sheet.remove();
+			};
+		}, [styles && isDynamic]);
+	};
+};
+var styleSingleton = function() {
+	var useStyle = styleHookSingleton();
+	var Sheet = function(_a) {
+		var styles = _a.styles, dynamic = _a.dynamic;
+		useStyle(styles, dynamic);
+		return null;
+	};
+	return Sheet;
+};
+var zeroGap = {
+	left: 0,
+	top: 0,
+	right: 0,
+	gap: 0
+};
+var parse = function(x) {
+	return parseInt(x || "", 10) || 0;
+};
+var getOffset = function(gapMode) {
+	var cs = window.getComputedStyle(document.body);
+	var left = cs[gapMode === "padding" ? "paddingLeft" : "marginLeft"];
+	var top = cs[gapMode === "padding" ? "paddingTop" : "marginTop"];
+	var right = cs[gapMode === "padding" ? "paddingRight" : "marginRight"];
+	return [
+		parse(left),
+		parse(top),
+		parse(right)
+	];
+};
+var getGapWidth = function(gapMode) {
+	if (gapMode === void 0) gapMode = "margin";
+	if (typeof window === "undefined") return zeroGap;
+	var offsets = getOffset(gapMode);
+	var documentWidth = document.documentElement.clientWidth;
+	var windowWidth = window.innerWidth;
+	return {
+		left: offsets[0],
+		top: offsets[1],
+		right: offsets[2],
+		gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
+	};
+};
+var Style = styleSingleton();
+var lockAttribute = "data-scroll-locked";
+var getStyles = function(_a, allowRelative, gapMode, important) {
+	var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
+	if (gapMode === void 0) gapMode = "margin";
+	return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
+		allowRelative && "position: relative ".concat(important, ";"),
+		gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
+		gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
+	].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
+};
+var getCurrentUseCounter = function() {
+	var counter = parseInt(document.body.getAttribute("data-scroll-locked") || "0", 10);
+	return isFinite(counter) ? counter : 0;
+};
+var useLockAttribute = function() {
+	import_react.useEffect(function() {
+		document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
+		return function() {
+			var newCounter = getCurrentUseCounter() - 1;
+			if (newCounter <= 0) document.body.removeAttribute(lockAttribute);
+			else document.body.setAttribute(lockAttribute, newCounter.toString());
+		};
+	}, []);
+};
+var RemoveScrollBar = function(_a) {
+	var noRelative = _a.noRelative, noImportant = _a.noImportant, _b = _a.gapMode, gapMode = _b === void 0 ? "margin" : _b;
+	useLockAttribute();
+	var gap = import_react.useMemo(function() {
+		return getGapWidth(gapMode);
+	}, [gapMode]);
+	return import_react.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
+};
+var passiveSupported = false;
+if (typeof window !== "undefined") try {
+	var options = Object.defineProperty({}, "passive", { get: function() {
+		passiveSupported = true;
+		return true;
+	} });
+	window.addEventListener("test", options, options);
+	window.removeEventListener("test", options, options);
+} catch (err) {
+	passiveSupported = false;
+}
+var nonPassive = passiveSupported ? { passive: false } : false;
+var alwaysContainsScroll = function(node) {
+	return node.tagName === "TEXTAREA";
+};
+var elementCanBeScrolled = function(node, overflow) {
+	if (!(node instanceof Element)) return false;
+	var styles = window.getComputedStyle(node);
+	return styles[overflow] !== "hidden" && !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === "visible");
+};
+var elementCouldBeVScrolled = function(node) {
+	return elementCanBeScrolled(node, "overflowY");
+};
+var elementCouldBeHScrolled = function(node) {
+	return elementCanBeScrolled(node, "overflowX");
+};
+var locationCouldBeScrolled = function(axis, node) {
+	var ownerDocument = node.ownerDocument;
+	var current = node;
+	do {
+		if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) current = current.host;
+		if (elementCouldBeScrolled(axis, current)) {
+			var _a = getScrollVariables(axis, current);
+			if (_a[1] > _a[2]) return true;
+		}
+		current = current.parentNode;
+	} while (current && current !== ownerDocument.body);
+	return false;
+};
+var getVScrollVariables = function(_a) {
+	return [
+		_a.scrollTop,
+		_a.scrollHeight,
+		_a.clientHeight
+	];
+};
+var getHScrollVariables = function(_a) {
+	return [
+		_a.scrollLeft,
+		_a.scrollWidth,
+		_a.clientWidth
+	];
+};
+var elementCouldBeScrolled = function(axis, node) {
+	return axis === "v" ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
+};
+var getScrollVariables = function(axis, node) {
+	return axis === "v" ? getVScrollVariables(node) : getHScrollVariables(node);
+};
+var getDirectionFactor = function(axis, direction) {
+	return axis === "h" && direction === "rtl" ? -1 : 1;
+};
+var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
+	var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
+	var delta = directionFactor * sourceDelta;
+	var target = event.target;
+	var targetInLock = endTarget.contains(target);
+	var shouldCancelScroll = false;
+	var isDeltaPositive = delta > 0;
+	var availableScroll = 0;
+	var availableScrollTop = 0;
+	do {
+		if (!target) break;
+		var _a = getScrollVariables(axis, target), position = _a[0];
+		var elementScroll = _a[1] - _a[2] - directionFactor * position;
+		if (position || elementScroll) {
+			if (elementCouldBeScrolled(axis, target)) {
+				availableScroll += elementScroll;
+				availableScrollTop += position;
+			}
+		}
+		var parent_1 = target.parentNode;
+		target = parent_1 && parent_1.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parent_1.host : parent_1;
+	} while (!targetInLock && target !== document.body || targetInLock && (endTarget.contains(target) || endTarget === target));
+	if (isDeltaPositive && (noOverscroll && Math.abs(availableScroll) < 1 || !noOverscroll && delta > availableScroll)) shouldCancelScroll = true;
+	else if (!isDeltaPositive && (noOverscroll && Math.abs(availableScrollTop) < 1 || !noOverscroll && -delta > availableScrollTop)) shouldCancelScroll = true;
+	return shouldCancelScroll;
+};
+var getTouchXY = function(event) {
+	return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
+};
+var getDeltaXY = function(event) {
+	return [event.deltaX, event.deltaY];
+};
+var extractRef = function(ref) {
+	return ref && "current" in ref ? ref.current : ref;
+};
+var deltaCompare = function(x, y) {
+	return x[0] === y[0] && x[1] === y[1];
+};
+var generateStyle = function(id) {
+	return "\n  .block-interactivity-".concat(id, " {pointer-events: none;}\n  .allow-interactivity-").concat(id, " {pointer-events: all;}\n");
+};
+var idCounter = 0;
+var lockStack = [];
+function RemoveScrollSideCar(props) {
+	var shouldPreventQueue = import_react.useRef([]);
+	var touchStartRef = import_react.useRef([0, 0]);
+	var activeAxis = import_react.useRef();
+	var id = import_react.useState(idCounter++)[0];
+	var Style$1 = import_react.useState(styleSingleton)[0];
+	var lastProps = import_react.useRef(props);
+	import_react.useEffect(function() {
+		lastProps.current = props;
+	}, [props]);
+	import_react.useEffect(function() {
+		if (props.inert) {
+			document.body.classList.add("block-interactivity-".concat(id));
+			var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
+			allow_1.forEach(function(el) {
+				return el.classList.add("allow-interactivity-".concat(id));
+			});
+			return function() {
+				document.body.classList.remove("block-interactivity-".concat(id));
+				allow_1.forEach(function(el) {
+					return el.classList.remove("allow-interactivity-".concat(id));
+				});
+			};
+		}
+	}, [
+		props.inert,
+		props.lockRef.current,
+		props.shards
+	]);
+	var shouldCancelEvent = import_react.useCallback(function(event, parent) {
+		if ("touches" in event && event.touches.length === 2 || event.type === "wheel" && event.ctrlKey) return !lastProps.current.allowPinchZoom;
+		var touch = getTouchXY(event);
+		var touchStart = touchStartRef.current;
+		var deltaX = "deltaX" in event ? event.deltaX : touchStart[0] - touch[0];
+		var deltaY = "deltaY" in event ? event.deltaY : touchStart[1] - touch[1];
+		var currentAxis;
+		var target = event.target;
+		var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
+		if ("touches" in event && moveDirection === "h" && target.type === "range") return false;
+		var selection = window.getSelection();
+		var anchorNode = selection && selection.anchorNode;
+		if (anchorNode ? anchorNode === target || anchorNode.contains(target) : false) return false;
+		var canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+		if (!canBeScrolledInMainDirection) return true;
+		if (canBeScrolledInMainDirection) currentAxis = moveDirection;
+		else {
+			currentAxis = moveDirection === "v" ? "h" : "v";
+			canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+		}
+		if (!canBeScrolledInMainDirection) return false;
+		if (!activeAxis.current && "changedTouches" in event && (deltaX || deltaY)) activeAxis.current = currentAxis;
+		if (!currentAxis) return true;
+		var cancelingAxis = activeAxis.current || currentAxis;
+		return handleScroll(cancelingAxis, parent, event, cancelingAxis === "h" ? deltaX : deltaY, true);
+	}, []);
+	var shouldPrevent = import_react.useCallback(function(_event) {
+		var event = _event;
+		if (!lockStack.length || lockStack[lockStack.length - 1] !== Style$1) return;
+		var delta = "deltaY" in event ? getDeltaXY(event) : getTouchXY(event);
+		var sourceEvent = shouldPreventQueue.current.filter(function(e) {
+			return e.name === event.type && (e.target === event.target || event.target === e.shadowParent) && deltaCompare(e.delta, delta);
+		})[0];
+		if (sourceEvent && sourceEvent.should) {
+			if (event.cancelable) event.preventDefault();
+			return;
+		}
+		if (!sourceEvent) {
+			var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
+				return node.contains(event.target);
+			});
+			if (shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation) {
+				if (event.cancelable) event.preventDefault();
+			}
+		}
+	}, []);
+	var shouldCancel = import_react.useCallback(function(name, delta, target, should) {
+		var event = {
+			name,
+			delta,
+			target,
+			should,
+			shadowParent: getOutermostShadowParent(target)
+		};
+		shouldPreventQueue.current.push(event);
+		setTimeout(function() {
+			shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
+				return e !== event;
+			});
+		}, 1);
+	}, []);
+	var scrollTouchStart = import_react.useCallback(function(event) {
+		touchStartRef.current = getTouchXY(event);
+		activeAxis.current = void 0;
+	}, []);
+	var scrollWheel = import_react.useCallback(function(event) {
+		shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+	}, []);
+	var scrollTouchMove = import_react.useCallback(function(event) {
+		shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+	}, []);
+	import_react.useEffect(function() {
+		lockStack.push(Style$1);
+		props.setCallbacks({
+			onScrollCapture: scrollWheel,
+			onWheelCapture: scrollWheel,
+			onTouchMoveCapture: scrollTouchMove
+		});
+		document.addEventListener("wheel", shouldPrevent, nonPassive);
+		document.addEventListener("touchmove", shouldPrevent, nonPassive);
+		document.addEventListener("touchstart", scrollTouchStart, nonPassive);
+		return function() {
+			lockStack = lockStack.filter(function(inst) {
+				return inst !== Style$1;
+			});
+			document.removeEventListener("wheel", shouldPrevent, nonPassive);
+			document.removeEventListener("touchmove", shouldPrevent, nonPassive);
+			document.removeEventListener("touchstart", scrollTouchStart, nonPassive);
+		};
+	}, []);
+	var removeScrollBar = props.removeScrollBar, inert = props.inert;
+	return import_react.createElement(import_react.Fragment, null, inert ? import_react.createElement(Style$1, { styles: generateStyle(id) }) : null, removeScrollBar ? import_react.createElement(RemoveScrollBar, {
+		noRelative: props.noRelative,
+		gapMode: props.gapMode
+	}) : null);
+}
+function getOutermostShadowParent(node) {
+	var shadowParent = null;
+	while (node !== null) {
+		if (node instanceof ShadowRoot) {
+			shadowParent = node.host;
+			node = node.host;
+		}
+		node = node.parentNode;
+	}
+	return shadowParent;
+}
+var sidecar_default = exportSidecar(effectCar, RemoveScrollSideCar);
+var ReactRemoveScroll = import_react.forwardRef(function(props, ref) {
+	return import_react.createElement(RemoveScroll, __assign({}, props, {
+		ref,
+		sideCar: sidecar_default
+	}));
+});
+ReactRemoveScroll.classNames = RemoveScroll.classNames;
+var Combination_default = ReactRemoveScroll;
+var getDefaultParent = function(originalTarget) {
+	if (typeof document === "undefined") return null;
+	return (Array.isArray(originalTarget) ? originalTarget[0] : originalTarget).ownerDocument.body;
+};
+var counterMap = /* @__PURE__ */ new WeakMap();
+var uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+var markerMap = {};
+var lockCount = 0;
+var unwrapHost = function(node) {
+	return node && (node.host || unwrapHost(node.parentNode));
+};
+var correctTargets = function(parent, targets) {
+	return targets.map(function(target) {
+		if (parent.contains(target)) return target;
+		var correctedTarget = unwrapHost(target);
+		if (correctedTarget && parent.contains(correctedTarget)) return correctedTarget;
+		console.error("aria-hidden", target, "in not contained inside", parent, ". Doing nothing");
+		return null;
+	}).filter(function(x) {
+		return Boolean(x);
+	});
+};
+var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
+	var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+	if (!markerMap[markerName]) markerMap[markerName] = /* @__PURE__ */ new WeakMap();
+	var markerCounter = markerMap[markerName];
+	var hiddenNodes = [];
+	var elementsToKeep = /* @__PURE__ */ new Set();
+	var elementsToStop = new Set(targets);
+	var keep = function(el) {
+		if (!el || elementsToKeep.has(el)) return;
+		elementsToKeep.add(el);
+		keep(el.parentNode);
+	};
+	targets.forEach(keep);
+	var deep = function(parent) {
+		if (!parent || elementsToStop.has(parent)) return;
+		Array.prototype.forEach.call(parent.children, function(node) {
+			if (elementsToKeep.has(node)) deep(node);
+			else try {
+				var attr = node.getAttribute(controlAttribute);
+				var alreadyHidden = attr !== null && attr !== "false";
+				var counterValue = (counterMap.get(node) || 0) + 1;
+				var markerValue = (markerCounter.get(node) || 0) + 1;
+				counterMap.set(node, counterValue);
+				markerCounter.set(node, markerValue);
+				hiddenNodes.push(node);
+				if (counterValue === 1 && alreadyHidden) uncontrolledNodes.set(node, true);
+				if (markerValue === 1) node.setAttribute(markerName, "true");
+				if (!alreadyHidden) node.setAttribute(controlAttribute, "true");
+			} catch (e) {
+				console.error("aria-hidden: cannot operate on ", node, e);
+			}
+		});
+	};
+	deep(parentNode);
+	elementsToKeep.clear();
+	lockCount++;
+	return function() {
+		hiddenNodes.forEach(function(node) {
+			var counterValue = counterMap.get(node) - 1;
+			var markerValue = markerCounter.get(node) - 1;
+			counterMap.set(node, counterValue);
+			markerCounter.set(node, markerValue);
+			if (!counterValue) {
+				if (!uncontrolledNodes.has(node)) node.removeAttribute(controlAttribute);
+				uncontrolledNodes.delete(node);
+			}
+			if (!markerValue) node.removeAttribute(markerName);
+		});
+		lockCount--;
+		if (!lockCount) {
+			counterMap = /* @__PURE__ */ new WeakMap();
+			counterMap = /* @__PURE__ */ new WeakMap();
+			uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+			markerMap = {};
+		}
+	};
+};
+var hideOthers = function(originalTarget, parentNode, markerName) {
+	if (markerName === void 0) markerName = "data-aria-hidden";
+	var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+	var activeParentNode = parentNode || getDefaultParent(originalTarget);
+	if (!activeParentNode) return function() {
+		return null;
+	};
+	targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
+	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
+};
+var DIALOG_NAME = "Dialog";
+var [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
+var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
+var Dialog$1 = (props) => {
+	const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
+	const triggerRef = import_react.useRef(null);
+	const contentRef = import_react.useRef(null);
+	const [open, setOpen] = useControllableState({
+		prop: openProp,
+		defaultProp: defaultOpen ?? false,
+		onChange: onOpenChange,
+		caller: DIALOG_NAME
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogProvider, {
+		scope: __scopeDialog,
+		triggerRef,
+		contentRef,
+		contentId: useId(),
+		titleId: useId(),
+		descriptionId: useId(),
+		open,
+		onOpenChange: setOpen,
+		onOpenToggle: import_react.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
+		modal,
+		children
+	});
+};
+Dialog$1.displayName = DIALOG_NAME;
+var TRIGGER_NAME = "DialogTrigger";
+var DialogTrigger$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeDialog, ...triggerProps } = props;
+	const context = useDialogContext(TRIGGER_NAME, __scopeDialog);
+	const composedTriggerRef = useComposedRefs(forwardedRef, context.triggerRef);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+		type: "button",
+		"aria-haspopup": "dialog",
+		"aria-expanded": context.open,
+		"aria-controls": context.contentId,
+		"data-state": getState(context.open),
+		...triggerProps,
+		ref: composedTriggerRef,
+		onClick: composeEventHandlers(props.onClick, context.onOpenToggle)
+	});
+});
+DialogTrigger$1.displayName = TRIGGER_NAME;
+var PORTAL_NAME = "DialogPortal";
+var [PortalProvider, usePortalContext] = createDialogContext(PORTAL_NAME, { forceMount: void 0 });
+var DialogPortal$1 = (props) => {
+	const { __scopeDialog, forceMount, children, container } = props;
+	const context = useDialogContext(PORTAL_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(PortalProvider, {
+		scope: __scopeDialog,
+		forceMount,
+		children: import_react.Children.map(children, (child) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+			present: forceMount || context.open,
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Portal, {
+				asChild: true,
+				container,
+				children: child
+			})
+		}))
+	});
+};
+DialogPortal$1.displayName = PORTAL_NAME;
+var OVERLAY_NAME = "DialogOverlay";
+var DialogOverlay$1 = import_react.forwardRef((props, forwardedRef) => {
+	const portalContext = usePortalContext(OVERLAY_NAME, props.__scopeDialog);
+	const { forceMount = portalContext.forceMount, ...overlayProps } = props;
+	const context = useDialogContext(OVERLAY_NAME, props.__scopeDialog);
+	return context.modal ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+		present: forceMount || context.open,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlayImpl, {
+			...overlayProps,
+			ref: forwardedRef
+		})
+	}) : null;
+});
+DialogOverlay$1.displayName = OVERLAY_NAME;
+var Slot = createSlot("DialogOverlay.RemoveScroll");
+var DialogOverlayImpl = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeDialog, ...overlayProps } = props;
+	const context = useDialogContext(OVERLAY_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Combination_default, {
+		as: Slot,
+		allowPinchZoom: true,
+		shards: [context.contentRef],
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			"data-state": getState(context.open),
+			...overlayProps,
+			ref: forwardedRef,
+			style: {
+				pointerEvents: "auto",
+				...overlayProps.style
+			}
+		})
+	});
+});
+var CONTENT_NAME = "DialogContent";
+var DialogContent$1 = import_react.forwardRef((props, forwardedRef) => {
+	const portalContext = usePortalContext(CONTENT_NAME, props.__scopeDialog);
+	const { forceMount = portalContext.forceMount, ...contentProps } = props;
+	const context = useDialogContext(CONTENT_NAME, props.__scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
+		present: forceMount || context.open,
+		children: context.modal ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentModal, {
+			...contentProps,
+			ref: forwardedRef
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentNonModal, {
+			...contentProps,
+			ref: forwardedRef
+		})
+	});
+});
+DialogContent$1.displayName = CONTENT_NAME;
+var DialogContentModal = import_react.forwardRef((props, forwardedRef) => {
+	const context = useDialogContext(CONTENT_NAME, props.__scopeDialog);
+	const contentRef = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, context.contentRef, contentRef);
+	import_react.useEffect(() => {
+		const content = contentRef.current;
+		if (content) return hideOthers(content);
+	}, []);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentImpl, {
+		...props,
+		ref: composedRefs,
+		trapFocus: context.open,
+		disableOutsidePointerEvents: true,
+		onCloseAutoFocus: composeEventHandlers(props.onCloseAutoFocus, (event) => {
+			event.preventDefault();
+			context.triggerRef.current?.focus();
+		}),
+		onPointerDownOutside: composeEventHandlers(props.onPointerDownOutside, (event) => {
+			const originalEvent = event.detail.originalEvent;
+			const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+			if (originalEvent.button === 2 || ctrlLeftClick) event.preventDefault();
+		}),
+		onFocusOutside: composeEventHandlers(props.onFocusOutside, (event) => event.preventDefault())
+	});
+});
+var DialogContentNonModal = import_react.forwardRef((props, forwardedRef) => {
+	const context = useDialogContext(CONTENT_NAME, props.__scopeDialog);
+	const hasInteractedOutsideRef = import_react.useRef(false);
+	const hasPointerDownOutsideRef = import_react.useRef(false);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogContentImpl, {
+		...props,
+		ref: forwardedRef,
+		trapFocus: false,
+		disableOutsidePointerEvents: false,
+		onCloseAutoFocus: (event) => {
+			props.onCloseAutoFocus?.(event);
+			if (!event.defaultPrevented) {
+				if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
+				event.preventDefault();
+			}
+			hasInteractedOutsideRef.current = false;
+			hasPointerDownOutsideRef.current = false;
+		},
+		onInteractOutside: (event) => {
+			props.onInteractOutside?.(event);
+			if (!event.defaultPrevented) {
+				hasInteractedOutsideRef.current = true;
+				if (event.detail.originalEvent.type === "pointerdown") hasPointerDownOutsideRef.current = true;
+			}
+			const target = event.target;
+			if (context.triggerRef.current?.contains(target)) event.preventDefault();
+			if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) event.preventDefault();
+		}
+	});
+});
+var DialogContentImpl = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
+	const context = useDialogContext(CONTENT_NAME, __scopeDialog);
+	const contentRef = import_react.useRef(null);
+	const composedRefs = useComposedRefs(forwardedRef, contentRef);
+	useFocusGuards();
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FocusScope, {
+		asChild: true,
+		loop: true,
+		trapped: trapFocus,
+		onMountAutoFocus: onOpenAutoFocus,
+		onUnmountAutoFocus: onCloseAutoFocus,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DismissableLayer, {
+			role: "dialog",
+			id: context.contentId,
+			"aria-describedby": context.descriptionId,
+			"aria-labelledby": context.titleId,
+			"data-state": getState(context.open),
+			...contentProps,
+			ref: composedRefs,
+			onDismiss: () => context.onOpenChange(false)
+		})
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(TitleWarning, { titleId: context.titleId }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DescriptionWarning, {
+		contentRef,
+		descriptionId: context.descriptionId
+	})] })] });
+});
+var TITLE_NAME = "DialogTitle";
+var DialogTitle$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeDialog, ...titleProps } = props;
+	const context = useDialogContext(TITLE_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.h2, {
+		id: context.titleId,
+		...titleProps,
+		ref: forwardedRef
+	});
+});
+DialogTitle$1.displayName = TITLE_NAME;
+var DESCRIPTION_NAME = "DialogDescription";
+var DialogDescription$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeDialog, ...descriptionProps } = props;
+	const context = useDialogContext(DESCRIPTION_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.p, {
+		id: context.descriptionId,
+		...descriptionProps,
+		ref: forwardedRef
+	});
+});
+DialogDescription$1.displayName = DESCRIPTION_NAME;
+var CLOSE_NAME = "DialogClose";
+var DialogClose$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeDialog, ...closeProps } = props;
+	const context = useDialogContext(CLOSE_NAME, __scopeDialog);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+		type: "button",
+		...closeProps,
+		ref: forwardedRef,
+		onClick: composeEventHandlers(props.onClick, () => context.onOpenChange(false))
+	});
+});
+DialogClose$1.displayName = CLOSE_NAME;
+function getState(open) {
+	return open ? "open" : "closed";
+}
+var TITLE_WARNING_NAME = "DialogTitleWarning";
+var [WarningProvider, useWarningContext] = createContext2(TITLE_WARNING_NAME, {
+	contentName: CONTENT_NAME,
+	titleName: TITLE_NAME,
+	docsSlug: "dialog"
+});
+var TitleWarning = ({ titleId }) => {
+	const titleWarningContext = useWarningContext(TITLE_WARNING_NAME);
+	const MESSAGE = `\`${titleWarningContext.contentName}\` requires a \`${titleWarningContext.titleName}\` for the component to be accessible for screen reader users.
+
+If you want to hide the \`${titleWarningContext.titleName}\`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/${titleWarningContext.docsSlug}`;
+	import_react.useEffect(() => {
+		if (titleId) {
+			if (!document.getElementById(titleId)) console.error(MESSAGE);
+		}
+	}, [MESSAGE, titleId]);
+	return null;
+};
+var DESCRIPTION_WARNING_NAME = "DialogDescriptionWarning";
+var DescriptionWarning = ({ contentRef, descriptionId }) => {
+	const MESSAGE = `Warning: Missing \`Description\` or \`aria-describedby={undefined}\` for {${useWarningContext(DESCRIPTION_WARNING_NAME).contentName}}.`;
+	import_react.useEffect(() => {
+		const describedById = contentRef.current?.getAttribute("aria-describedby");
+		if (descriptionId && describedById) {
+			if (!document.getElementById(descriptionId)) console.warn(MESSAGE);
+		}
+	}, [
+		MESSAGE,
+		contentRef,
+		descriptionId
+	]);
+	return null;
+};
+var Root = Dialog$1;
+var Portal$1 = DialogPortal$1;
+var Overlay = DialogOverlay$1;
+var Content = DialogContent$1;
+var Title = DialogTitle$1;
+var Description = DialogDescription$1;
+var Close = DialogClose$1;
+var Dialog = Root;
+var DialogPortal = Portal$1;
+var DialogOverlay = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Overlay, {
+	"data-uid": "src/components/ui/dialog.tsx:20:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn("fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", className),
+	...props
+}));
+DialogOverlay.displayName = Overlay.displayName;
+var DialogContent = import_react.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogPortal, {
+	"data-uid": "src/components/ui/dialog.tsx:35:3",
+	"data-prohibitions": "[editContent]",
+	children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogOverlay, {
+		"data-uid": "src/components/ui/dialog.tsx:36:5",
+		"data-prohibitions": "[editContent]"
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Content, {
+		"data-uid": "src/components/ui/dialog.tsx:37:5",
+		"data-prohibitions": "[editContent]",
+		ref,
+		className: cn("fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg overflow-y-auto max-h-screen", className),
+		...props,
+		children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Close, {
+			"data-uid": "src/components/ui/dialog.tsx:46:7",
+			"data-prohibitions": "[]",
+			className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(X, {
+				"data-uid": "src/components/ui/dialog.tsx:47:9",
+				"data-prohibitions": "[editContent]",
+				className: "h-4 w-4"
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				"data-uid": "src/components/ui/dialog.tsx:48:9",
+				"data-prohibitions": "[]",
+				className: "sr-only",
+				children: "Close"
+			})]
+		})]
+	})]
+}));
+DialogContent.displayName = Content.displayName;
+var DialogHeader = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+	"data-uid": "src/components/ui/dialog.tsx:56:3",
+	"data-prohibitions": "[editContent]",
+	className: cn("flex flex-col space-y-1.5 text-center sm:text-left", className),
+	...props
+});
+DialogHeader.displayName = "DialogHeader";
+var DialogFooter = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+	"data-uid": "src/components/ui/dialog.tsx:61:3",
+	"data-prohibitions": "[editContent]",
+	className: cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className),
+	...props
+});
+DialogFooter.displayName = "DialogFooter";
+var DialogTitle = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Title, {
+	"data-uid": "src/components/ui/dialog.tsx:72:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn("text-lg font-semibold leading-none tracking-tight", className),
+	...props
+}));
+DialogTitle.displayName = Title.displayName;
+var DialogDescription = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Description, {
+	"data-uid": "src/components/ui/dialog.tsx:84:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn("text-sm text-muted-foreground", className),
+	...props
+}));
+DialogDescription.displayName = Description.displayName;
+const Step7 = ({ data }) => {
+	const [isModalOpen, setIsModalOpen] = (0, import_react.useState)(false);
+	const [meetingId, setMeetingId] = (0, import_react.useState)(localStorage.getItem("adapta_meeting_id"));
+	const [selectedDate, setSelectedDate] = (0, import_react.useState)("");
+	const [selectedTime, setSelectedTime] = (0, import_react.useState)("");
+	const [isLoadingCalendar, setIsLoadingCalendar] = (0, import_react.useState)(false);
+	const [isScheduling, setIsScheduling] = (0, import_react.useState)(false);
+	const { toast } = useToast();
+	const handleOpenCalendar = async () => {
+		setIsLoadingCalendar(true);
+		try {
+			await new Promise((resolve, reject) => {
+				setTimeout(() => {
+					if (Math.random() > .8) reject(/* @__PURE__ */ new Error("Calendar load error"));
+					resolve(true);
+				}, 800);
+			});
+			setIsModalOpen(true);
+		} catch (e) {
+			toast({
+				title: "Erro",
+				description: "Não foi possível abrir o calendário. Tente novamente.",
+				variant: "destructive"
+			});
+		} finally {
+			setIsLoadingCalendar(false);
+		}
+	};
+	const handleSchedule = async () => {
+		if (!selectedDate || !selectedTime) return;
+		setIsScheduling(true);
+		try {
+			await new Promise((resolve) => setTimeout(resolve, 1500));
+			const newMeetingId = "MTG-" + Math.random().toString(36).substring(2, 9).toUpperCase();
+			localStorage.setItem("adapta_meeting_id", newMeetingId);
+			setMeetingId(newMeetingId);
+			setIsModalOpen(false);
+			toast({
+				title: "Consulta agendada com sucesso!",
+				className: "bg-green-50 border-green-200 text-green-800"
+			});
+		} catch (e) {
+			toast({
+				title: "Erro no agendamento",
+				description: "Não foi possível concluir o agendamento. Tente novamente.",
+				variant: "destructive"
+			});
+		} finally {
+			setIsScheduling(false);
+		}
+	};
+	if (meetingId) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/onboarding/Step7.tsx:75:7",
+		"data-prohibitions": "[editContent]",
+		className: "space-y-6 animate-in fade-in slide-in-from-right-4 duration-500 text-center py-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"data-uid": "src/components/onboarding/Step7.tsx:76:9",
+				"data-prohibitions": "[]",
+				className: "mx-auto w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mb-6 shadow-sm",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {
+					"data-uid": "src/components/onboarding/Step7.tsx:77:11",
+					"data-prohibitions": "[editContent]",
+					className: "w-8 h-8"
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				"data-uid": "src/components/onboarding/Step7.tsx:79:9",
+				"data-prohibitions": "[]",
+				className: "text-2xl sm:text-3xl font-semibold text-primary",
+				children: "Consulta Confirmada!"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				"data-uid": "src/components/onboarding/Step7.tsx:80:9",
+				"data-prohibitions": "[]",
+				className: "text-slate-600 text-lg max-w-md mx-auto",
+				children: "Sua consultoria foi agendada com sucesso. Nossa equipe entrará em contato em breve."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/onboarding/Step7.tsx:83:9",
+				"data-prohibitions": "[editContent]",
+				className: "mt-8 p-6 bg-slate-50 rounded-xl border border-slate-200 max-w-sm mx-auto shadow-inner",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/components/onboarding/Step7.tsx:84:11",
+					"data-prohibitions": "[]",
+					className: "text-sm text-slate-600 mb-1 font-medium",
+					children: "ID da Reunião"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/components/onboarding/Step7.tsx:85:11",
+					"data-prohibitions": "[editContent]",
+					className: "text-xl font-mono font-bold text-slate-900",
+					children: meetingId
+				})]
+			})
+		]
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/onboarding/Step7.tsx:92:5",
+		"data-prohibitions": "[editContent]",
+		className: "space-y-6 animate-in fade-in slide-in-from-right-4 duration-500 text-center py-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"data-uid": "src/components/onboarding/Step7.tsx:93:7",
+				"data-prohibitions": "[]",
+				className: "mx-auto w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-6 shadow-sm",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Calendar, {
+					"data-uid": "src/components/onboarding/Step7.tsx:94:9",
+					"data-prohibitions": "[editContent]",
+					className: "w-8 h-8"
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				"data-uid": "src/components/onboarding/Step7.tsx:96:7",
+				"data-prohibitions": "[]",
+				className: "text-2xl sm:text-3xl font-semibold text-primary",
+				children: "Tudo certo com seus dados!"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				"data-uid": "src/components/onboarding/Step7.tsx:99:7",
+				"data-prohibitions": "[]",
+				className: "text-slate-600 text-lg max-w-md mx-auto",
+				children: "Agora, escolha o melhor horário para conversarmos sobre suas necessidades e objetivos."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"data-uid": "src/components/onboarding/Step7.tsx:103:7",
+				"data-prohibitions": "[editContent]",
+				className: "pt-8 flex justify-center",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					"data-uid": "src/components/onboarding/Step7.tsx:104:9",
+					"data-prohibitions": "[editContent]",
+					size: "lg",
+					className: "h-14 px-8 text-lg w-full max-w-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300",
+					onClick: handleOpenCalendar,
+					disabled: isLoadingCalendar,
+					children: [isLoadingCalendar ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
+						"data-uid": "src/components/onboarding/Step7.tsx:111:13",
+						"data-prohibitions": "[editContent]",
+						className: "mr-2 h-5 w-5 animate-spin"
+					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CalendarDays, {
+						"data-uid": "src/components/onboarding/Step7.tsx:113:13",
+						"data-prohibitions": "[editContent]",
+						className: "mr-2 h-5 w-5"
+					}), "Agendar Consultoria"]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dialog, {
+				"data-uid": "src/components/onboarding/Step7.tsx:119:7",
+				"data-prohibitions": "[editContent]",
+				open: isModalOpen,
+				onOpenChange: setIsModalOpen,
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+					"data-uid": "src/components/onboarding/Step7.tsx:120:9",
+					"data-prohibitions": "[editContent]",
+					className: "sm:max-w-[425px] p-6",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, {
+							"data-uid": "src/components/onboarding/Step7.tsx:121:11",
+							"data-prohibitions": "[]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, {
+								"data-uid": "src/components/onboarding/Step7.tsx:122:13",
+								"data-prohibitions": "[]",
+								className: "text-xl",
+								children: "Escolha um horário"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, {
+								"data-uid": "src/components/onboarding/Step7.tsx:123:13",
+								"data-prohibitions": "[]",
+								className: "text-base text-slate-600",
+								children: "Selecione a data e horário de sua preferência para a consultoria."
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/components/onboarding/Step7.tsx:127:11",
+							"data-prohibitions": "[editContent]",
+							className: "py-6 space-y-6",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/components/onboarding/Step7.tsx:128:13",
+								"data-prohibitions": "[editContent]",
+								className: "space-y-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
+									"data-uid": "src/components/onboarding/Step7.tsx:129:15",
+									"data-prohibitions": "[]",
+									className: "text-base font-medium text-slate-900",
+									children: "Data"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-uid": "src/components/onboarding/Step7.tsx:130:15",
+									"data-prohibitions": "[editContent]",
+									className: "grid grid-cols-3 gap-2",
+									children: [
+										"Hoje",
+										"Amanhã",
+										"Depois"
+									].map((d) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										"data-uid": "src/components/onboarding/Step7.tsx:132:19",
+										"data-prohibitions": "[editContent]",
+										variant: selectedDate === d ? "default" : "outline",
+										className: cn("h-12 text-sm sm:text-base transition-all duration-300", selectedDate === d && "bg-primary ring-2 ring-primary/20 shadow-md"),
+										onClick: () => setSelectedDate(d),
+										children: d
+									}, d))
+								})]
+							}), selectedDate && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/components/onboarding/Step7.tsx:147:15",
+								"data-prohibitions": "[editContent]",
+								className: "space-y-3 animate-in fade-in slide-in-from-top-2 duration-300",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
+									"data-uid": "src/components/onboarding/Step7.tsx:148:17",
+									"data-prohibitions": "[]",
+									className: "text-base font-medium text-slate-900",
+									children: "Horário"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-uid": "src/components/onboarding/Step7.tsx:149:17",
+									"data-prohibitions": "[editContent]",
+									className: "grid grid-cols-3 gap-2",
+									children: [
+										"09:00",
+										"10:30",
+										"14:00",
+										"15:30",
+										"17:00"
+									].map((t) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+										"data-uid": "src/components/onboarding/Step7.tsx:151:21",
+										"data-prohibitions": "[editContent]",
+										variant: selectedTime === t ? "default" : "outline",
+										className: cn("h-12 text-sm sm:text-base transition-all duration-300", selectedTime === t && "bg-primary ring-2 ring-primary/20 shadow-md"),
+										onClick: () => setSelectedTime(t),
+										children: t
+									}, t))
+								})]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogFooter, {
+							"data-uid": "src/components/onboarding/Step7.tsx:167:11",
+							"data-prohibitions": "[editContent]",
+							className: "sm:justify-between gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								"data-uid": "src/components/onboarding/Step7.tsx:168:13",
+								"data-prohibitions": "[]",
+								variant: "outline",
+								className: "h-11 flex-1",
+								onClick: () => setIsModalOpen(false),
+								children: "Cancelar"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+								"data-uid": "src/components/onboarding/Step7.tsx:171:13",
+								"data-prohibitions": "[editContent]",
+								className: "h-11 flex-1 transition-all duration-300",
+								disabled: !selectedDate || !selectedTime || isScheduling,
+								onClick: handleSchedule,
+								children: [isScheduling && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
+									"data-uid": "src/components/onboarding/Step7.tsx:176:32",
+									"data-prohibitions": "[editContent]",
+									className: "mr-2 h-4 w-4 animate-spin"
+								}), isScheduling ? "Confirmando..." : "Confirmar"]
+							})]
+						})
+					]
+				})
+			})
+		]
+	});
+};
+var initialData = {
+	profession: "",
+	useCases: [],
+	additionalData: {
+		name: "",
+		email: "",
+		vslWatched: false,
+		portfolio: "",
+		risk: ""
+	}
+};
+function Index() {
+	const [step, setStep] = (0, import_react.useState)(1);
+	const [data, setData] = (0, import_react.useState)(initialData);
+	const [isSubmitting, setIsSubmitting] = (0, import_react.useState)(false);
+	const [isLoaded, setIsLoaded] = (0, import_react.useState)(false);
+	const { toast } = useToast();
+	(0, import_react.useEffect)(() => {
+		const savedData = localStorage.getItem("adapta_onboarding_data");
+		const savedStep = localStorage.getItem("adapta_onboarding_step");
+		if (savedData) try {
+			const parsed = JSON.parse(savedData);
+			setData({
+				...initialData,
+				...parsed,
+				additionalData: {
+					...initialData.additionalData,
+					...parsed.additionalData || {}
+				}
+			});
+		} catch (e) {}
+		if (savedStep) {
+			const stepNum = parseInt(savedStep, 10);
+			if (!isNaN(stepNum) && stepNum >= 1 && stepNum <= 7) setStep(stepNum);
+		}
+		setIsLoaded(true);
+	}, []);
+	(0, import_react.useEffect)(() => {
+		if (isLoaded) {
+			localStorage.setItem("adapta_onboarding_data", JSON.stringify(data));
+			localStorage.setItem("adapta_onboarding_step", step.toString());
+		}
+	}, [
+		data,
+		step,
+		isLoaded
+	]);
+	const isValid = () => {
+		const { name, email, vslWatched, portfolio, risk } = data.additionalData;
+		if (step === 1) return name.trim().length >= 3 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+		if (step === 2) return vslWatched;
+		if (step === 3) return !!data.profession;
+		if (step === 4) return data.useCases && data.useCases.length > 0;
+		if (step === 5) return !!portfolio && !!risk;
+		return true;
+	};
+	const isAllValid = () => {
+		const { name, email, vslWatched, portfolio, risk } = data.additionalData;
+		return name.trim().length >= 3 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && vslWatched && !!data.profession && data.useCases && data.useCases.length > 0 && !!portfolio && !!risk;
+	};
+	const handleNext = async () => {
+		if (!isValid()) return;
+		if (step < 6) {
+			setStep((s) => s + 1);
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			});
+		} else if (step === 6) {
+			if (!isAllValid()) {
+				toast({
+					title: "Dados incompletos",
+					description: "Por favor, revise suas informações antes de enviar.",
+					variant: "destructive"
+				});
+				return;
+			}
+			setIsSubmitting(true);
+			try {
+				const controller = new AbortController();
+				const timeoutId = setTimeout(() => controller.abort(), 5e3);
+				const payload = {
+					email: data.additionalData.email,
+					profession: data.profession,
+					useCases: data.useCases,
+					timestamp: (/* @__PURE__ */ new Date()).toISOString(),
+					fullData: data
+				};
+				const res = await fetch("/api/submit-form", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(payload),
+					signal: controller.signal
+				}).catch(() => null);
+				clearTimeout(timeoutId);
+				if (res && !res.ok && res.status !== 404) throw new Error("Server error");
+				if (Math.random() > .95) throw new Error("Simulated failure");
+				toast({
+					title: "Dados salvos com sucesso!",
+					className: "bg-green-50 border-green-200 text-green-800"
+				});
+				localStorage.removeItem("adapta_onboarding_data");
+				setStep(7);
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth"
+				});
+			} catch (e) {
+				toast({
+					title: "Erro de conexão",
+					description: "Não foi possível salvar seus dados. Tente novamente.",
+					variant: "destructive"
+				});
+			} finally {
+				setIsSubmitting(false);
+			}
+		}
+	};
+	const handlePrev = () => {
+		if (step > 1) {
+			setStep((s) => s - 1);
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			});
+		}
+	};
+	const renderStep = () => {
+		const props = {
+			data,
+			updateData: (d) => setData((p) => ({
+				...p,
+				...d
+			})),
+			updateAdditionalData: (d) => setData((p) => ({
+				...p,
+				additionalData: {
+					...p.additionalData,
+					...d
+				}
+			}))
+		};
+		switch (step) {
+			case 1: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step1, {
+				"data-uid": "src/pages/Index.tsx:181:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			case 2: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step2, {
+				"data-uid": "src/pages/Index.tsx:183:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			case 3: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step3, {
+				"data-uid": "src/pages/Index.tsx:185:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			case 4: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step4, {
+				"data-uid": "src/pages/Index.tsx:187:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			case 5: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step5, {
+				"data-uid": "src/pages/Index.tsx:189:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			case 6: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step6, {
+				"data-uid": "src/pages/Index.tsx:191:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			case 7: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step7, {
+				"data-uid": "src/pages/Index.tsx:193:16",
+				"data-prohibitions": "[editContent]",
+				...props
+			});
+			default: return null;
+		}
+	};
+	if (!isLoaded) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/pages/Index.tsx:202:5",
+		"data-prohibitions": "[editContent]",
+		className: "min-h-screen bg-slate-50 flex flex-col font-sans",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+			"data-uid": "src/pages/Index.tsx:203:7",
+			"data-prohibitions": "[editContent]",
+			className: "w-full bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-10",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:204:9",
+				"data-prohibitions": "[editContent]",
+				className: "max-w-3xl mx-auto flex items-center justify-between mb-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/pages/Index.tsx:205:11",
+					"data-prohibitions": "[]",
+					className: "font-bold text-xl text-primary tracking-tight",
+					children: "Adapta Elite"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/pages/Index.tsx:206:11",
+					"data-prohibitions": "[editContent]",
+					className: "text-sm font-medium text-slate-600",
+					children: step < 7 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+						"Etapa ",
+						step,
+						" de 6",
+						" ",
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							"data-uid": "src/pages/Index.tsx:210:17",
+							"data-prohibitions": "[editContent]",
+							className: "ml-1 text-slate-500",
+							children: [
+								"(",
+								Math.round(step / 6 * 100),
+								"%)"
+							]
+						})
+					] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						"data-uid": "src/pages/Index.tsx:213:15",
+						"data-prohibitions": "[]",
+						className: "text-green-700 font-semibold flex items-center gap-1",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
+							"data-uid": "src/pages/Index.tsx:214:17",
+							"data-prohibitions": "[editContent]",
+							className: "w-4 h-4"
+						}), " Concluído"]
+					})
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:220:9",
+				"data-prohibitions": "[editContent]",
+				className: "max-w-3xl mx-auto relative z-0 mt-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						"data-uid": "src/pages/Index.tsx:221:11",
+						"data-prohibitions": "[editContent]",
+						className: "absolute top-1/2 left-0 w-full h-1.5 bg-slate-100 -translate-y-1/2 rounded-full z-[-1]"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						"data-uid": "src/pages/Index.tsx:222:11",
+						"data-prohibitions": "[editContent]",
+						className: "absolute top-1/2 left-0 h-1.5 bg-primary -translate-y-1/2 rounded-full transition-all duration-700 ease-in-out z-[-1]",
+						style: { width: `${Math.min((step - 1) / 5 * 100, 100)}%` }
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						"data-uid": "src/pages/Index.tsx:226:11",
+						"data-prohibitions": "[editContent]",
+						className: "relative flex justify-between w-full",
+						children: [
+							1,
+							2,
+							3,
+							4,
+							5,
+							6
+						].map((i) => {
+							const isCompleted = step === 7 ? true : i < step;
+							const isActive = step === 7 ? false : i === step;
+							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								"data-uid": "src/pages/Index.tsx:232:17",
+								"data-prohibitions": "[editContent]",
+								className: cn("w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-semibold transition-all duration-500", isActive ? "bg-primary text-primary-foreground ring-4 ring-primary/20 scale-110 shadow-md" : isCompleted ? "bg-primary text-primary-foreground scale-100" : "bg-slate-200 text-slate-700 opacity-80 scale-95"),
+								children: isCompleted ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
+									"data-uid": "src/pages/Index.tsx:244:21",
+									"data-prohibitions": "[editContent]",
+									className: "w-4 h-4 sm:w-5 sm:h-5 animate-in zoom-in duration-300"
+								}) : i
+							}, i);
+						})
+					})
+				]
+			})]
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
+			"data-uid": "src/pages/Index.tsx:255:7",
+			"data-prohibitions": "[editContent]",
+			className: "flex-1 w-full max-w-3xl mx-auto p-4 md:p-8 flex flex-col justify-center py-10",
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				"data-uid": "src/pages/Index.tsx:256:9",
+				"data-prohibitions": "[editContent]",
+				className: "bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-10 flex-1 min-h-[400px]",
+				children: renderStep()
+			}), step < 7 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:261:11",
+				"data-prohibitions": "[editContent]",
+				className: "flex items-center justify-between mt-8 pb-10 gap-4",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					"data-uid": "src/pages/Index.tsx:262:13",
+					"data-prohibitions": "[editContent]",
+					variant: "outline",
+					size: "lg",
+					onClick: handlePrev,
+					disabled: isSubmitting || step === 1,
+					className: cn("h-14 px-4 sm:px-6 text-base shadow-sm", step === 1 && "invisible"),
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronLeft, {
+						"data-uid": "src/pages/Index.tsx:269:15",
+						"data-prohibitions": "[editContent]",
+						className: "mr-1 sm:mr-2 h-5 w-5"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						"data-uid": "src/pages/Index.tsx:270:15",
+						"data-prohibitions": "[]",
+						className: "hidden sm:inline",
+						children: "Voltar"
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+					"data-uid": "src/pages/Index.tsx:273:13",
+					"data-prohibitions": "[editContent]",
+					size: "lg",
+					onClick: handleNext,
+					disabled: isSubmitting || !isValid(),
+					className: cn("h-14 px-6 sm:px-8 text-base transition-all duration-500", !isValid() ? "bg-slate-200 text-slate-500 cursor-not-allowed border-none shadow-none disabled:opacity-80" : "bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg hover:-translate-y-0.5"),
+					children: [
+						isSubmitting && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
+							"data-uid": "src/pages/Index.tsx:284:32",
+							"data-prohibitions": "[editContent]",
+							className: "mr-2 h-5 w-5 animate-spin"
+						}),
+						!isSubmitting && step === 6 ? "Finalizar" : !isSubmitting ? "Continuar" : "Enviando...",
+						!isSubmitting && step !== 6 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, {
+							"data-uid": "src/pages/Index.tsx:290:47",
+							"data-prohibitions": "[editContent]",
+							className: "ml-1 sm:ml-2 h-5 w-5"
+						})
+					]
+				})]
+			})]
+		})]
+	});
+}
+export { Index as default };
+
+//# sourceMappingURL=Index-ClDN0a53.js.map
