@@ -13,11 +13,30 @@ CREATE TABLE IF NOT EXISTS public.onboarding_submissions (
     full_payload JSONB NOT NULL
 );
 
+-- Ensure email is unique for upsert functionality
+DO $$ 
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint WHERE conname = 'onboarding_submissions_email_key'
+  ) THEN
+    ALTER TABLE public.onboarding_submissions ADD CONSTRAINT onboarding_submissions_email_key UNIQUE (email);
+  END IF;
+END $$;
+
 -- Enable Row Level Security (RLS)
 ALTER TABLE public.onboarding_submissions ENABLE ROW LEVEL SECURITY;
 
 -- Allow anonymous inserts to the onboarding_submissions table
+DROP POLICY IF EXISTS "Enable insert for anonymous users" ON public.onboarding_submissions;
 CREATE POLICY "Enable insert for anonymous users" ON public.onboarding_submissions
     AS PERMISSIVE FOR INSERT
     TO public
+    WITH CHECK (true);
+
+-- Allow anonymous updates to the onboarding_submissions table
+DROP POLICY IF EXISTS "Enable update for anonymous users" ON public.onboarding_submissions;
+CREATE POLICY "Enable update for anonymous users" ON public.onboarding_submissions
+    AS PERMISSIVE FOR UPDATE
+    TO public
+    USING (true)
     WITH CHECK (true);

@@ -1,4 +1,18 @@
-import { C as useToast, D as require_react, E as require_react_dom, O as __toESM, S as composeEventHandlers, _ as createSlot, a as cn, b as require_jsx_runtime, c as createLucideIcon, d as Presence, f as Portal, g as createCollection, h as Primitive, i as useId, l as cva, m as useCallbackRef$1, n as createSlot$1, o as X, p as DismissableLayer, r as useSize, s as CircleAlert, t as Button, u as useControllableState, v as createContext2, x as useComposedRefs, y as createContextScope } from "./index-Co1i2b1o.js";
+import { C as useToast, D as require_react, E as require_react_dom, O as __toESM, S as composeEventHandlers, _ as createSlot, a as cn, b as require_jsx_runtime, c as createLucideIcon, d as Presence, f as Portal, g as createCollection, h as Primitive$1, i as useId, l as cva, m as useCallbackRef$1, n as createSlot$1, o as X, p as DismissableLayer, r as useSize, s as CircleAlert, t as Button, u as useControllableState, v as createContext2, x as useComposedRefs, y as createContextScope$1 } from "./index-CjWpMIEw.js";
+var ArrowLeft = createLucideIcon("arrow-left", [["path", {
+	d: "m12 19-7-7 7-7",
+	key: "1l729n"
+}], ["path", {
+	d: "M19 12H5",
+	key: "x3x0zl"
+}]]);
+var ArrowRight = createLucideIcon("arrow-right", [["path", {
+	d: "M5 12h14",
+	key: "1ays0h"
+}], ["path", {
+	d: "m12 5 7 7-7 7",
+	key: "xquz4c"
+}]]);
 var CalendarDays = createLucideIcon("calendar-days", [
 	["path", {
 		d: "M8 2v4",
@@ -71,14 +85,6 @@ var Check = createLucideIcon("check", [["path", {
 	d: "M20 6 9 17l-5-5",
 	key: "1gmf2c"
 }]]);
-var ChevronLeft = createLucideIcon("chevron-left", [["path", {
-	d: "m15 18-6-6 6-6",
-	key: "1wnfg3"
-}]]);
-var ChevronRight = createLucideIcon("chevron-right", [["path", {
-	d: "m9 18 6-6-6-6",
-	key: "mthhwq"
-}]]);
 var CircleCheck = createLucideIcon("circle-check", [["circle", {
 	cx: "12",
 	cy: "12",
@@ -112,7 +118,7 @@ var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
 });
 Input.displayName = "Input";
 require_react_dom();
-var Primitive$1 = [
+var Primitive = [
 	"a",
 	"button",
 	"div",
@@ -149,7 +155,7 @@ var Primitive$1 = [
 }, {});
 var NAME$1 = "Label";
 var Label$1 = import_react.forwardRef((props, forwardedRef) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.label, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.label, {
 		...props,
 		ref: forwardedRef,
 		onMouseDown: (event) => {
@@ -160,16 +166,16 @@ var Label$1 = import_react.forwardRef((props, forwardedRef) => {
 	});
 });
 Label$1.displayName = NAME$1;
-var Root$3 = Label$1;
+var Root$4 = Label$1;
 var labelVariants = cva("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70");
-var Label = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$3, {
+var Label = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$4, {
 	"data-uid": "src/components/ui/label.tsx:16:3",
 	"data-prohibitions": "[editContent]",
 	ref,
 	className: cn(labelVariants(), className),
 	...props
 }));
-Label.displayName = Root$3.displayName;
+Label.displayName = Root$4.displayName;
 var alertVariants = cva("relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground", {
 	variants: { variant: {
 		default: "bg-background text-foreground",
@@ -212,7 +218,7 @@ var AspectRatio$1 = import_react.forwardRef((props, forwardedRef) => {
 			paddingBottom: `${100 / ratio}%`
 		},
 		"data-radix-aspect-ratio-wrapper": "",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.div, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
 			...aspectRatioProps,
 			ref: forwardedRef,
 			style: {
@@ -322,7 +328,7 @@ var EVENT_OPTIONS$1 = {
 };
 var GROUP_NAME = "RovingFocusGroup";
 var [Collection, useCollection, createCollectionScope] = createCollection(GROUP_NAME);
-var [createRovingFocusGroupContext, createRovingFocusGroupScope] = createContextScope(GROUP_NAME, [createCollectionScope]);
+var [createRovingFocusGroupContext, createRovingFocusGroupScope] = createContextScope$1(GROUP_NAME, [createCollectionScope]);
 var [RovingFocusProvider, useRovingFocusContext] = createRovingFocusGroupContext(GROUP_NAME);
 var RovingFocusGroup = import_react.forwardRef((props, forwardedRef) => {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Collection.Provider, {
@@ -370,7 +376,7 @@ var RovingFocusGroupImpl = import_react.forwardRef((props, forwardedRef) => {
 		onItemShiftTab: import_react.useCallback(() => setIsTabbingBackOut(true), []),
 		onFocusableItemAdd: import_react.useCallback(() => setFocusableItemsCount((prevCount) => prevCount + 1), []),
 		onFocusableItemRemove: import_react.useCallback(() => setFocusableItemsCount((prevCount) => prevCount - 1), []),
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.div, {
 			tabIndex: isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0,
 			"data-orientation": orientation,
 			...groupProps,
@@ -426,7 +432,7 @@ var RovingFocusGroupItem = import_react.forwardRef((props, forwardedRef) => {
 		id,
 		focusable,
 		active,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.span, {
 			tabIndex: isCurrentTabStop ? 0 : -1,
 			"data-orientation": context.orientation,
 			...itemProps,
@@ -495,7 +501,7 @@ function focusFirst$1(candidates, preventScroll = false) {
 function wrapArray(array, startIndex) {
 	return array.map((_, index) => array[(startIndex + index) % array.length]);
 }
-var Root$1 = RovingFocusGroup;
+var Root$2 = RovingFocusGroup;
 var Item = RovingFocusGroupItem;
 function usePrevious(value) {
 	const ref = import_react.useRef({
@@ -511,7 +517,7 @@ function usePrevious(value) {
 	}, [value]);
 }
 var RADIO_NAME = "Radio";
-var [createRadioContext, createRadioScope] = createContextScope(RADIO_NAME);
+var [createRadioContext, createRadioScope] = createContextScope$1(RADIO_NAME);
 var [RadioProvider, useRadioContext] = createRadioContext(RADIO_NAME);
 var Radio = import_react.forwardRef((props, forwardedRef) => {
 	const { __scopeRadio, name, checked = false, required, disabled, value = "on", onCheck, form, ...radioProps } = props;
@@ -523,7 +529,7 @@ var Radio = import_react.forwardRef((props, forwardedRef) => {
 		scope: __scopeRadio,
 		checked,
 		disabled,
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.button, {
 			type: "button",
 			role: "radio",
 			"aria-checked": checked,
@@ -554,13 +560,13 @@ var Radio = import_react.forwardRef((props, forwardedRef) => {
 	});
 });
 Radio.displayName = RADIO_NAME;
-var INDICATOR_NAME = "RadioIndicator";
+var INDICATOR_NAME$1 = "RadioIndicator";
 var RadioIndicator = import_react.forwardRef((props, forwardedRef) => {
 	const { __scopeRadio, forceMount, ...indicatorProps } = props;
-	const context = useRadioContext(INDICATOR_NAME, __scopeRadio);
+	const context = useRadioContext(INDICATOR_NAME$1, __scopeRadio);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Presence, {
 		present: forceMount || context.checked,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.span, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.span, {
 			"data-state": getState$1(context.checked),
 			"data-disabled": context.disabled ? "" : void 0,
 			...indicatorProps,
@@ -568,7 +574,7 @@ var RadioIndicator = import_react.forwardRef((props, forwardedRef) => {
 		})
 	});
 });
-RadioIndicator.displayName = INDICATOR_NAME;
+RadioIndicator.displayName = INDICATOR_NAME$1;
 var BUBBLE_INPUT_NAME = "RadioBubbleInput";
 var RadioBubbleInput = import_react.forwardRef(({ __scopeRadio, control, checked, bubbles = true, ...props }, forwardedRef) => {
 	const ref = import_react.useRef(null);
@@ -590,7 +596,7 @@ var RadioBubbleInput = import_react.forwardRef(({ __scopeRadio, control, checked
 		checked,
 		bubbles
 	]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.input, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.input, {
 		type: "radio",
 		"aria-hidden": true,
 		defaultChecked: checked,
@@ -618,7 +624,7 @@ var ARROW_KEYS = [
 	"ArrowRight"
 ];
 var RADIO_GROUP_NAME = "RadioGroup";
-var [createRadioGroupContext, createRadioGroupScope] = createContextScope(RADIO_GROUP_NAME, [createRovingFocusGroupScope, createRadioScope]);
+var [createRadioGroupContext, createRadioGroupScope] = createContextScope$1(RADIO_GROUP_NAME, [createRovingFocusGroupScope, createRadioScope]);
 var useRovingFocusGroupScope = createRovingFocusGroupScope();
 var useRadioScope = createRadioScope();
 var [RadioGroupProvider, useRadioGroupContext] = createRadioGroupContext(RADIO_GROUP_NAME);
@@ -639,13 +645,13 @@ var RadioGroup$1 = import_react.forwardRef((props, forwardedRef) => {
 		disabled,
 		value,
 		onValueChange: setValue,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$1, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$2, {
 			asChild: true,
 			...rovingFocusGroupScope,
 			orientation,
 			dir: direction,
 			loop,
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.div, {
 				role: "radiogroup",
 				"aria-required": required,
 				"aria-orientation": orientation,
@@ -717,7 +723,7 @@ var RadioGroupIndicator = import_react.forwardRef((props, forwardedRef) => {
 RadioGroupIndicator.displayName = INDICATOR_NAME2;
 var Root2 = RadioGroup$1;
 var Item2 = RadioGroupItem$1;
-var Indicator = RadioGroupIndicator;
+var Indicator$1 = RadioGroupIndicator;
 var RadioGroup = import_react.forwardRef(({ className, ...props }, ref) => {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root2, {
 		"data-uid": "src/components/ui/radio-group.tsx:12:10",
@@ -735,7 +741,7 @@ var RadioGroupItem = import_react.forwardRef(({ className, ...props }, ref) => {
 		ref,
 		className: cn("aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className),
 		...props,
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Indicator, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Indicator$1, {
 			"data-uid": "src/components/ui/radio-group.tsx:29:7",
 			"data-prohibitions": "[]",
 			className: "flex items-center justify-center",
@@ -1324,7 +1330,7 @@ var FocusScope = import_react.forwardRef((props, forwardedRef) => {
 		trapped,
 		focusScope.paused
 	]);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.div, {
 		tabIndex: -1,
 		...scopeProps,
 		ref: composedRefs,
@@ -2116,7 +2122,7 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
 	return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
 };
 var DIALOG_NAME = "Dialog";
-var [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
+var [createDialogContext, createDialogScope] = createContextScope$1(DIALOG_NAME);
 var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
 var Dialog$1 = (props) => {
 	const { __scopeDialog, children, open: openProp, defaultOpen, onOpenChange, modal = true } = props;
@@ -2148,7 +2154,7 @@ var DialogTrigger$1 = import_react.forwardRef((props, forwardedRef) => {
 	const { __scopeDialog, ...triggerProps } = props;
 	const context = useDialogContext(TRIGGER_NAME, __scopeDialog);
 	const composedTriggerRef = useComposedRefs(forwardedRef, context.triggerRef);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.button, {
 		type: "button",
 		"aria-haspopup": "dialog",
 		"aria-expanded": context.open,
@@ -2201,7 +2207,7 @@ var DialogOverlayImpl = import_react.forwardRef((props, forwardedRef) => {
 		as: Slot,
 		allowPinchZoom: true,
 		shards: [context.contentRef],
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.div, {
 			"data-state": getState(context.open),
 			...overlayProps,
 			ref: forwardedRef,
@@ -2315,7 +2321,7 @@ var TITLE_NAME = "DialogTitle";
 var DialogTitle$1 = import_react.forwardRef((props, forwardedRef) => {
 	const { __scopeDialog, ...titleProps } = props;
 	const context = useDialogContext(TITLE_NAME, __scopeDialog);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.h2, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.h2, {
 		id: context.titleId,
 		...titleProps,
 		ref: forwardedRef
@@ -2326,7 +2332,7 @@ var DESCRIPTION_NAME = "DialogDescription";
 var DialogDescription$1 = import_react.forwardRef((props, forwardedRef) => {
 	const { __scopeDialog, ...descriptionProps } = props;
 	const context = useDialogContext(DESCRIPTION_NAME, __scopeDialog);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.p, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.p, {
 		id: context.descriptionId,
 		...descriptionProps,
 		ref: forwardedRef
@@ -2337,7 +2343,7 @@ var CLOSE_NAME = "DialogClose";
 var DialogClose$1 = import_react.forwardRef((props, forwardedRef) => {
 	const { __scopeDialog, ...closeProps } = props;
 	const context = useDialogContext(CLOSE_NAME, __scopeDialog);
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.button, {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive$1.button, {
 		type: "button",
 		...closeProps,
 		ref: forwardedRef,
@@ -2383,14 +2389,14 @@ var DescriptionWarning = ({ contentRef, descriptionId }) => {
 	]);
 	return null;
 };
-var Root = Dialog$1;
+var Root$1 = Dialog$1;
 var Portal$1 = DialogPortal$1;
 var Overlay = DialogOverlay$1;
 var Content = DialogContent$1;
 var Title = DialogTitle$1;
 var Description = DialogDescription$1;
 var Close = DialogClose$1;
-var Dialog = Root;
+var Dialog = Root$1;
 var DialogPortal = Portal$1;
 var DialogOverlay = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Overlay, {
 	"data-uid": "src/components/ui/dialog.tsx:19:3",
@@ -2720,7 +2726,161 @@ const Step7 = ({ data }) => {
 		]
 	});
 };
-var initialData = {
+function createContextScope(scopeName, createContextScopeDeps = []) {
+	let defaultContexts = [];
+	function createContext3(rootComponentName, defaultContext) {
+		const BaseContext = import_react.createContext(defaultContext);
+		BaseContext.displayName = rootComponentName + "Context";
+		const index = defaultContexts.length;
+		defaultContexts = [...defaultContexts, defaultContext];
+		const Provider = (props) => {
+			const { scope, children, ...context } = props;
+			const Context = scope?.[scopeName]?.[index] || BaseContext;
+			const value = import_react.useMemo(() => context, Object.values(context));
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Context.Provider, {
+				value,
+				children
+			});
+		};
+		Provider.displayName = rootComponentName + "Provider";
+		function useContext2(consumerName, scope) {
+			const Context = scope?.[scopeName]?.[index] || BaseContext;
+			const context = import_react.useContext(Context);
+			if (context) return context;
+			if (defaultContext !== void 0) return defaultContext;
+			throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+		}
+		return [Provider, useContext2];
+	}
+	const createScope = () => {
+		const scopeContexts = defaultContexts.map((defaultContext) => {
+			return import_react.createContext(defaultContext);
+		});
+		return function useScope(scope) {
+			const contexts = scope?.[scopeName] || scopeContexts;
+			return import_react.useMemo(() => ({ [`__scope${scopeName}`]: {
+				...scope,
+				[scopeName]: contexts
+			} }), [scope, contexts]);
+		};
+	};
+	createScope.scopeName = scopeName;
+	return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+}
+function composeContextScopes(...scopes) {
+	const baseScope = scopes[0];
+	if (scopes.length === 1) return baseScope;
+	const createScope = () => {
+		const scopeHooks = scopes.map((createScope2) => ({
+			useScope: createScope2(),
+			scopeName: createScope2.scopeName
+		}));
+		return function useComposedScopes(overrideScopes) {
+			const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
+				const currentScope = useScope(overrideScopes)[`__scope${scopeName}`];
+				return {
+					...nextScopes2,
+					...currentScope
+				};
+			}, {});
+			return import_react.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+		};
+	};
+	createScope.scopeName = baseScope.scopeName;
+	return createScope;
+}
+var PROGRESS_NAME = "Progress";
+var DEFAULT_MAX = 100;
+var [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
+var [ProgressProvider, useProgressContext] = createProgressContext(PROGRESS_NAME);
+var Progress$1 = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeProgress, value: valueProp = null, max: maxProp, getValueLabel = defaultGetValueLabel, ...progressProps } = props;
+	if ((maxProp || maxProp === 0) && !isValidMaxNumber(maxProp)) console.error(getInvalidMaxError(`${maxProp}`, "Progress"));
+	const max = isValidMaxNumber(maxProp) ? maxProp : DEFAULT_MAX;
+	if (valueProp !== null && !isValidValueNumber(valueProp, max)) console.error(getInvalidValueError(`${valueProp}`, "Progress"));
+	const value = isValidValueNumber(valueProp, max) ? valueProp : null;
+	const valueLabel = isNumber(value) ? getValueLabel(value, max) : void 0;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProgressProvider, {
+		scope: __scopeProgress,
+		value,
+		max,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+			"aria-valuemax": max,
+			"aria-valuemin": 0,
+			"aria-valuenow": isNumber(value) ? value : void 0,
+			"aria-valuetext": valueLabel,
+			role: "progressbar",
+			"data-state": getProgressState(value, max),
+			"data-value": value ?? void 0,
+			"data-max": max,
+			...progressProps,
+			ref: forwardedRef
+		})
+	});
+});
+Progress$1.displayName = PROGRESS_NAME;
+var INDICATOR_NAME = "ProgressIndicator";
+var ProgressIndicator = import_react.forwardRef((props, forwardedRef) => {
+	const { __scopeProgress, ...indicatorProps } = props;
+	const context = useProgressContext(INDICATOR_NAME, __scopeProgress);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.div, {
+		"data-state": getProgressState(context.value, context.max),
+		"data-value": context.value ?? void 0,
+		"data-max": context.max,
+		...indicatorProps,
+		ref: forwardedRef
+	});
+});
+ProgressIndicator.displayName = INDICATOR_NAME;
+function defaultGetValueLabel(value, max) {
+	return `${Math.round(value / max * 100)}%`;
+}
+function getProgressState(value, maxValue) {
+	return value == null ? "indeterminate" : value === maxValue ? "complete" : "loading";
+}
+function isNumber(value) {
+	return typeof value === "number";
+}
+function isValidMaxNumber(max) {
+	return isNumber(max) && !isNaN(max) && max > 0;
+}
+function isValidValueNumber(value, max) {
+	return isNumber(value) && !isNaN(value) && value <= max && value >= 0;
+}
+function getInvalidMaxError(propValue, componentName) {
+	return `Invalid prop \`max\` of value \`${propValue}\` supplied to \`${componentName}\`. Only numbers greater than 0 are valid max values. Defaulting to \`${DEFAULT_MAX}\`.`;
+}
+function getInvalidValueError(propValue, componentName) {
+	return `Invalid prop \`value\` of value \`${propValue}\` supplied to \`${componentName}\`. The \`value\` prop must be:
+  - a positive number
+  - less than the value passed to \`max\` (or ${DEFAULT_MAX} if no \`max\` prop is set)
+  - \`null\` or \`undefined\` if the progress is indeterminate.
+
+Defaulting to \`null\`.`;
+}
+var Root = Progress$1;
+var Indicator = ProgressIndicator;
+var Progress = import_react.forwardRef(({ className, value, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root, {
+	"data-uid": "src/components/ui/progress.tsx:11:3",
+	"data-prohibitions": "[editContent]",
+	ref,
+	className: cn("relative h-4 w-full overflow-hidden rounded-full bg-secondary", className),
+	...props,
+	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Indicator, {
+		"data-uid": "src/components/ui/progress.tsx:16:5",
+		"data-prohibitions": "[editContent]",
+		className: "h-full w-full flex-1 bg-primary transition-all",
+		style: { transform: `translateX(-${100 - (value || 0)}%)` }
+	})
+}));
+Progress.displayName = Root.displayName;
+async function upsertSubmission(data, isFinal = false) {
+	if (!data.additionalData.email) return;
+	data.additionalData.name, data.additionalData.email, data.profession, data.useCases, data.additionalData.portfolio, data.additionalData.risk, data.additionalData.vslWatched;
+	await new Promise((resolve) => setTimeout(resolve, isFinal ? 1e3 : 300));
+	return { success: true };
+}
+var INITIAL_DATA = {
 	profession: "",
 	useCases: [],
 	additionalData: {
@@ -2733,98 +2893,52 @@ var initialData = {
 };
 function Index() {
 	const [step, setStep] = (0, import_react.useState)(1);
-	const [data, setData] = (0, import_react.useState)(initialData);
+	const [data, setData] = (0, import_react.useState)(INITIAL_DATA);
 	const [isSubmitting, setIsSubmitting] = (0, import_react.useState)(false);
-	const [isLoaded, setIsLoaded] = (0, import_react.useState)(false);
 	const { toast } = useToast();
 	(0, import_react.useEffect)(() => {
 		const savedData = localStorage.getItem("adapta_onboarding_data");
 		const savedStep = localStorage.getItem("adapta_onboarding_step");
-		const urlParams = new URLSearchParams(window.location.search);
-		const urlName = urlParams.get("nome") || urlParams.get("name");
-		const urlEmail = urlParams.get("email");
-		let parsed = {};
 		if (savedData) try {
-			parsed = JSON.parse(savedData);
+			setData(JSON.parse(savedData));
 		} catch (e) {}
-		setData({
-			...initialData,
-			...parsed,
-			additionalData: {
-				...initialData.additionalData,
-				...parsed.additionalData || {},
-				...urlName ? { name: urlName } : {},
-				...urlEmail ? { email: urlEmail } : {}
-			}
-		});
 		if (savedStep) {
-			const stepNum = parseInt(savedStep, 10);
-			if (!isNaN(stepNum) && stepNum >= 1 && stepNum <= 7) setStep(stepNum);
+			const parsedStep = parseInt(savedStep, 10);
+			if (parsedStep > 1 && parsedStep <= 7) setStep(parsedStep);
 		}
-		setIsLoaded(true);
 	}, []);
 	(0, import_react.useEffect)(() => {
-		if (isLoaded) {
-			localStorage.setItem("adapta_onboarding_data", JSON.stringify(data));
-			localStorage.setItem("adapta_onboarding_step", step.toString());
-		}
-	}, [
-		data,
-		step,
-		isLoaded
-	]);
-	const isValid = () => {
-		const { name, email, vslWatched, portfolio, risk } = data.additionalData;
-		if (step === 1) return name.trim().length >= 3 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-		if (step === 2) return vslWatched;
-		if (step === 3) return !!data.profession;
-		if (step === 4) return data.useCases && data.useCases.length > 0;
-		if (step === 5) return !!portfolio && !!risk;
-		return true;
+		localStorage.setItem("adapta_onboarding_data", JSON.stringify(data));
+		localStorage.setItem("adapta_onboarding_step", step.toString());
+	}, [data, step]);
+	const updateData = (newData) => {
+		setData((prev) => ({
+			...prev,
+			...newData
+		}));
 	};
-	const isAllValid = () => {
-		const { name, email, vslWatched, portfolio, risk } = data.additionalData;
-		return name.trim().length >= 3 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && vslWatched && !!data.profession && data.useCases && data.useCases.length > 0 && !!portfolio && !!risk;
+	const updateAdditionalData = (newData) => {
+		setData((prev) => ({
+			...prev,
+			additionalData: {
+				...prev.additionalData,
+				...newData
+			}
+		}));
 	};
 	const handleNext = async () => {
-		if (!isValid()) return;
 		if (step < 6) {
+			if (data.additionalData.email) upsertSubmission(data, false).catch(() => {});
 			setStep((s) => s + 1);
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
 		} else if (step === 6) {
-			if (!isAllValid()) {
-				toast({
-					title: "Dados incompletos",
-					description: "Por favor, revise suas informações antes de enviar.",
-					variant: "destructive"
-				});
-				return;
-			}
 			setIsSubmitting(true);
 			try {
-				const controller = new AbortController();
-				const timeoutId = setTimeout(() => controller.abort(), 1e4);
-				data.additionalData.name, data.additionalData.email, data.profession, data.useCases, data.additionalData.portfolio, data.additionalData.risk, data.additionalData.vslWatched;
-				await new Promise((resolve) => setTimeout(resolve, 1500));
-				clearTimeout(timeoutId);
-				if (Math.random() > .95) throw new Error("Simulated failure");
-				toast({
-					title: "Dados salvos com sucesso!",
-					className: "bg-primary/10 border-primary/20 text-primary"
-				});
-				localStorage.removeItem("adapta_onboarding_data");
+				await upsertSubmission(data, true);
 				setStep(7);
-				window.scrollTo({
-					top: 0,
-					behavior: "smooth"
-				});
-			} catch (e) {
+			} catch (error) {
 				toast({
-					title: "Erro de conexão",
-					description: "Não foi possível salvar seus dados. Tente novamente.",
+					title: "Erro na submissão",
+					description: "Não foi possível salvar seus dados. Verifique sua conexão e tente novamente.",
 					variant: "destructive"
 				});
 			} finally {
@@ -2832,217 +2946,161 @@ function Index() {
 			}
 		}
 	};
-	const handlePrev = () => {
-		if (step > 1) {
-			setStep((s) => s - 1);
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth"
-			});
-		}
+	const handleBack = () => {
+		setStep((s) => Math.max(1, s - 1));
 	};
-	const renderStep = () => {
-		const props = {
-			data,
-			updateData: (d) => setData((p) => ({
-				...p,
-				...d
-			})),
-			updateAdditionalData: (d) => setData((p) => ({
-				...p,
-				additionalData: {
-					...p.additionalData,
-					...d
-				}
-			}))
-		};
+	const canProceed = () => {
 		switch (step) {
-			case 1: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step1, {
-				"data-uid": "src/pages/Index.tsx:205:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			case 2: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step2, {
-				"data-uid": "src/pages/Index.tsx:207:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			case 3: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step3, {
-				"data-uid": "src/pages/Index.tsx:209:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			case 4: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step4, {
-				"data-uid": "src/pages/Index.tsx:211:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			case 5: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step5, {
-				"data-uid": "src/pages/Index.tsx:213:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			case 6: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step6, {
-				"data-uid": "src/pages/Index.tsx:215:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			case 7: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step7, {
-				"data-uid": "src/pages/Index.tsx:217:16",
-				"data-prohibitions": "[editContent]",
-				...props
-			});
-			default: return null;
+			case 1: return data.additionalData.name.trim().length >= 3 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.additionalData.email);
+			case 2: return data.additionalData.vslWatched;
+			case 3: return data.profession.length > 0;
+			case 4: return data.useCases.length > 0;
+			case 5: return data.additionalData.portfolio.length > 0 && data.additionalData.risk.length > 0;
+			default: return true;
 		}
 	};
-	if (!isLoaded) return null;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Index.tsx:226:5",
-		"data-prohibitions": "[editContent]",
-		className: "min-h-screen flex flex-col font-sans",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-			"data-uid": "src/pages/Index.tsx:227:7",
+	if (step === 7) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/pages/Index.tsx:119:7",
+		"data-prohibitions": "[]",
+		className: "w-full max-w-3xl mx-auto animate-in fade-in duration-500 pt-12",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step7, {
+			"data-uid": "src/pages/Index.tsx:120:9",
 			"data-prohibitions": "[editContent]",
-			className: "w-full bg-[#0C0C0D]/80 backdrop-blur-md border-b border-[#333333] py-4 px-6 sticky top-0 z-10",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:228:9",
+			data,
+			updateData,
+			updateAdditionalData
+		})
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/pages/Index.tsx:126:5",
+		"data-prohibitions": "[editContent]",
+		className: "w-full max-w-3xl mx-auto space-y-8 animate-in fade-in duration-500 pt-12 p-4 sm:p-6 lg:p-8",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:127:7",
 				"data-prohibitions": "[editContent]",
-				className: "max-w-3xl mx-auto flex items-center justify-between mb-4",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/Index.tsx:229:11",
-					"data-prohibitions": "[]",
-					className: "font-bold text-xl text-primary tracking-tight font-display",
-					children: "Adapta Elite"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/Index.tsx:232:11",
+				className: "space-y-3 bg-[#111111]/50 p-5 sm:p-6 rounded-2xl border border-[#333333] shadow-elevation",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/pages/Index.tsx:128:9",
 					"data-prohibitions": "[editContent]",
-					className: "text-sm font-medium text-muted-foreground",
-					children: step < 7 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
-						"Etapa ",
-						step,
-						" de 6",
-						" ",
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							"data-uid": "src/pages/Index.tsx:236:17",
-							"data-prohibitions": "[editContent]",
-							className: "ml-1 text-muted-foreground/70",
-							children: [
-								"(",
-								Math.round(step / 6 * 100),
-								"%)"
-							]
-						})
-					] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						"data-uid": "src/pages/Index.tsx:241:15",
-						"data-prohibitions": "[]",
-						className: "text-primary font-semibold flex items-center gap-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-							"data-uid": "src/pages/Index.tsx:242:17",
-							"data-prohibitions": "[editContent]",
-							className: "w-4 h-4"
-						}), " Concluído"]
-					})
-				})]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:248:9",
-				"data-prohibitions": "[editContent]",
-				className: "max-w-3xl mx-auto relative z-0 mt-2",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Index.tsx:249:11",
+					className: "flex justify-between text-sm font-medium",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						"data-uid": "src/pages/Index.tsx:129:11",
 						"data-prohibitions": "[editContent]",
-						className: "absolute top-1/2 left-0 w-full h-1.5 bg-[#262626] -translate-y-1/2 rounded-full z-[-1]"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Index.tsx:250:11",
-						"data-prohibitions": "[editContent]",
-						className: "absolute top-1/2 left-0 h-1.5 bg-primary -translate-y-1/2 rounded-full transition-all duration-700 ease-in-out z-[-1]",
-						style: { width: `${Math.min((step - 1) / 5 * 100, 100)}%` }
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Index.tsx:254:11",
-						"data-prohibitions": "[editContent]",
-						className: "relative flex justify-between w-full",
+						className: "text-muted-foreground font-display tracking-wide",
 						children: [
-							1,
-							2,
-							3,
-							4,
-							5,
-							6
-						].map((i) => {
-							const isCompleted = step === 7 ? true : i < step;
-							const isActive = step === 7 ? false : i === step;
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Index.tsx:260:17",
-								"data-prohibitions": "[editContent]",
-								className: cn("w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-semibold transition-all duration-500", isActive ? "bg-primary text-primary-foreground ring-4 ring-primary/20 scale-110 shadow-glow" : isCompleted ? "bg-primary text-primary-foreground scale-100" : "bg-[#262626] text-muted-foreground opacity-80 scale-95"),
-								children: isCompleted ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-									"data-uid": "src/pages/Index.tsx:272:21",
-									"data-prohibitions": "[editContent]",
-									className: "w-4 h-4 sm:w-5 sm:h-5 animate-in zoom-in duration-300"
-								}) : i
-							}, i);
-						})
+							"Etapa ",
+							step,
+							" de 6"
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+						"data-uid": "src/pages/Index.tsx:132:11",
+						"data-prohibitions": "[editContent]",
+						className: "text-primary",
+						children: [Math.round(step / 6 * 100), "%"]
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Progress, {
+					"data-uid": "src/pages/Index.tsx:134:9",
+					"data-prohibitions": "[editContent]",
+					value: step / 6 * 100,
+					className: "h-2 bg-[#222222]"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:137:7",
+				"data-prohibitions": "[editContent]",
+				className: "min-h-[400px]",
+				children: [
+					step === 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step1, {
+						"data-uid": "src/pages/Index.tsx:139:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 2 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step2, {
+						"data-uid": "src/pages/Index.tsx:142:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 3 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step3, {
+						"data-uid": "src/pages/Index.tsx:145:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 4 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step4, {
+						"data-uid": "src/pages/Index.tsx:148:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 5 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step5, {
+						"data-uid": "src/pages/Index.tsx:151:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 6 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step6, {
+						"data-uid": "src/pages/Index.tsx:154:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
 					})
 				]
-			})]
-		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-			"data-uid": "src/pages/Index.tsx:283:7",
-			"data-prohibitions": "[editContent]",
-			className: "flex-1 w-full max-w-3xl mx-auto p-4 md:p-8 flex flex-col justify-center py-10",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				"data-uid": "src/pages/Index.tsx:284:9",
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/pages/Index.tsx:158:7",
 				"data-prohibitions": "[editContent]",
-				className: "bg-[#111111]/80 backdrop-blur-sm rounded-[16px] shadow-elevation border border-[#333333] p-6 md:p-10 flex-1 min-h-[400px]",
-				children: renderStep()
-			}), step < 7 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:289:11",
-				"data-prohibitions": "[editContent]",
-				className: "flex items-center justify-between mt-8 pb-10 gap-4",
+				className: "flex items-center justify-between pt-8 border-t border-[#333333]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:290:13",
-					"data-prohibitions": "[editContent]",
+					"data-uid": "src/pages/Index.tsx:159:9",
+					"data-prohibitions": "[]",
 					variant: "outline",
 					size: "lg",
-					onClick: handlePrev,
-					disabled: isSubmitting || step === 1,
-					className: cn("h-14 px-4 sm:px-6 text-base shadow-sm", step === 1 && "invisible"),
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronLeft, {
-						"data-uid": "src/pages/Index.tsx:297:15",
+					onClick: handleBack,
+					disabled: step === 1 || isSubmitting,
+					className: "w-[120px] sm:w-[130px] h-12 text-sm sm:text-base",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
+						"data-uid": "src/pages/Index.tsx:166:11",
 						"data-prohibitions": "[editContent]",
-						className: "mr-1 sm:mr-2 h-5 w-5"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						"data-uid": "src/pages/Index.tsx:298:15",
-						"data-prohibitions": "[]",
-						className: "hidden sm:inline",
-						children: "Voltar"
-					})]
+						className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
+					}), "Voltar"]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:301:13",
+					"data-uid": "src/pages/Index.tsx:170:9",
 					"data-prohibitions": "[editContent]",
 					size: "lg",
 					onClick: handleNext,
-					disabled: isSubmitting || !isValid(),
-					className: cn("h-14 px-6 sm:px-8 text-base transition-all duration-500", !isValid() ? "bg-[#262626] text-[#666666] cursor-not-allowed border-none shadow-none disabled:opacity-80 hover:bg-[#262626] hover:-translate-y-0 hover:shadow-none" : "bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5"),
+					disabled: !canProceed() || isSubmitting,
+					className: "w-[140px] sm:w-[160px] h-12 text-sm sm:text-base flex items-center justify-center",
 					children: [
-						isSubmitting && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/pages/Index.tsx:312:32",
+						isSubmitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
+							"data-uid": "src/pages/Index.tsx:177:13",
 							"data-prohibitions": "[editContent]",
-							className: "mr-2 h-5 w-5 animate-spin"
-						}),
-						!isSubmitting && step === 6 ? "Finalizar" : !isSubmitting ? "Continuar" : "Enviando...",
-						!isSubmitting && step !== 6 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, {
-							"data-uid": "src/pages/Index.tsx:318:47",
+							className: "w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin"
+						}) : step === 6 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
+							"data-uid": "src/pages/Index.tsx:179:13",
 							"data-prohibitions": "[editContent]",
-							className: "ml-1 sm:ml-2 h-5 w-5"
+							className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
+						}) : null,
+						step === 6 ? "Finalizar" : "Continuar",
+						step < 6 && !isSubmitting && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+							"data-uid": "src/pages/Index.tsx:182:41",
+							"data-prohibitions": "[editContent]",
+							className: "w-4 h-4 sm:w-5 sm:h-5 ml-2"
 						})
 					]
 				})]
-			})]
-		})]
+			})
+		]
 	});
 }
 export { Index as default };
 
-//# sourceMappingURL=Index-B6p6T7za.js.map
+//# sourceMappingURL=Index-_EYu5TMc.js.map
