@@ -37,21 +37,29 @@ export default function Index() {
     const savedData = localStorage.getItem('adapta_onboarding_data')
     const savedStep = localStorage.getItem('adapta_onboarding_step')
 
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlName = urlParams.get('nome') || urlParams.get('name')
+    const urlEmail = urlParams.get('email')
+
+    let parsed: any = {}
     if (savedData) {
       try {
-        const parsed = JSON.parse(savedData)
-        setData({
-          ...initialData,
-          ...parsed,
-          additionalData: {
-            ...initialData.additionalData,
-            ...(parsed.additionalData || {}),
-          },
-        })
+        parsed = JSON.parse(savedData)
       } catch (e) {
         // Handle invalid JSON silently
       }
     }
+
+    setData({
+      ...initialData,
+      ...parsed,
+      additionalData: {
+        ...initialData.additionalData,
+        ...(parsed.additionalData || {}),
+        ...(urlName ? { name: urlName } : {}),
+        ...(urlEmail ? { email: urlEmail } : {}),
+      },
+    })
 
     if (savedStep) {
       const stepNum = parseInt(savedStep, 10)
