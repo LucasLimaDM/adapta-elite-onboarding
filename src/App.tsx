@@ -9,6 +9,7 @@ import { NetworkStatus } from './components/NetworkStatus'
 import Layout from './components/Layout'
 
 const Index = lazy(() => import('./pages/Index'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const App = () => (
@@ -29,6 +30,7 @@ const App = () => (
               <Routes>
                 <Route element={<Layout />}>
                   <Route path="/" element={<Index />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>

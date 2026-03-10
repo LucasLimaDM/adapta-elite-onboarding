@@ -1,4 +1,5 @@
-import { C as useToast, D as require_react, E as require_react_dom, O as __toESM, S as composeEventHandlers, _ as createSlot, a as cn, b as require_jsx_runtime, c as createLucideIcon, d as Presence, f as Portal, g as createCollection, h as Primitive$1, i as useId, l as cva, m as useCallbackRef$1, n as createSlot$1, o as X, p as DismissableLayer, r as useSize, s as CircleAlert, t as Button, u as useControllableState, v as createContext2, x as useComposedRefs, y as createContextScope$1 } from "./index-CjWpMIEw.js";
+import { n as upsertSubmission, r as LoaderCircle } from "./api-C6MWyg_m.js";
+import { C as composeEventHandlers, D as require_react_dom, O as require_react, S as useComposedRefs, _ as createCollection, a as useId, b as createContextScope$1, c as CircleAlert, d as useControllableState, f as Presence, g as Primitive$1, h as useCallbackRef$1, i as useSize, k as __toESM, l as createLucideIcon, m as DismissableLayer, n as createSlot$1, o as cn, p as Portal, s as X, t as Button, u as cva, v as createSlot, w as useToast, x as require_jsx_runtime, y as createContext2 } from "./index-B2FgPP9s.js";
 var ArrowLeft = createLucideIcon("arrow-left", [["path", {
 	d: "m12 19-7-7 7-7",
 	key: "1l729n"
@@ -99,10 +100,6 @@ var Circle = createLucideIcon("circle", [["circle", {
 	cy: "12",
 	r: "10",
 	key: "1mglay"
-}]]);
-var LoaderCircle = createLucideIcon("loader-circle", [["path", {
-	d: "M21 12a9 9 0 1 1-6.219-8.56",
-	key: "13zald"
 }]]);
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = /* @__PURE__ */ __toESM(require_jsx_runtime(), 1);
@@ -2874,12 +2871,6 @@ var Progress = import_react.forwardRef(({ className, value, ...props }, ref) => 
 	})
 }));
 Progress.displayName = Root.displayName;
-async function upsertSubmission(data, isFinal = false) {
-	if (!data.additionalData.email) return;
-	data.additionalData.name, data.additionalData.email, data.profession, data.useCases, data.additionalData.portfolio, data.additionalData.risk, data.additionalData.vslWatched;
-	await new Promise((resolve) => setTimeout(resolve, isFinal ? 1e3 : 300));
-	return { success: true };
-}
 var INITIAL_DATA = {
 	profession: "",
 	useCases: [],
@@ -3103,4 +3094,4 @@ function Index() {
 }
 export { Index as default };
 
-//# sourceMappingURL=Index-_EYu5TMc.js.map
+//# sourceMappingURL=Index-CIx9NU8A.js.map

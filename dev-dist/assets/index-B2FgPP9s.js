@@ -1,3 +1,4 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CIx9NU8A.js","assets/api-C6MWyg_m.js","assets/Dashboard-AEN0RZsg.js"])))=>i.map(i=>d[i]);
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -23776,6 +23777,10 @@ var mockValidateToken = async (token) => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			if (token === "invalid" || token === "expired") reject(/* @__PURE__ */ new Error("Invalid token"));
+			else if (token === "admin" || token === "admin-token") resolve({
+				email: "admin@adapta.org",
+				clientId: "ADM-001"
+			});
 			else resolve({
 				email: "client@adaptaelite.com",
 				clientId: "CLI-9981"
@@ -23816,7 +23821,8 @@ const AuthProvider = ({ children }) => {
 					setError(null);
 					searchParams.delete("token");
 					setSearchParams(searchParams, { replace: true });
-					if (location.pathname !== "/") navigate("/", { replace: true });
+					if (location.pathname === "/") {} else if (res.email.endsWith("@adapta.org") && location.pathname !== "/dashboard") navigate("/dashboard", { replace: true });
+					else if (location.pathname !== "/") navigate("/", { replace: true });
 				} catch {
 					setError("Link expirado ou inválido. Solicite um novo link por email.");
 					localStorage.removeItem("adapta_session");
@@ -23900,6 +23906,11 @@ const AuthProvider = ({ children }) => {
 		logout
 	} }, children);
 };
+function useAuthStore() {
+	const context = (0, import_react.useContext)(AuthContext);
+	if (!context) throw new Error("useAuthStore must be used within an AuthProvider");
+	return context;
+}
 var REACT_LAZY_TYPE = Symbol.for("react.lazy");
 var use = import_react[" use ".trim().toString()];
 function isPromiseLike(value) {
@@ -24158,74 +24169,83 @@ function Layout() {
 		})
 	});
 }
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-_EYu5TMc.js"), []));
-var NotFound = (0, import_react.lazy)(() => __vitePreload(() => import("./NotFound-DCkOWziL.js"), []));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CIx9NU8A.js"), __vite__mapDeps([0,1])));
+var Dashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-AEN0RZsg.js"), __vite__mapDeps([2,1])));
+var NotFound = (0, import_react.lazy)(() => __vitePreload(() => import("./NotFound-BUF1GcGK.js"), []));
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorBoundary, {
-	"data-uid": "src/App.tsx:15:3",
+	"data-uid": "src/App.tsx:16:3",
 	"data-prohibitions": "[]",
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NetworkStatus, {
-		"data-uid": "src/App.tsx:16:5",
+		"data-uid": "src/App.tsx:17:5",
 		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
-			"data-uid": "src/App.tsx:17:7",
+			"data-uid": "src/App.tsx:18:7",
 			"data-prohibitions": "[]",
 			future: {
 				v7_startTransition: false,
 				v7_relativeSplatPath: false
 			},
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, {
-				"data-uid": "src/App.tsx:18:9",
+				"data-uid": "src/App.tsx:19:9",
 				"data-prohibitions": "[]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
-					"data-uid": "src/App.tsx:19:11",
+					"data-uid": "src/App.tsx:20:11",
 					"data-prohibitions": "[]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-							"data-uid": "src/App.tsx:20:13",
-							"data-prohibitions": "[editContent]"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$1, {
 							"data-uid": "src/App.tsx:21:13",
 							"data-prohibitions": "[editContent]"
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$1, {
 							"data-uid": "src/App.tsx:22:13",
+							"data-prohibitions": "[editContent]"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
+							"data-uid": "src/App.tsx:23:13",
 							"data-prohibitions": "[]",
 							fallback: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/App.tsx:24:17",
+								"data-uid": "src/App.tsx:25:17",
 								"data-prohibitions": "[]",
 								className: "min-h-screen flex items-center justify-center bg-transparent",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/App.tsx:25:19",
+									"data-uid": "src/App.tsx:26:19",
 									"data-prohibitions": "[]",
 									className: "w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"
 								})
 							}),
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Routes, {
-								"data-uid": "src/App.tsx:29:15",
+								"data-uid": "src/App.tsx:30:15",
 								"data-prohibitions": "[]",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-									"data-uid": "src/App.tsx:30:17",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
+									"data-uid": "src/App.tsx:31:17",
 									"data-prohibitions": "[]",
 									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-										"data-uid": "src/App.tsx:30:33",
+										"data-uid": "src/App.tsx:31:33",
 										"data-prohibitions": "[editContent]"
 									}),
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-										"data-uid": "src/App.tsx:31:19",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+										"data-uid": "src/App.tsx:32:19",
 										"data-prohibitions": "[editContent]",
 										path: "/",
 										element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-											"data-uid": "src/App.tsx:31:44",
+											"data-uid": "src/App.tsx:32:44",
 											"data-prohibitions": "[editContent]"
 										})
-									})
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+										"data-uid": "src/App.tsx:33:19",
+										"data-prohibitions": "[editContent]",
+										path: "/dashboard",
+										element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dashboard, {
+											"data-uid": "src/App.tsx:33:53",
+											"data-prohibitions": "[editContent]"
+										})
+									})]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-									"data-uid": "src/App.tsx:33:17",
+									"data-uid": "src/App.tsx:35:17",
 									"data-prohibitions": "[editContent]",
 									path: "*",
 									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
-										"data-uid": "src/App.tsx:33:42",
+										"data-uid": "src/App.tsx:35:42",
 										"data-prohibitions": "[editContent]"
 									})
 								})]
@@ -24242,6 +24262,6 @@ var App_default = App;
 	"data-uid": "src/main.tsx:7:53",
 	"data-prohibitions": "[editContent]"
 }));
-export { useToast as C, require_react as D, require_react_dom as E, __toESM as O, composeEventHandlers as S, useLocation as T, createSlot$1 as _, cn as a, require_jsx_runtime as b, createLucideIcon as c, Presence as d, Portal as f, createCollection as g, Primitive as h, useId as i, cva as l, useCallbackRef as m, createSlot as n, X as o, DismissableLayer as p, useSize as r, CircleAlert as s, Button as t, useControllableState as u, createContext2 as v, Link as w, useComposedRefs as x, createContextScope as y };
+export { composeEventHandlers as C, require_react_dom as D, useLocation as E, require_react as O, useComposedRefs as S, Link as T, createCollection as _, useId as a, createContextScope as b, CircleAlert as c, useControllableState as d, Presence as f, Primitive as g, useCallbackRef as h, useSize as i, __toESM as k, createLucideIcon as l, DismissableLayer as m, createSlot as n, cn as o, Portal as p, useAuthStore as r, X as s, Button as t, cva as u, createSlot$1 as v, useToast as w, require_jsx_runtime as x, createContext2 as y };
 
-//# sourceMappingURL=index-CjWpMIEw.js.map
+//# sourceMappingURL=index-B2FgPP9s.js.map

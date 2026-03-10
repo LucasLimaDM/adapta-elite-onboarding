@@ -27,6 +27,8 @@ const mockValidateToken = async (token: string): Promise<AuthUser> => {
     setTimeout(() => {
       if (token === 'invalid' || token === 'expired') {
         reject(new Error('Invalid token'))
+      } else if (token === 'admin' || token === 'admin-token') {
+        resolve({ email: 'admin@adapta.org', clientId: 'ADM-001' })
       } else {
         resolve({ email: 'client@adaptaelite.com', clientId: 'CLI-9981' })
       }
@@ -75,7 +77,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           searchParams.delete('token')
           setSearchParams(searchParams, { replace: true })
 
-          if (location.pathname !== '/') {
+          if (location.pathname === '/') {
+            // keep path if it's already on root
+          } else if (res.email.endsWith('@adapta.org') && location.pathname !== '/dashboard') {
+            navigate('/dashboard', { replace: true })
+          } else if (location.pathname !== '/') {
             navigate('/', { replace: true })
           }
         } catch {

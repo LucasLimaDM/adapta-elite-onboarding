@@ -40,3 +40,60 @@ export async function upsertSubmission(data: FormData, isFinal: boolean = false)
 
   return { success: true }
 }
+
+export async function getSubmissions(userEmail: string) {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+  if (!supabaseUrl || !supabaseKey) {
+    // Mock successful network request if no env vars are present
+    await new Promise((resolve) => setTimeout(resolve, 800))
+    if (userEmail.endsWith('@adapta.org')) {
+      return [
+        {
+          id: '1',
+          name: 'João Silva',
+          email: 'joao.silva@exemplo.com',
+          profession: 'Empresário',
+          portfolio: 'R$ 5M - R$ 15M',
+          risk: 'Moderado',
+          vsl_watched: true,
+          created_at: new Date().toISOString(),
+        },
+        {
+          id: '2',
+          name: 'Maria Oliveira',
+          email: 'maria.oliveira@exemplo.com',
+          profession: 'Médico',
+          portfolio: 'R$ 15M - R$ 50M',
+          risk: 'Arrojado',
+          vsl_watched: false,
+          created_at: new Date().toISOString(),
+        },
+      ]
+    }
+    return []
+  }
+
+  const res = await fetch(`${supabaseUrl}/rest/v1/onboarding_submissions?select=*`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: supabaseKey,
+      Authorization: `Bearer ${supabaseKey}`,
+      'x-user-email': userEmail,
+    },
+  })
+
+  if (!res.ok) {
+    return []
+  }
+
+  const data = await res.json()
+
+  if (!userEmail.endsWith('@adapta.org')) {
+    return []
+  }
+
+  return data
+}

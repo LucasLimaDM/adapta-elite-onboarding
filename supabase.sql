@@ -40,3 +40,15 @@ CREATE POLICY "Enable update for anonymous users" ON public.onboarding_submissio
     TO public
     USING (true)
     WITH CHECK (true);
+
+-- Allow read access to authenticated admin users with @adapta.org email
+DROP POLICY IF EXISTS "Enable read access for admin users" ON public.onboarding_submissions;
+CREATE POLICY "Enable read access for admin users" ON public.onboarding_submissions
+    AS PERMISSIVE FOR SELECT
+    TO public
+    USING (
+      (auth.jwt() ->> 'email' LIKE '%@adapta.org')
+      OR
+      (current_setting('request.headers', true)::json->>'x-user-email' LIKE '%@adapta.org')
+    );
+
