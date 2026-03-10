@@ -1100,7 +1100,7 @@ var require_react_dom_development = /* @__PURE__ */ __commonJSMin(((exports) => 
 			return dispatcher;
 		}
 		"undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var React$2 = require_react(), Internals = {
+		var React$3 = require_react(), Internals = {
 			d: {
 				f: noop,
 				r: function() {
@@ -1116,7 +1116,7 @@ var require_react_dom_development = /* @__PURE__ */ __commonJSMin(((exports) => 
 			},
 			p: 0,
 			findDOMNode: null
-		}, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React$2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+		}, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React$3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
 		"function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills");
 		exports.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = Internals;
 		exports.createPortal = function(children, container) {
@@ -2356,7 +2356,7 @@ var require_react_dom_client_development = /* @__PURE__ */ __commonJSMin(((expor
 			"number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
 		}
 		function validateOptionProps(element, props) {
-			props.value ?? ("object" === typeof props.children && null !== props.children ? React$2.Children.forEach(props.children, function(child) {
+			props.value ?? ("object" === typeof props.children && null !== props.children ? React$3.Children.forEach(props.children, function(child) {
 				null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = !0, console.error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."));
 			}) : null == props.dangerouslySetInnerHTML || didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, console.error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")));
 			null == props.selected || didWarnSelectedSetOnOption || (console.error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
@@ -12647,10 +12647,10 @@ var require_react_dom_client_development = /* @__PURE__ */ __commonJSMin(((expor
 			container[internalContainerInstanceKey] && (container._reactRootContainer ? console.error("You are calling ReactDOMClient.createRoot() on a container that was previously passed to ReactDOM.render(). This is not supported.") : console.error("You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it."));
 		}
 		"undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var Scheduler = require_scheduler(), React$2 = require_react(), ReactDOM$2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE$1 = Symbol.for("react.lazy");
+		var Scheduler = require_scheduler(), React$3 = require_react(), ReactDOM$2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE$1 = Symbol.for("react.lazy");
 		var REACT_ACTIVITY_TYPE = Symbol.for("react.activity");
 		var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel");
-		var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React$2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM$2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+		var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React$3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM$2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
 			pending: !1,
 			data: null,
 			method: null,
@@ -15272,7 +15272,7 @@ var require_react_dom_client_development = /* @__PURE__ */ __commonJSMin(((expor
 			}
 		};
 		(function() {
-			var isomorphicReactPackageVersion = React$2.version;
+			var isomorphicReactPackageVersion = React$3.version;
 			if ("19.2.4" !== isomorphicReactPackageVersion) throw Error("Incompatible React versions: The \"react\" and \"react-dom\" packages must have the exact same version. Instead got:\n  - react:      " + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.4\nLearn more: https://react.dev/warnings/version-mismatch"));
 		})();
 		"function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error("React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://react.dev/link/react-polyfills");
@@ -16443,6 +16443,21 @@ function isModifiedEvent(event) {
 function shouldProcessLinkClick(event, target) {
 	return event.button === 0 && (!target || target === "_self") && !isModifiedEvent(event);
 }
+function createSearchParams(init = "") {
+	return new URLSearchParams(typeof init === "string" || Array.isArray(init) || init instanceof URLSearchParams ? init : Object.keys(init).reduce((memo2, key) => {
+		let value = init[key];
+		return memo2.concat(Array.isArray(value) ? value.map((v) => [key, v]) : [[key, value]]);
+	}, []));
+}
+function getSearchParamsForLocation(locationSearch, defaultSearchParams) {
+	let searchParams = createSearchParams(locationSearch);
+	if (defaultSearchParams) defaultSearchParams.forEach((_$1, key) => {
+		if (!searchParams.has(key)) defaultSearchParams.getAll(key).forEach((value) => {
+			searchParams.append(key, value);
+		});
+	});
+	return searchParams;
+}
 var _formDataSupportsSubmitter = null;
 function isFormDataSubmitterSupported() {
 	if (_formDataSupportsSubmitter === null) try {
@@ -17087,6 +17102,19 @@ function useLinkClickHandler(to, { target, replace: replaceProp, unstable_mask, 
 		unstable_useTransitions
 	]);
 }
+function useSearchParams(defaultInit) {
+	warning(typeof URLSearchParams !== "undefined", `You cannot use the \`useSearchParams\` hook in a browser that does not support the URLSearchParams API. If you need to support Internet Explorer 11, we recommend you load a polyfill such as https://github.com/ungap/url-search-params.`);
+	let defaultSearchParamsRef = import_react.useRef(createSearchParams(defaultInit));
+	let hasSetSearchParamsRef = import_react.useRef(false);
+	let location = useLocation();
+	let searchParams = import_react.useMemo(() => getSearchParamsForLocation(location.search, hasSetSearchParamsRef.current ? null : defaultSearchParamsRef.current), [location.search]);
+	let navigate = useNavigate();
+	return [searchParams, import_react.useCallback((nextInit, navigateOptions) => {
+		const newSearchParams = createSearchParams(typeof nextInit === "function" ? nextInit(new URLSearchParams(searchParams)) : nextInit);
+		hasSetSearchParamsRef.current = true;
+		navigate("?" + newSearchParams, navigateOptions);
+	}, [navigate, searchParams])];
+}
 var fetcherId = 0;
 var getUniqueFetcherId = () => `__${String(++fetcherId)}__`;
 function useSubmit() {
@@ -17574,15 +17602,15 @@ var require_react_jsx_runtime_development = /* @__PURE__ */ __commonJSMin(((expo
 		function isValidElement(object) {
 			return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
 		}
-		var React$2 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE$1 = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React$2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+		var React$3 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE$1 = Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React$3.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
 			return null;
 		};
-		React$2 = { react_stack_bottom_frame: function(callStackForError) {
+		React$3 = { react_stack_bottom_frame: function(callStackForError) {
 			return callStackForError();
 		} };
 		var specialPropKeyWarningShown;
 		var didWarnAboutElementRef = {};
-		var unknownOwnerDebugStack = React$2.react_stack_bottom_frame.bind(React$2, UnknownOwner)();
+		var unknownOwnerDebugStack = React$3.react_stack_bottom_frame.bind(React$3, UnknownOwner)();
 		var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
 		var didWarnAboutKeySpread = {};
 		exports.Fragment = REACT_FRAGMENT_TYPE;
@@ -18930,6 +18958,28 @@ var ArrowRight = createLucideIcon("arrow-right", [["path", {
 	d: "m12 5 7 7-7 7",
 	key: "xquz4c"
 }]]);
+var CircleAlert = createLucideIcon("circle-alert", [
+	["circle", {
+		cx: "12",
+		cy: "12",
+		r: "10",
+		key: "1mglay"
+	}],
+	["line", {
+		x1: "12",
+		x2: "12",
+		y1: "8",
+		y2: "12",
+		key: "1pkeuh"
+	}],
+	["line", {
+		x1: "12",
+		x2: "12.01",
+		y1: "16",
+		y2: "16",
+		key: "4dfq90"
+	}]
+]);
 var CircleCheck = createLucideIcon("circle-check", [["circle", {
 	cx: "12",
 	cy: "12",
@@ -18945,6 +18995,24 @@ var Circle = createLucideIcon("circle", [["circle", {
 	r: "10",
 	key: "1mglay"
 }]]);
+var LoaderCircle = createLucideIcon("loader-circle", [["path", {
+	d: "M21 12a9 9 0 1 1-6.219-8.56",
+	key: "13zald"
+}]]);
+var LogOut = createLucideIcon("log-out", [
+	["path", {
+		d: "m16 17 5-5-5-5",
+		key: "1bji2h"
+	}],
+	["path", {
+		d: "M21 12H9",
+		key: "dn1m92"
+	}],
+	["path", {
+		d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4",
+		key: "1uf3rs"
+	}]
+]);
 var X = createLucideIcon("x", [["path", {
 	d: "M18 6 6 18",
 	key: "1bl5f8"
@@ -23686,6 +23754,140 @@ var TooltipContent = import_react.forwardRef(({ className, sideOffset = 4, ...pr
 	...props
 }));
 TooltipContent.displayName = Content2.displayName;
+var AuthContext = (0, import_react.createContext)(null);
+var mockValidateToken = async (token) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (token === "invalid" || token === "expired") reject(/* @__PURE__ */ new Error("Invalid token"));
+			else resolve({
+				email: "client@adaptaelite.com",
+				clientId: "CLI-9981"
+			});
+		}, 1500);
+	});
+};
+const AuthProvider = ({ children }) => {
+	const [searchParams, setSearchParams] = useSearchParams();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const [user, setUser] = (0, import_react.useState)(null);
+	const [isLoading, setIsLoading] = (0, import_react.useState)(true);
+	const [error, setError] = (0, import_react.useState)(null);
+	const hasInitialized = (0, import_react.useRef)(false);
+	(0, import_react.useEffect)(() => {
+		const urlToken = searchParams.get("token");
+		if (hasInitialized.current && !urlToken) return;
+		hasInitialized.current = true;
+		const initAuth = async () => {
+			const stored = localStorage.getItem("adapta_session");
+			let session = stored ? JSON.parse(stored) : null;
+			const now = Date.now();
+			const DAY_MS = 1440 * 60 * 1e3;
+			const HALF_DAY_MS = 720 * 60 * 1e3;
+			if (urlToken) {
+				setIsLoading(true);
+				try {
+					const res = await mockValidateToken(urlToken);
+					session = {
+						user: res,
+						token: urlToken,
+						expiresAt: now + DAY_MS,
+						lastRefresh: now
+					};
+					localStorage.setItem("adapta_session", JSON.stringify(session));
+					setUser(res);
+					setError(null);
+					searchParams.delete("token");
+					setSearchParams(searchParams, { replace: true });
+					if (location.pathname !== "/") navigate("/", { replace: true });
+				} catch {
+					setError("Link expirado ou inválido. Solicite um novo link por email.");
+					localStorage.removeItem("adapta_session");
+				} finally {
+					setIsLoading(false);
+				}
+				return;
+			}
+			if (session) {
+				if (now > session.expiresAt) {
+					setError("Sessão expirada. Solicite um novo link por email.");
+					localStorage.removeItem("adapta_session");
+					setIsLoading(false);
+					return;
+				}
+				setUser(session.user);
+				setIsLoading(false);
+				if (now - session.lastRefresh > HALF_DAY_MS) try {
+					const res = await mockValidateToken(session.token);
+					session.user = res;
+					session.lastRefresh = now;
+					session.expiresAt = now + DAY_MS;
+					localStorage.setItem("adapta_session", JSON.stringify(session));
+					setUser(res);
+				} catch {
+					setError("Sessão expirada. Solicite um novo link por email.");
+					setUser(null);
+					localStorage.removeItem("adapta_session");
+				}
+			} else {
+				setError("Acesso negado. Utilize o link seguro enviado para seu email.");
+				setIsLoading(false);
+			}
+		};
+		initAuth();
+	}, [
+		searchParams,
+		setSearchParams,
+		navigate,
+		location.pathname
+	]);
+	(0, import_react.useEffect)(() => {
+		if (!user) return;
+		const interval = setInterval(async () => {
+			const stored = localStorage.getItem("adapta_session");
+			if (!stored) return;
+			const session = JSON.parse(stored);
+			const now = Date.now();
+			const DAY_MS = 1440 * 60 * 1e3;
+			const HALF_DAY_MS = 720 * 60 * 1e3;
+			if (now > session.expiresAt) {
+				setUser(null);
+				setError("Sessão expirada devido a inatividade (24h). Solicite um novo link.");
+				localStorage.removeItem("adapta_session");
+				return;
+			}
+			if (now - session.lastRefresh > HALF_DAY_MS) try {
+				const res = await mockValidateToken(session.token);
+				session.user = res;
+				session.lastRefresh = now;
+				session.expiresAt = now + DAY_MS;
+				localStorage.setItem("adapta_session", JSON.stringify(session));
+				setUser(res);
+			} catch {
+				setUser(null);
+				setError("Não foi possível renovar sua sessão. Solicite um novo link.");
+				localStorage.removeItem("adapta_session");
+			}
+		}, 60 * 1e3);
+		return () => clearInterval(interval);
+	}, [user]);
+	const logout = () => {
+		localStorage.removeItem("adapta_session");
+		setUser(null);
+		setError("Você saiu da sessão com segurança. Solicite um novo link para retornar.");
+	};
+	return import_react.createElement(AuthContext.Provider, { value: {
+		user,
+		isLoading,
+		error,
+		logout
+	} }, children);
+};
+function useAuthStore() {
+	const context = (0, import_react.useContext)(AuthContext);
+	if (!context) throw new Error("useAuthStore must be used within an AuthProvider");
+	return context;
+}
 var Card = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 	"data-uid": "src/components/ui/card.tsx:8:5",
 	"data-prohibitions": "[editContent]",
@@ -24593,11 +24795,11 @@ const Step6 = ({ data }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", 
 	]
 });
 function Index() {
-	const { currentStep, setCurrentStep, totalSteps } = useOutletContext();
+	const { currentStep, setCurrentStep, totalSteps, user } = useOutletContext();
 	const { toast: toast$2 } = useToast();
 	const [formData, setFormData] = (0, import_react.useState)({
 		name: "",
-		email: "",
+		email: user?.email || "",
 		objective: "",
 		portfolio: "",
 		risk: ""
@@ -24662,7 +24864,7 @@ function Index() {
 			setTimeout(() => {
 				setFormData({
 					name: "",
-					email: "",
+					email: user?.email || "",
 					objective: "",
 					portfolio: "",
 					risk: ""
@@ -24726,21 +24928,21 @@ function Index() {
 			"data-prohibitions": "[editContent]",
 			className: "border border-slate-200 shadow-elevation overflow-hidden bg-white/95 backdrop-blur-sm rounded-2xl",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				"data-uid": "src/pages/Index.tsx:118:9",
+				"data-uid": "src/pages/Index.tsx:117:9",
 				"data-prohibitions": "[editContent]",
 				className: "animate-fade-in-up",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardContent, {
-					"data-uid": "src/pages/Index.tsx:119:11",
+					"data-uid": "src/pages/Index.tsx:118:11",
 					"data-prohibitions": "[editContent]",
 					className: "p-6 sm:p-10 min-h-[360px] flex flex-col justify-center",
 					children: renderStep()
 				})
 			}, currentStep), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(CardFooter, {
-				"data-uid": "src/pages/Index.tsx:124:9",
+				"data-uid": "src/pages/Index.tsx:123:9",
 				"data-prohibitions": "[editContent]",
 				className: "px-6 py-5 sm:px-10 bg-slate-50/80 border-t border-slate-100 flex gap-4 justify-between items-center",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:125:11",
+					"data-uid": "src/pages/Index.tsx:124:11",
 					"data-prohibitions": "[]",
 					variant: "ghost",
 					size: "lg",
@@ -24749,35 +24951,35 @@ function Index() {
 					className: "h-12 px-2 sm:px-6 rounded-xl text-slate-500 hover:bg-slate-200/50 transition-colors",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-							"data-uid": "src/pages/Index.tsx:132:13",
+							"data-uid": "src/pages/Index.tsx:131:13",
 							"data-prohibitions": "[editContent]",
 							className: "mr-2 h-4 w-4"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							"data-uid": "src/pages/Index.tsx:133:13",
+							"data-uid": "src/pages/Index.tsx:132:13",
 							"data-prohibitions": "[]",
 							className: "hidden sm:inline",
 							children: "Anterior"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							"data-uid": "src/pages/Index.tsx:134:13",
+							"data-uid": "src/pages/Index.tsx:133:13",
 							"data-prohibitions": "[]",
 							className: "sm:hidden",
 							children: "Voltar"
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					"data-uid": "src/pages/Index.tsx:137:11",
+					"data-uid": "src/pages/Index.tsx:136:11",
 					"data-prohibitions": "[editContent]",
 					size: "lg",
 					onClick: handleNext,
 					className: "h-14 px-8 rounded-xl w-full sm:w-auto shadow-md hover:shadow-lg transition-all text-base bg-primary hover:bg-primary/90",
 					children: currentStep === totalSteps ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: ["Finalizar ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleCheck, {
-						"data-uid": "src/pages/Index.tsx:144:27",
+						"data-uid": "src/pages/Index.tsx:143:27",
 						"data-prohibitions": "[editContent]",
 						className: "ml-2 h-5 w-5"
 					})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: ["Próximo ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-						"data-uid": "src/pages/Index.tsx:148:25",
+						"data-uid": "src/pages/Index.tsx:147:25",
 						"data-prohibitions": "[editContent]",
 						className: "ml-2 h-5 w-5"
 					})] })
@@ -24981,155 +25183,269 @@ function Skeleton({ className, ...props }) {
 	});
 }
 function Layout() {
+	const { user, isLoading: isAuthLoading, error, logout } = useAuthStore();
 	const [currentStep, setCurrentStep] = (0, import_react.useState)(1);
-	const [isLoading, setIsLoading] = (0, import_react.useState)(true);
 	const totalSteps = 6;
 	const progress = currentStep / totalSteps * 100;
-	(0, import_react.useEffect)(() => {
-		const timer = setTimeout(() => setIsLoading(false), 800);
-		return () => clearTimeout(timer);
-	}, []);
-	if (isLoading) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/components/Layout.tsx:26:7",
+	if (isAuthLoading) return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/Layout.tsx:24:7",
 		"data-prohibitions": "[]",
-		className: "min-h-screen flex flex-col font-sans",
+		className: "min-h-screen flex flex-col font-sans bg-slate-50",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-			"data-uid": "src/components/Layout.tsx:27:9",
+			"data-uid": "src/components/Layout.tsx:25:9",
 			"data-prohibitions": "[]",
 			className: "w-full bg-white border-b border-slate-200",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/components/Layout.tsx:28:11",
+				"data-uid": "src/components/Layout.tsx:26:11",
 				"data-prohibitions": "[]",
 				className: "max-w-5xl mx-auto px-4 h-16 flex items-center justify-between",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-					"data-uid": "src/components/Layout.tsx:29:13",
+					"data-uid": "src/components/Layout.tsx:27:13",
 					"data-prohibitions": "[editContent]",
 					className: "h-6 w-32"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-					"data-uid": "src/components/Layout.tsx:30:13",
+					"data-uid": "src/components/Layout.tsx:28:13",
 					"data-prohibitions": "[editContent]",
-					className: "h-2 w-32 hidden sm:block"
+					className: "h-4 w-32 hidden sm:block"
 				})]
 			})
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-			"data-uid": "src/components/Layout.tsx:33:9",
+			"data-uid": "src/components/Layout.tsx:31:9",
 			"data-prohibitions": "[]",
-			className: "flex-1 flex flex-col items-center py-8 sm:py-16 px-4",
-			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				"data-uid": "src/components/Layout.tsx:34:11",
+			className: "flex-1 flex flex-col items-center justify-center py-8 sm:py-16 px-4",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/Layout.tsx:32:11",
 				"data-prohibitions": "[]",
-				className: "w-full max-w-[600px]",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
-					"data-uid": "src/components/Layout.tsx:35:13",
+				className: "w-full max-w-[600px] flex flex-col items-center gap-8",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
+					"data-uid": "src/components/Layout.tsx:33:13",
+					"data-prohibitions": "[editContent]",
+					className: "w-10 h-10 text-primary animate-spin"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, {
+					"data-uid": "src/components/Layout.tsx:34:13",
 					"data-prohibitions": "[editContent]",
 					className: "h-[400px] w-full rounded-2xl shadow-sm"
-				})
+				})]
 			})
 		})]
 	});
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/components/Layout.tsx:43:5",
+	if (error || !user) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/components/Layout.tsx:43:7",
 		"data-prohibitions": "[editContent]",
-		className: "min-h-screen flex flex-col font-sans selection:bg-primary/20",
+		className: "min-h-screen flex flex-col items-center justify-center bg-slate-50 p-4 font-sans",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-uid": "src/components/Layout.tsx:44:9",
+			"data-prohibitions": "[editContent]",
+			className: "w-full max-w-md bg-white p-8 rounded-2xl shadow-elevation text-center border border-slate-100 relative overflow-hidden",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/components/Layout.tsx:45:11",
+					"data-prohibitions": "[editContent]",
+					className: "absolute top-0 left-0 w-full h-1 bg-red-500"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/components/Layout.tsx:46:11",
+					"data-prohibitions": "[]",
+					className: "w-16 h-16 bg-red-50 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CircleAlert, {
+						"data-uid": "src/components/Layout.tsx:47:13",
+						"data-prohibitions": "[editContent]",
+						className: "w-8 h-8"
+					})
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+					"data-uid": "src/components/Layout.tsx:49:11",
+					"data-prohibitions": "[]",
+					className: "text-2xl font-bold text-slate-900 mb-3",
+					children: "Acesso Restrito"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					"data-uid": "src/components/Layout.tsx:50:11",
+					"data-prohibitions": "[editContent]",
+					className: "text-slate-600 mb-8 leading-relaxed",
+					children: error || "Acesso negado. Utilize o link seguro enviado para seu email."
+				}),
+				!user && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/components/Layout.tsx:54:13",
+					"data-prohibitions": "[]",
+					className: "mt-4 p-5 bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-600 text-left",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+							"data-uid": "src/components/Layout.tsx:55:15",
+							"data-prohibitions": "[]",
+							className: "mb-3 font-semibold text-slate-800 flex items-center",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								"data-uid": "src/components/Layout.tsx:56:17",
+								"data-prohibitions": "[]",
+								className: "w-2 h-2 rounded-full bg-blue-500 mr-2"
+							}), "Modo de Demonstração"]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							"data-uid": "src/components/Layout.tsx:59:15",
+							"data-prohibitions": "[]",
+							className: "mb-4",
+							children: "Para testar a experiência, você pode simular o acesso com um link seguro."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+							"data-uid": "src/components/Layout.tsx:62:15",
+							"data-prohibitions": "[]",
+							variant: "default",
+							className: "w-full bg-primary hover:bg-primary/90 shadow-sm",
+							onClick: () => window.location.href = "/?token=demo",
+							children: "Simular Acesso Seguro"
+						})
+					]
+				})
+			]
+		})
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/Layout.tsx:77:5",
+		"data-prohibitions": "[editContent]",
+		className: "min-h-screen flex flex-col font-sans selection:bg-primary/20 bg-slate-50/50",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-				"data-uid": "src/components/Layout.tsx:44:7",
+				"data-uid": "src/components/Layout.tsx:78:7",
 				"data-prohibitions": "[editContent]",
 				className: "w-full bg-white border-b border-slate-200 sticky top-0 z-20 shadow-sm",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/components/Layout.tsx:45:9",
+					"data-uid": "src/components/Layout.tsx:79:9",
 					"data-prohibitions": "[editContent]",
 					className: "max-w-5xl mx-auto px-4 h-16 flex items-center justify-between",
 					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							"data-uid": "src/components/Layout.tsx:46:11",
-							"data-prohibitions": "[]",
-							className: "font-bold text-primary text-xl tracking-tight",
-							children: "Adapta Elite"
-						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/Layout.tsx:47:11",
+							"data-uid": "src/components/Layout.tsx:80:11",
 							"data-prohibitions": "[editContent]",
-							className: "hidden sm:flex items-center gap-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								"data-uid": "src/components/Layout.tsx:48:13",
+							className: "font-bold text-primary text-xl tracking-tight flex items-center",
+							children: ["Adapta Elite", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								"data-uid": "src/components/Layout.tsx:82:13",
 								"data-prohibitions": "[editContent]",
-								className: "text-sm font-medium text-slate-500",
-								children: [
-									"Passo ",
-									currentStep,
-									" de ",
-									totalSteps
-								]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Progress, {
-								"data-uid": "src/components/Layout.tsx:51:13",
-								"data-prohibitions": "[editContent]",
-								value: progress,
-								className: "w-32 h-2 bg-slate-100"
+								className: "ml-3 px-2 py-0.5 bg-slate-100 text-slate-500 rounded text-[10px] font-medium tracking-wider uppercase border border-slate-200 hidden sm:inline-block",
+								children: user.clientId
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							"data-uid": "src/components/Layout.tsx:53:11",
+							"data-uid": "src/components/Layout.tsx:87:11",
 							"data-prohibitions": "[editContent]",
-							className: "sm:hidden text-sm font-medium text-slate-500",
+							className: "hidden sm:flex items-center gap-4",
 							children: [
-								currentStep,
-								" / ",
-								totalSteps
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									"data-uid": "src/components/Layout.tsx:88:13",
+									"data-prohibitions": "[editContent]",
+									className: "text-sm font-medium text-slate-500",
+									children: [
+										"Passo ",
+										currentStep,
+										" de ",
+										totalSteps
+									]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Progress, {
+									"data-uid": "src/components/Layout.tsx:91:13",
+									"data-prohibitions": "[editContent]",
+									value: progress,
+									className: "w-32 h-2 bg-slate-100"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-uid": "src/components/Layout.tsx:92:13",
+									"data-prohibitions": "[]",
+									className: "w-px h-6 bg-slate-200 ml-2"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+									"data-uid": "src/components/Layout.tsx:93:13",
+									"data-prohibitions": "[]",
+									variant: "ghost",
+									size: "sm",
+									onClick: logout,
+									className: "text-slate-500 hover:text-red-600 hover:bg-red-50 transition-colors",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, {
+										"data-uid": "src/components/Layout.tsx:99:15",
+										"data-prohibitions": "[editContent]",
+										className: "w-4 h-4 mr-2"
+									}), "Sair"]
+								})
 							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							"data-uid": "src/components/Layout.tsx:104:11",
+							"data-prohibitions": "[editContent]",
+							className: "sm:hidden flex items-center gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								"data-uid": "src/components/Layout.tsx:105:13",
+								"data-prohibitions": "[editContent]",
+								className: "text-sm font-medium text-slate-500",
+								children: [
+									currentStep,
+									" / ",
+									totalSteps
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								"data-uid": "src/components/Layout.tsx:108:13",
+								"data-prohibitions": "[]",
+								variant: "ghost",
+								size: "icon",
+								onClick: logout,
+								className: "h-8 w-8 text-slate-500 hover:text-red-600 hover:bg-red-50",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, {
+									"data-uid": "src/components/Layout.tsx:114:15",
+									"data-prohibitions": "[editContent]",
+									className: "w-4 h-4"
+								})
+							})]
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Progress, {
-					"data-uid": "src/components/Layout.tsx:57:9",
+					"data-uid": "src/components/Layout.tsx:118:9",
 					"data-prohibitions": "[editContent]",
 					value: progress,
 					className: "w-full h-1 sm:hidden rounded-none bg-slate-100"
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
-				"data-uid": "src/components/Layout.tsx:60:7",
+				"data-uid": "src/components/Layout.tsx:121:7",
 				"data-prohibitions": "[]",
 				className: "flex-1 flex flex-col items-center py-8 sm:py-16 px-4 sm:px-6",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/components/Layout.tsx:61:9",
+					"data-uid": "src/components/Layout.tsx:122:9",
 					"data-prohibitions": "[]",
 					className: "w-full max-w-[600px] flex-1 flex flex-col justify-center",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
-						"data-uid": "src/components/Layout.tsx:62:11",
+						"data-uid": "src/components/Layout.tsx:123:11",
 						"data-prohibitions": "[editContent]",
 						context: {
 							currentStep,
 							setCurrentStep,
-							totalSteps
+							totalSteps,
+							user
 						}
 					})
 				})
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
-				"data-uid": "src/components/Layout.tsx:68:7",
+				"data-uid": "src/components/Layout.tsx:129:7",
 				"data-prohibitions": "[editContent]",
 				className: "w-full py-8 text-center text-sm text-slate-400 mt-auto",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/components/Layout.tsx:69:9",
+					"data-uid": "src/components/Layout.tsx:130:9",
 					"data-prohibitions": "[]",
 					className: "space-x-6 mb-2",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-							"data-uid": "src/components/Layout.tsx:70:11",
+							"data-uid": "src/components/Layout.tsx:131:11",
 							"data-prohibitions": "[]",
 							href: "#",
 							className: "hover:text-slate-600 transition-colors",
 							children: "Privacidade"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-							"data-uid": "src/components/Layout.tsx:73:11",
+							"data-uid": "src/components/Layout.tsx:134:11",
 							"data-prohibitions": "[]",
 							href: "#",
 							className: "hover:text-slate-600 transition-colors",
 							children: "Termos de Uso"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-							"data-uid": "src/components/Layout.tsx:76:11",
+							"data-uid": "src/components/Layout.tsx:137:11",
 							"data-prohibitions": "[]",
 							href: "#",
 							className: "hover:text-slate-600 transition-colors",
@@ -25137,7 +25453,7 @@ function Layout() {
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-					"data-uid": "src/components/Layout.tsx:80:9",
+					"data-uid": "src/components/Layout.tsx:141:9",
 					"data-prohibitions": "[editContent]",
 					children: [
 						"© ",
@@ -25150,54 +25466,58 @@ function Layout() {
 	});
 }
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
-	"data-uid": "src/App.tsx:10:3",
+	"data-uid": "src/App.tsx:11:3",
 	"data-prohibitions": "[]",
 	future: {
 		v7_startTransition: false,
 		v7_relativeSplatPath: false
 	},
-	children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
-		"data-uid": "src/App.tsx:11:5",
+	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, {
+		"data-uid": "src/App.tsx:12:5",
 		"data-prohibitions": "[]",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-				"data-uid": "src/App.tsx:12:7",
-				"data-prohibitions": "[editContent]"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$1, {
-				"data-uid": "src/App.tsx:13:7",
-				"data-prohibitions": "[editContent]"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Routes, {
-				"data-uid": "src/App.tsx:14:7",
-				"data-prohibitions": "[]",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
+			"data-uid": "src/App.tsx:13:7",
+			"data-prohibitions": "[]",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
+					"data-uid": "src/App.tsx:14:9",
+					"data-prohibitions": "[editContent]"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$1, {
 					"data-uid": "src/App.tsx:15:9",
+					"data-prohibitions": "[editContent]"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Routes, {
+					"data-uid": "src/App.tsx:16:9",
 					"data-prohibitions": "[]",
-					element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-						"data-uid": "src/App.tsx:15:25",
-						"data-prohibitions": "[editContent]"
-					}),
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-						"data-uid": "src/App.tsx:16:11",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+						"data-uid": "src/App.tsx:17:11",
+						"data-prohibitions": "[]",
+						element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
+							"data-uid": "src/App.tsx:17:27",
+							"data-prohibitions": "[editContent]"
+						}),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+							"data-uid": "src/App.tsx:18:13",
+							"data-prohibitions": "[editContent]",
+							path: "/",
+							element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
+								"data-uid": "src/App.tsx:18:38",
+								"data-prohibitions": "[editContent]"
+							})
+						})
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+						"data-uid": "src/App.tsx:20:11",
 						"data-prohibitions": "[editContent]",
-						path: "/",
-						element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-							"data-uid": "src/App.tsx:16:36",
+						path: "*",
+						element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound_default, {
+							"data-uid": "src/App.tsx:20:36",
 							"data-prohibitions": "[editContent]"
 						})
-					})
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-					"data-uid": "src/App.tsx:18:9",
-					"data-prohibitions": "[editContent]",
-					path: "*",
-					element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound_default, {
-						"data-uid": "src/App.tsx:18:34",
-						"data-prohibitions": "[editContent]"
-					})
-				})]
-			})
-		]
+					})]
+				})
+			]
+		})
 	})
 });
 var App_default = App;
@@ -25206,4 +25526,4 @@ var App_default = App;
 	"data-prohibitions": "[editContent]"
 }));
 
-//# sourceMappingURL=index-CxzPXXoM.js.map
+//# sourceMappingURL=index-n0-T9T1s.js.map

@@ -16,12 +16,12 @@ import {
 } from '@/components/onboarding/Steps'
 
 export default function Index() {
-  const { currentStep, setCurrentStep, totalSteps } = useOutletContext<LayoutContextType>()
+  const { currentStep, setCurrentStep, totalSteps, user } = useOutletContext<LayoutContextType>()
   const { toast } = useToast()
 
   const [formData, setFormData] = useState<FormData>({
     name: '',
-    email: '',
+    email: user?.email || '',
     objective: '',
     portfolio: '',
     risk: '',
@@ -79,7 +79,7 @@ export default function Index() {
       })
       // Reset after submission for demo purposes
       setTimeout(() => {
-        setFormData({ name: '', email: '', objective: '', portfolio: '', risk: '' })
+        setFormData({ name: '', email: user?.email || '', objective: '', portfolio: '', risk: '' })
         setCurrentStep(1)
       }, 3000)
     }
@@ -114,7 +114,6 @@ export default function Index() {
   return (
     <div className="w-full relative">
       <Card className="border border-slate-200 shadow-elevation overflow-hidden bg-white/95 backdrop-blur-sm rounded-2xl">
-        {/* The key prop forces a re-mount and triggers the CSS animation */}
         <div key={currentStep} className="animate-fade-in-up">
           <CardContent className="p-6 sm:p-10 min-h-[360px] flex flex-col justify-center">
             {renderStep()}
