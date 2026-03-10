@@ -1,4 +1,4 @@
-import { C as useToast, D as require_react, E as require_react_dom, O as __toESM, S as composeEventHandlers, _ as createSlot, a as cn, b as require_jsx_runtime, c as createLucideIcon, d as Presence, f as Portal, g as createCollection, h as Primitive, i as useId, l as cva, m as useCallbackRef$1, n as createSlot$1, o as X, p as DismissableLayer, r as useSize, s as CircleAlert, t as Button, u as useControllableState, v as createContext2, x as useComposedRefs, y as createContextScope } from "./index-B-YZLdpw.js";
+import { C as useToast, D as require_react, E as require_react_dom, O as __toESM, S as composeEventHandlers, _ as createSlot, a as cn, b as require_jsx_runtime, c as createLucideIcon, d as Presence, f as Portal, g as createCollection, h as Primitive, i as useId, l as cva, m as useCallbackRef$1, n as createSlot$1, o as X, p as DismissableLayer, r as useSize, s as CircleAlert, t as Button, u as useControllableState, v as createContext2, x as useComposedRefs, y as createContextScope } from "./index-BFYwGJmW.js";
 var CalendarDays = createLucideIcon("calendar-days", [
 	["path", {
 		d: "M8 2v4",
@@ -2800,22 +2800,10 @@ function Index() {
 			setIsSubmitting(true);
 			try {
 				const controller = new AbortController();
-				const timeoutId = setTimeout(() => controller.abort(), 5e3);
-				const payload = {
-					email: data.additionalData.email,
-					profession: data.profession,
-					useCases: data.useCases,
-					timestamp: (/* @__PURE__ */ new Date()).toISOString(),
-					fullData: data
-				};
-				const res = await fetch("/api/submit-form", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(payload),
-					signal: controller.signal
-				}).catch(() => null);
+				const timeoutId = setTimeout(() => controller.abort(), 1e4);
+				data.additionalData.name, data.additionalData.email, data.profession, data.useCases, data.additionalData.portfolio, data.additionalData.risk, data.additionalData.vslWatched;
+				await new Promise((resolve) => setTimeout(resolve, 1500));
 				clearTimeout(timeoutId);
-				if (res && !res.ok && res.status !== 404) throw new Error("Server error");
 				if (Math.random() > .95) throw new Error("Simulated failure");
 				toast({
 					title: "Dados salvos com sucesso!",
@@ -2864,37 +2852,37 @@ function Index() {
 		};
 		switch (step) {
 			case 1: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step1, {
-				"data-uid": "src/pages/Index.tsx:181:16",
+				"data-uid": "src/pages/Index.tsx:197:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
 			case 2: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step2, {
-				"data-uid": "src/pages/Index.tsx:183:16",
+				"data-uid": "src/pages/Index.tsx:199:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
 			case 3: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step3, {
-				"data-uid": "src/pages/Index.tsx:185:16",
+				"data-uid": "src/pages/Index.tsx:201:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
 			case 4: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step4, {
-				"data-uid": "src/pages/Index.tsx:187:16",
+				"data-uid": "src/pages/Index.tsx:203:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
 			case 5: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step5, {
-				"data-uid": "src/pages/Index.tsx:189:16",
+				"data-uid": "src/pages/Index.tsx:205:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
 			case 6: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step6, {
-				"data-uid": "src/pages/Index.tsx:191:16",
+				"data-uid": "src/pages/Index.tsx:207:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
 			case 7: return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step7, {
-				"data-uid": "src/pages/Index.tsx:193:16",
+				"data-uid": "src/pages/Index.tsx:209:16",
 				"data-prohibitions": "[editContent]",
 				...props
 			});
@@ -2903,24 +2891,24 @@ function Index() {
 	};
 	if (!isLoaded) return null;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Index.tsx:202:5",
+		"data-uid": "src/pages/Index.tsx:218:5",
 		"data-prohibitions": "[editContent]",
 		className: "min-h-screen flex flex-col font-sans",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-			"data-uid": "src/pages/Index.tsx:203:7",
+			"data-uid": "src/pages/Index.tsx:219:7",
 			"data-prohibitions": "[editContent]",
 			className: "w-full bg-[#0C0C0D]/80 backdrop-blur-md border-b border-[#333333] py-4 px-6 sticky top-0 z-10",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:204:9",
+				"data-uid": "src/pages/Index.tsx:220:9",
 				"data-prohibitions": "[editContent]",
 				className: "max-w-3xl mx-auto flex items-center justify-between mb-4",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/Index.tsx:205:11",
+					"data-uid": "src/pages/Index.tsx:221:11",
 					"data-prohibitions": "[]",
 					className: "font-bold text-xl text-primary tracking-tight font-display",
 					children: "Adapta Elite"
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					"data-uid": "src/pages/Index.tsx:208:11",
+					"data-uid": "src/pages/Index.tsx:224:11",
 					"data-prohibitions": "[editContent]",
 					className: "text-sm font-medium text-muted-foreground",
 					children: step < 7 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
@@ -2929,7 +2917,7 @@ function Index() {
 						" de 6",
 						" ",
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-							"data-uid": "src/pages/Index.tsx:212:17",
+							"data-uid": "src/pages/Index.tsx:228:17",
 							"data-prohibitions": "[editContent]",
 							className: "ml-1 text-muted-foreground/70",
 							children: [
@@ -2939,34 +2927,34 @@ function Index() {
 							]
 						})
 					] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						"data-uid": "src/pages/Index.tsx:217:15",
+						"data-uid": "src/pages/Index.tsx:233:15",
 						"data-prohibitions": "[]",
 						className: "text-primary font-semibold flex items-center gap-1",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-							"data-uid": "src/pages/Index.tsx:218:17",
+							"data-uid": "src/pages/Index.tsx:234:17",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4"
 						}), " Concluído"]
 					})
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:224:9",
+				"data-uid": "src/pages/Index.tsx:240:9",
 				"data-prohibitions": "[editContent]",
 				className: "max-w-3xl mx-auto relative z-0 mt-2",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Index.tsx:225:11",
+						"data-uid": "src/pages/Index.tsx:241:11",
 						"data-prohibitions": "[editContent]",
 						className: "absolute top-1/2 left-0 w-full h-1.5 bg-[#262626] -translate-y-1/2 rounded-full z-[-1]"
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Index.tsx:226:11",
+						"data-uid": "src/pages/Index.tsx:242:11",
 						"data-prohibitions": "[editContent]",
 						className: "absolute top-1/2 left-0 h-1.5 bg-primary -translate-y-1/2 rounded-full transition-all duration-700 ease-in-out z-[-1]",
 						style: { width: `${Math.min((step - 1) / 5 * 100, 100)}%` }
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						"data-uid": "src/pages/Index.tsx:230:11",
+						"data-uid": "src/pages/Index.tsx:246:11",
 						"data-prohibitions": "[editContent]",
 						className: "relative flex justify-between w-full",
 						children: [
@@ -2980,11 +2968,11 @@ function Index() {
 							const isCompleted = step === 7 ? true : i < step;
 							const isActive = step === 7 ? false : i === step;
 							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/pages/Index.tsx:236:17",
+								"data-uid": "src/pages/Index.tsx:252:17",
 								"data-prohibitions": "[editContent]",
 								className: cn("w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-semibold transition-all duration-500", isActive ? "bg-primary text-primary-foreground ring-4 ring-primary/20 scale-110 shadow-glow" : isCompleted ? "bg-primary text-primary-foreground scale-100" : "bg-[#262626] text-muted-foreground opacity-80 scale-95"),
 								children: isCompleted ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-									"data-uid": "src/pages/Index.tsx:248:21",
+									"data-uid": "src/pages/Index.tsx:264:21",
 									"data-prohibitions": "[editContent]",
 									className: "w-4 h-4 sm:w-5 sm:h-5 animate-in zoom-in duration-300"
 								}) : i
@@ -2994,20 +2982,20 @@ function Index() {
 				]
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", {
-			"data-uid": "src/pages/Index.tsx:259:7",
+			"data-uid": "src/pages/Index.tsx:275:7",
 			"data-prohibitions": "[editContent]",
 			className: "flex-1 w-full max-w-3xl mx-auto p-4 md:p-8 flex flex-col justify-center py-10",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				"data-uid": "src/pages/Index.tsx:260:9",
+				"data-uid": "src/pages/Index.tsx:276:9",
 				"data-prohibitions": "[editContent]",
 				className: "bg-[#111111]/80 backdrop-blur-sm rounded-[16px] shadow-elevation border border-[#333333] p-6 md:p-10 flex-1 min-h-[400px]",
 				children: renderStep()
 			}), step < 7 && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:265:11",
+				"data-uid": "src/pages/Index.tsx:281:11",
 				"data-prohibitions": "[editContent]",
 				className: "flex items-center justify-between mt-8 pb-10 gap-4",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:266:13",
+					"data-uid": "src/pages/Index.tsx:282:13",
 					"data-prohibitions": "[editContent]",
 					variant: "outline",
 					size: "lg",
@@ -3015,17 +3003,17 @@ function Index() {
 					disabled: isSubmitting || step === 1,
 					className: cn("h-14 px-4 sm:px-6 text-base shadow-sm", step === 1 && "invisible"),
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronLeft, {
-						"data-uid": "src/pages/Index.tsx:273:15",
+						"data-uid": "src/pages/Index.tsx:289:15",
 						"data-prohibitions": "[editContent]",
 						className: "mr-1 sm:mr-2 h-5 w-5"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						"data-uid": "src/pages/Index.tsx:274:15",
+						"data-uid": "src/pages/Index.tsx:290:15",
 						"data-prohibitions": "[]",
 						className: "hidden sm:inline",
 						children: "Voltar"
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:277:13",
+					"data-uid": "src/pages/Index.tsx:293:13",
 					"data-prohibitions": "[editContent]",
 					size: "lg",
 					onClick: handleNext,
@@ -3033,13 +3021,13 @@ function Index() {
 					className: cn("h-14 px-6 sm:px-8 text-base transition-all duration-500", !isValid() ? "bg-[#262626] text-[#666666] cursor-not-allowed border-none shadow-none disabled:opacity-80 hover:bg-[#262626] hover:-translate-y-0 hover:shadow-none" : "bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow hover:shadow-glow hover:-translate-y-0.5"),
 					children: [
 						isSubmitting && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/pages/Index.tsx:288:32",
+							"data-uid": "src/pages/Index.tsx:304:32",
 							"data-prohibitions": "[editContent]",
 							className: "mr-2 h-5 w-5 animate-spin"
 						}),
 						!isSubmitting && step === 6 ? "Finalizar" : !isSubmitting ? "Continuar" : "Enviando...",
 						!isSubmitting && step !== 6 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronRight, {
-							"data-uid": "src/pages/Index.tsx:294:47",
+							"data-uid": "src/pages/Index.tsx:310:47",
 							"data-prohibitions": "[editContent]",
 							className: "ml-1 sm:ml-2 h-5 w-5"
 						})
@@ -3051,4 +3039,4 @@ function Index() {
 }
 export { Index as default };
 
-//# sourceMappingURL=Index-BjoFHDh2.js.map
+//# sourceMappingURL=Index-9PdalXgT.js.map

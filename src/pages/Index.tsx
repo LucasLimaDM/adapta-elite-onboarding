@@ -117,30 +117,46 @@ export default function Index() {
       setIsSubmitting(true)
       try {
         const controller = new AbortController()
-        const timeoutId = setTimeout(() => controller.abort(), 5000)
+        const timeoutId = setTimeout(() => controller.abort(), 10000)
 
         const payload = {
+          name: data.additionalData.name,
           email: data.additionalData.email,
           profession: data.profession,
-          useCases: data.useCases,
-          timestamp: new Date().toISOString(),
-          fullData: data,
+          use_cases: data.useCases,
+          portfolio: data.additionalData.portfolio,
+          risk: data.additionalData.risk,
+          vsl_watched: data.additionalData.vslWatched,
+          full_payload: data,
         }
 
-        const res = await fetch('/api/submit-form', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-          signal: controller.signal,
-        }).catch(() => null)
+        const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+        const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-        clearTimeout(timeoutId)
+        if (supabaseUrl && supabaseAnonKey) {
+          const res = await fetch(`${supabaseUrl}/rest/v1/onboarding_submissions`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              apikey: supabaseAnonKey,
+              Authorization: `Bearer ${supabaseAnonKey}`,
+              Prefer: 'return=minimal',
+            },
+            body: JSON.stringify(payload),
+            signal: controller.signal,
+          })
 
-        if (res && !res.ok && res.status !== 404) {
-          throw new Error('Server error')
+          clearTimeout(timeoutId)
+
+          if (!res.ok) {
+            throw new Error('Falha ao salvar no banco de dados')
+          }
+        } else {
+          // Mock delay for local development without Supabase credentials
+          await new Promise((resolve) => setTimeout(resolve, 1500))
+          clearTimeout(timeoutId)
+          if (Math.random() > 0.95) throw new Error('Simulated failure')
         }
-
-        if (Math.random() > 0.95) throw new Error('Simulated failure')
 
         toast({
           title: 'Dados salvos com sucesso!',
