@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-DGOHcOTm.js","assets/label-Dou-z1Th.js","assets/loader-circle-D_HlnIXX.js","assets/api-CpE6hUO2.js","assets/Dashboard-C0Lyf6gT.js","assets/Login-zyzEXp4j.js","assets/SignUp-CI6JI6yJ.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CGKMnlbT.js","assets/label-CyA0Rwal.js","assets/arrow-left-CAy9WWtQ.js","assets/loader-circle-Bahjpv76.js","assets/api-BHqYUcLl.js","assets/Dashboard-CGOlxsnt.js","assets/Login-Dy6TgW1o.js","assets/SignUp-CucLd2En.js","assets/ForgotPassword-BWiGjZ8h.js","assets/ResetPassword-B7SXEDDC.js"])))=>i.map(i=>d[i]);
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -23801,18 +23801,36 @@ const AuthProvider = ({ children }) => {
 	const supabaseKey = void 0;
 	(0, import_react.useEffect)(() => {
 		const initAuth = async () => {
-			const stored = localStorage.getItem("adapta_auth_session");
-			if (stored) try {
-				const session = JSON.parse(stored);
+			const hashParams = new URLSearchParams(window.location.hash.substring(1));
+			const accessToken = hashParams.get("access_token");
+			const refreshToken = hashParams.get("refresh_token");
+			if (accessToken) {
+				const session = {
+					access_token: accessToken,
+					refresh_token: refreshToken || "",
+					user: {
+						id: "mock-id",
+						email: "mock@example.com"
+					}
+				};
+				localStorage.setItem("adapta_auth_session", JSON.stringify(session));
 				setUser(session.user);
-				setToken(session.access_token);
-			} catch (e) {
-				localStorage.removeItem("adapta_auth_session");
+				setToken(accessToken);
+				window.history.replaceState(null, "", window.location.pathname + window.location.search);
+			} else {
+				const stored = localStorage.getItem("adapta_auth_session");
+				if (stored) try {
+					const session = JSON.parse(stored);
+					setUser(session.user);
+					setToken(session.access_token);
+				} catch (e) {
+					localStorage.removeItem("adapta_auth_session");
+				}
 			}
 			setIsLoading(false);
 		};
 		initAuth();
-	}, []);
+	}, [supabaseUrl, supabaseKey]);
 	const login = async (email, password) => {
 		setError(null);
 		await new Promise((r$1) => setTimeout(r$1, 1e3));
@@ -23881,6 +23899,14 @@ const AuthProvider = ({ children }) => {
 		setUser(null);
 		setToken(null);
 	};
+	const resetPassword = async (email) => {
+		setError(null);
+		await new Promise((r$1) => setTimeout(r$1, 1e3));
+	};
+	const updatePassword = async (password) => {
+		setError(null);
+		await new Promise((r$1) => setTimeout(r$1, 1e3));
+	};
 	return import_react.createElement(AuthContext.Provider, { value: {
 		user,
 		token,
@@ -23888,7 +23914,9 @@ const AuthProvider = ({ children }) => {
 		error,
 		login,
 		signup,
-		logout
+		logout,
+		resetPassword,
+		updatePassword
 	} }, children);
 };
 function useAuthStore() {
@@ -24242,16 +24270,18 @@ function ProtectedRoute() {
 		"data-prohibitions": "[editContent]"
 	});
 }
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-DGOHcOTm.js"), __vite__mapDeps([0,1,2,3])));
-var Dashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-C0Lyf6gT.js"), __vite__mapDeps([4,2,3])));
-var NotFound = (0, import_react.lazy)(() => __vitePreload(() => import("./NotFound-CjUesKGr.js"), []));
-var Login = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-zyzEXp4j.js"), __vite__mapDeps([5,1,2])));
-var SignUp = (0, import_react.lazy)(() => __vitePreload(() => import("./SignUp-CI6JI6yJ.js"), __vite__mapDeps([6,1,2])));
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CGKMnlbT.js"), __vite__mapDeps([0,1,2,3,4])));
+var Dashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-CGOlxsnt.js"), __vite__mapDeps([5,3,4])));
+var NotFound = (0, import_react.lazy)(() => __vitePreload(() => import("./NotFound-DQajeCPt.js"), []));
+var Login = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-Dy6TgW1o.js"), __vite__mapDeps([6,1,3])));
+var SignUp = (0, import_react.lazy)(() => __vitePreload(() => import("./SignUp-CucLd2En.js"), __vite__mapDeps([7,1,3])));
+var ForgotPassword = (0, import_react.lazy)(() => __vitePreload(() => import("./ForgotPassword-BWiGjZ8h.js"), __vite__mapDeps([8,1,2,3])));
+var ResetPassword = (0, import_react.lazy)(() => __vitePreload(() => import("./ResetPassword-B7SXEDDC.js"), __vite__mapDeps([9,1,3])));
 function GuestRoute({ children }) {
 	const { user, isLoading } = useAuthStore();
 	if (isLoading) return null;
 	if (user) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigate, {
-		"data-uid": "src/App.tsx:22:20",
+		"data-uid": "src/App.tsx:24:20",
 		"data-prohibitions": "[editContent]",
 		to: "/",
 		replace: true
@@ -24259,115 +24289,137 @@ function GuestRoute({ children }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children });
 }
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorBoundary, {
-	"data-uid": "src/App.tsx:27:3",
+	"data-uid": "src/App.tsx:29:3",
 	"data-prohibitions": "[]",
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NetworkStatus, {
-		"data-uid": "src/App.tsx:28:5",
+		"data-uid": "src/App.tsx:30:5",
 		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
-			"data-uid": "src/App.tsx:29:7",
+			"data-uid": "src/App.tsx:31:7",
 			"data-prohibitions": "[]",
 			future: {
 				v7_startTransition: false,
 				v7_relativeSplatPath: false
 			},
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, {
-				"data-uid": "src/App.tsx:30:9",
+				"data-uid": "src/App.tsx:32:9",
 				"data-prohibitions": "[]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
-					"data-uid": "src/App.tsx:31:11",
+					"data-uid": "src/App.tsx:33:11",
 					"data-prohibitions": "[]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-							"data-uid": "src/App.tsx:32:13",
+							"data-uid": "src/App.tsx:34:13",
 							"data-prohibitions": "[editContent]"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$1, {
-							"data-uid": "src/App.tsx:33:13",
+							"data-uid": "src/App.tsx:35:13",
 							"data-prohibitions": "[editContent]"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
-							"data-uid": "src/App.tsx:34:13",
+							"data-uid": "src/App.tsx:36:13",
 							"data-prohibitions": "[]",
 							fallback: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/App.tsx:36:17",
+								"data-uid": "src/App.tsx:38:17",
 								"data-prohibitions": "[]",
 								className: "min-h-screen flex items-center justify-center bg-transparent",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/App.tsx:37:19",
+									"data-uid": "src/App.tsx:39:19",
 									"data-prohibitions": "[]",
 									className: "w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"
 								})
 							}),
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Routes, {
-								"data-uid": "src/App.tsx:41:15",
+								"data-uid": "src/App.tsx:43:15",
 								"data-prohibitions": "[]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
-									"data-uid": "src/App.tsx:42:17",
+									"data-uid": "src/App.tsx:44:17",
 									"data-prohibitions": "[]",
 									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-										"data-uid": "src/App.tsx:42:33",
+										"data-uid": "src/App.tsx:44:33",
 										"data-prohibitions": "[editContent]"
 									}),
 									children: [
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-											"data-uid": "src/App.tsx:43:19",
+											"data-uid": "src/App.tsx:45:19",
 											"data-prohibitions": "[editContent]",
 											path: "/login",
 											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuestRoute, {
-												"data-uid": "src/App.tsx:46:23",
+												"data-uid": "src/App.tsx:48:23",
 												"data-prohibitions": "[]",
 												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Login, {
-													"data-uid": "src/App.tsx:47:25",
+													"data-uid": "src/App.tsx:49:25",
 													"data-prohibitions": "[editContent]"
 												})
 											})
 										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-											"data-uid": "src/App.tsx:51:19",
+											"data-uid": "src/App.tsx:53:19",
 											"data-prohibitions": "[editContent]",
 											path: "/signup",
 											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuestRoute, {
-												"data-uid": "src/App.tsx:54:23",
+												"data-uid": "src/App.tsx:56:23",
 												"data-prohibitions": "[]",
 												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SignUp, {
-													"data-uid": "src/App.tsx:55:25",
+													"data-uid": "src/App.tsx:57:25",
 													"data-prohibitions": "[editContent]"
 												})
 											})
 										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+											"data-uid": "src/App.tsx:61:19",
+											"data-prohibitions": "[editContent]",
+											path: "/forgot-password",
+											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuestRoute, {
+												"data-uid": "src/App.tsx:64:23",
+												"data-prohibitions": "[]",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ForgotPassword, {
+													"data-uid": "src/App.tsx:65:25",
+													"data-prohibitions": "[editContent]"
+												})
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+											"data-uid": "src/App.tsx:69:19",
+											"data-prohibitions": "[editContent]",
+											path: "/reset-password",
+											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ResetPassword, {
+												"data-uid": "src/App.tsx:69:58",
+												"data-prohibitions": "[editContent]"
+											})
+										}),
 										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
-											"data-uid": "src/App.tsx:60:19",
+											"data-uid": "src/App.tsx:71:19",
 											"data-prohibitions": "[]",
 											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProtectedRoute, {
-												"data-uid": "src/App.tsx:60:35",
+												"data-uid": "src/App.tsx:71:35",
 												"data-prohibitions": "[editContent]"
 											}),
 											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-												"data-uid": "src/App.tsx:61:21",
+												"data-uid": "src/App.tsx:72:21",
 												"data-prohibitions": "[editContent]",
 												path: "/",
 												element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-													"data-uid": "src/App.tsx:61:46",
+													"data-uid": "src/App.tsx:72:46",
 													"data-prohibitions": "[editContent]"
 												})
 											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-												"data-uid": "src/App.tsx:62:21",
+												"data-uid": "src/App.tsx:73:21",
 												"data-prohibitions": "[editContent]",
 												path: "/dashboard",
 												element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dashboard, {
-													"data-uid": "src/App.tsx:62:55",
+													"data-uid": "src/App.tsx:73:55",
 													"data-prohibitions": "[editContent]"
 												})
 											})]
 										})
 									]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-									"data-uid": "src/App.tsx:65:17",
+									"data-uid": "src/App.tsx:76:17",
 									"data-prohibitions": "[editContent]",
 									path: "*",
 									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
-										"data-uid": "src/App.tsx:65:42",
+										"data-uid": "src/App.tsx:76:42",
 										"data-prohibitions": "[editContent]"
 									})
 								})]
@@ -24386,4 +24438,4 @@ var App_default = App;
 }));
 export { require_react as A, useComposedRefs as C, useLocation as D, Link as E, useNavigate as O, require_jsx_runtime as S, useToast as T, Primitive as _, useId as a, createContext2 as b, LogOut as c, cva as d, useControllableState as f, useCallbackRef as g, DismissableLayer as h, useSize as i, __toESM as j, require_react_dom as k, CircleAlert as l, Portal as m, createSlot as n, cn as o, Presence as p, useAuthStore as r, X as s, Button as t, createLucideIcon as u, createCollection as v, composeEventHandlers as w, createContextScope as x, createSlot$1 as y };
 
-//# sourceMappingURL=index-D4M8p4AW.js.map
+//# sourceMappingURL=index-evE1m07u.js.map

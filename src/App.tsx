@@ -15,6 +15,8 @@ const Dashboard = lazy(() => import('./pages/Dashboard'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const Login = lazy(() => import('./pages/Login'))
 const SignUp = lazy(() => import('./pages/SignUp'))
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'))
+const ResetPassword = lazy(() => import('./pages/ResetPassword'))
 
 function GuestRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuthStore()
@@ -56,6 +58,15 @@ const App = () => (
                       </GuestRoute>
                     }
                   />
+                  <Route
+                    path="/forgot-password"
+                    element={
+                      <GuestRoute>
+                        <ForgotPassword />
+                      </GuestRoute>
+                    }
+                  />
+                  <Route path="/reset-password" element={<ResetPassword />} />
 
                   <Route element={<ProtectedRoute />}>
                     <Route path="/" element={<Index />} />

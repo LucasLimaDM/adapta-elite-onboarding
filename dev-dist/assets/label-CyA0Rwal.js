@@ -1,4 +1,4 @@
-import { A as require_react, S as require_jsx_runtime, d as cva, j as __toESM, k as require_react_dom, n as createSlot, o as cn } from "./index-D4M8p4AW.js";
+import { A as require_react, S as require_jsx_runtime, d as cva, j as __toESM, k as require_react_dom, n as createSlot, o as cn } from "./index-evE1m07u.js";
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = /* @__PURE__ */ __toESM(require_jsx_runtime(), 1);
 var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
@@ -73,4 +73,4 @@ var Label = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE
 Label.displayName = Root.displayName;
 export { Primitive as n, Input as r, Label as t };
 
-//# sourceMappingURL=label-Dou-z1Th.js.map
+//# sourceMappingURL=label-CyA0Rwal.js.map

@@ -1,4 +1,4 @@
-import { A as require_react, D as useLocation, E as Link, S as require_jsx_runtime, j as __toESM, t as Button, u as createLucideIcon } from "./index-D4M8p4AW.js";
+import { A as require_react, D as useLocation, E as Link, S as require_jsx_runtime, j as __toESM, t as Button, u as createLucideIcon } from "./index-evE1m07u.js";
 var House = createLucideIcon("house", [["path", {
 	d: "M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",
 	key: "5wwlr5"
@@ -63,4 +63,4 @@ var NotFound = () => {
 var NotFound_default = NotFound;
 export { NotFound_default as default };
 
-//# sourceMappingURL=NotFound-CjUesKGr.js.map
+//# sourceMappingURL=NotFound-DQajeCPt.js.map

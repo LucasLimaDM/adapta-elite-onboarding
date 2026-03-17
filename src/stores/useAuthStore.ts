@@ -19,6 +19,8 @@ type AuthContextType = {
   login: (email: string, password: string) => Promise<void>
   signup: (email: string, password: string) => Promise<void>
   logout: () => void
+  resetPassword: (email: string) => Promise<void>
+  updatePassword: (password: string) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | null>(null)
@@ -34,25 +36,70 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const initAuth = async () => {
-      const stored = localStorage.getItem('adapta_auth_session')
-      if (stored) {
-        try {
-          const session: AuthSession = JSON.parse(stored)
+      const hashParams = new URLSearchParams(window.location.hash.substring(1))
+      const accessToken = hashParams.get('access_token')
+      const refreshToken = hashParams.get('refresh_token')
+
+      if (accessToken) {
+        if (supabaseUrl && supabaseKey) {
+          try {
+            const res = await fetch(`${supabaseUrl}/auth/v1/user`, {
+              headers: {
+                apikey: supabaseKey,
+                Authorization: `Bearer ${accessToken}`,
+              },
+            })
+            if (res.ok) {
+              const userData = await res.json()
+              const session = {
+                access_token: accessToken,
+                refresh_token: refreshToken || '',
+                user: { id: userData.id, email: userData.email },
+              }
+              localStorage.setItem('adapta_auth_session', JSON.stringify(session))
+              setUser(session.user)
+              setToken(accessToken)
+              window.history.replaceState(
+                null,
+                '',
+                window.location.pathname + window.location.search,
+              )
+            }
+          } catch (e) {
+            console.error('Error fetching user from hash token', e)
+          }
+        } else {
+          // Mock
+          const session = {
+            access_token: accessToken,
+            refresh_token: refreshToken || '',
+            user: { id: 'mock-id', email: 'mock@example.com' },
+          }
+          localStorage.setItem('adapta_auth_session', JSON.stringify(session))
           setUser(session.user)
-          setToken(session.access_token)
-        } catch (e) {
-          localStorage.removeItem('adapta_auth_session')
+          setToken(accessToken)
+          window.history.replaceState(null, '', window.location.pathname + window.location.search)
+        }
+      } else {
+        const stored = localStorage.getItem('adapta_auth_session')
+        if (stored) {
+          try {
+            const session: AuthSession = JSON.parse(stored)
+            setUser(session.user)
+            setToken(session.access_token)
+          } catch (e) {
+            localStorage.removeItem('adapta_auth_session')
+          }
         }
       }
       setIsLoading(false)
     }
     initAuth()
-  }, [])
+  }, [supabaseUrl, supabaseKey])
 
   const login = async (email: string, password: string) => {
     setError(null)
     if (!supabaseUrl || !supabaseKey) {
-      // Mock login for development without variables
       await new Promise((r) => setTimeout(r, 1000))
       if (password === 'password') {
         const session = {
@@ -95,7 +142,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const signup = async (email: string, password: string) => {
     setError(null)
     if (!supabaseUrl || !supabaseKey) {
-      // Mock signup for development without variables
       await new Promise((r) => setTimeout(r, 1000))
       const session = {
         access_token: 'mock-token',
@@ -143,9 +189,71 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setToken(null)
   }
 
+  const resetPassword = async (email: string) => {
+    setError(null)
+    if (!supabaseUrl || !supabaseKey) {
+      await new Promise((r) => setTimeout(r, 1000))
+      return
+    }
+
+    const redirectUrl = encodeURIComponent(`${window.location.origin}/reset-password`)
+    const res = await fetch(`${supabaseUrl}/auth/v1/recover?redirect_to=${redirectUrl}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: supabaseKey,
+      },
+      body: JSON.stringify({ email }),
+    })
+
+    if (!res.ok) {
+      const data = await res.json()
+      throw new Error(
+        data.error_description || data.msg || 'Erro ao solicitar redefinição de senha',
+      )
+    }
+  }
+
+  const updatePassword = async (password: string) => {
+    setError(null)
+    if (!supabaseUrl || !supabaseKey) {
+      await new Promise((r) => setTimeout(r, 1000))
+      return
+    }
+
+    if (!token) throw new Error('Sessão expirada ou inválida. Tente o link novamente.')
+
+    const res = await fetch(`${supabaseUrl}/auth/v1/user`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: supabaseKey,
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ password }),
+    })
+
+    if (!res.ok) {
+      const data = await res.json()
+      throw new Error(data.error_description || data.msg || 'Erro ao atualizar senha')
+    }
+  }
+
   return React.createElement(
     AuthContext.Provider,
-    { value: { user, token, isLoading, error, login, signup, logout } },
+    {
+      value: {
+        user,
+        token,
+        isLoading,
+        error,
+        login,
+        signup,
+        logout,
+        resetPassword,
+        updatePassword,
+      },
+    },
     children,
   )
 }

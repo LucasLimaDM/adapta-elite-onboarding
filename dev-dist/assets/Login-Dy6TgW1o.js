@@ -1,6 +1,6 @@
-import { t as LoaderCircle } from "./loader-circle-D_HlnIXX.js";
-import { A as require_react, D as useLocation, E as Link, O as useNavigate, S as require_jsx_runtime, T as useToast, j as __toESM, r as useAuthStore, t as Button } from "./index-D4M8p4AW.js";
-import { r as Input, t as Label } from "./label-Dou-z1Th.js";
+import { t as LoaderCircle } from "./loader-circle-Bahjpv76.js";
+import { A as require_react, D as useLocation, E as Link, O as useNavigate, S as require_jsx_runtime, T as useToast, j as __toESM, r as useAuthStore, t as Button } from "./index-evE1m07u.js";
+import { r as Input, t as Label } from "./label-CyA0Rwal.js";
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = /* @__PURE__ */ __toESM(require_jsx_runtime(), 1);
 function Login() {
@@ -85,13 +85,24 @@ function Login() {
 							"data-uid": "src/pages/Login.tsx:59:13",
 							"data-prohibitions": "[]",
 							className: "space-y-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								"data-uid": "src/pages/Login.tsx:60:15",
 								"data-prohibitions": "[]",
-								htmlFor: "password",
-								children: "Senha"
+								className: "flex items-center justify-between",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, {
+									"data-uid": "src/pages/Login.tsx:61:17",
+									"data-prohibitions": "[]",
+									htmlFor: "password",
+									children: "Senha"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+									"data-uid": "src/pages/Login.tsx:62:17",
+									"data-prohibitions": "[]",
+									to: "/forgot-password",
+									className: "text-sm font-medium text-primary hover:underline",
+									children: "Esqueceu a senha?"
+								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
-								"data-uid": "src/pages/Login.tsx:61:15",
+								"data-uid": "src/pages/Login.tsx:69:15",
 								"data-prohibitions": "[editContent]",
 								id: "password",
 								type: "password",
@@ -102,27 +113,27 @@ function Login() {
 							})]
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-						"data-uid": "src/pages/Login.tsx:72:11",
+						"data-uid": "src/pages/Login.tsx:80:11",
 						"data-prohibitions": "[editContent]",
 						type: "submit",
 						className: "w-full h-12 text-base",
 						disabled: isSubmitting,
 						children: [isSubmitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/pages/Login.tsx:73:29",
+							"data-uid": "src/pages/Login.tsx:81:29",
 							"data-prohibitions": "[editContent]",
 							className: "w-5 h-5 animate-spin mr-2"
 						}) : null, "Entrar"]
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/Login.tsx:78:9",
+					"data-uid": "src/pages/Login.tsx:86:9",
 					"data-prohibitions": "[]",
 					className: "text-center text-sm text-muted-foreground",
 					children: [
 						"Não tem uma conta?",
 						" ",
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-							"data-uid": "src/pages/Login.tsx:80:11",
+							"data-uid": "src/pages/Login.tsx:88:11",
 							"data-prohibitions": "[]",
 							to: "/signup",
 							className: "text-primary hover:underline font-medium",
@@ -136,4 +147,4 @@ function Login() {
 }
 export { Login as default };
 
-//# sourceMappingURL=Login-zyzEXp4j.js.map
+//# sourceMappingURL=Login-Dy6TgW1o.js.map
