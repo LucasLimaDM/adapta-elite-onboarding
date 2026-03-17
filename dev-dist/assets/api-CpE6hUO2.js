@@ -1,8 +1,3 @@
-import { l as createLucideIcon } from "./index-B2FgPP9s.js";
-var LoaderCircle = createLucideIcon("loader-circle", [["path", {
-	d: "M21 12a9 9 0 1 1-6.219-8.56",
-	key: "13zald"
-}]]);
 async function upsertSubmission(data, isFinal = false) {
 	if (!data.additionalData.email) return;
 	data.additionalData.name, data.additionalData.email, data.profession, data.useCases, data.additionalData.portfolio, data.additionalData.risk, data.additionalData.vslWatched;
@@ -32,6 +27,6 @@ async function getSubmissions(userEmail) {
 	}];
 	return [];
 }
-export { upsertSubmission as n, LoaderCircle as r, getSubmissions as t };
+export { upsertSubmission as n, getSubmissions as t };
 
-//# sourceMappingURL=api-C6MWyg_m.js.map
+//# sourceMappingURL=api-CpE6hUO2.js.map

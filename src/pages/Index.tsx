@@ -6,6 +6,7 @@ import { Progress } from '@/components/ui/progress'
 import { useToast } from '@/hooks/use-toast'
 import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react'
 import { upsertSubmission } from '@/lib/api'
+import useAuthStore from '@/stores/useAuthStore'
 
 const INITIAL_DATA: FormData = {
   profession: '',
@@ -20,8 +21,12 @@ const INITIAL_DATA: FormData = {
 }
 
 export default function Index() {
+  const { user } = useAuthStore()
   const [step, setStep] = useState(1)
-  const [data, setData] = useState<FormData>(INITIAL_DATA)
+  const [data, setData] = useState<FormData>({
+    ...INITIAL_DATA,
+    additionalData: { ...INITIAL_DATA.additionalData, email: user?.email || '' },
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
@@ -31,7 +36,11 @@ export default function Index() {
     const savedStep = localStorage.getItem('adapta_onboarding_step')
     if (savedData) {
       try {
-        setData(JSON.parse(savedData))
+        const parsed = JSON.parse(savedData)
+        if (user?.email && (!parsed.additionalData.email || parsed.additionalData.email === '')) {
+          parsed.additionalData.email = user.email
+        }
+        setData(parsed)
       } catch (e) {
         // ignore parsing errors
       }
@@ -42,7 +51,7 @@ export default function Index() {
         setStep(parsedStep)
       }
     }
-  }, [])
+  }, [user])
 
   // Persist session locally to avoid losing state on accidental refresh
   useEffect(() => {

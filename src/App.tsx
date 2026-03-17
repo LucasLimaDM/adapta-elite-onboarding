@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -7,10 +7,21 @@ import { AuthProvider } from '@/stores/useAuthStore'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { NetworkStatus } from './components/NetworkStatus'
 import Layout from './components/Layout'
+import { ProtectedRoute } from './components/ProtectedRoute'
+import useAuthStore from './stores/useAuthStore'
 
 const Index = lazy(() => import('./pages/Index'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Login = lazy(() => import('./pages/Login'))
+const SignUp = lazy(() => import('./pages/SignUp'))
+
+function GuestRoute({ children }: { children: React.ReactNode }) {
+  const { user, isLoading } = useAuthStore()
+  if (isLoading) return null
+  if (user) return <Navigate to="/" replace />
+  return <>{children}</>
+}
 
 const App = () => (
   <ErrorBoundary>
@@ -29,8 +40,27 @@ const App = () => (
             >
               <Routes>
                 <Route element={<Layout />}>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route
+                    path="/login"
+                    element={
+                      <GuestRoute>
+                        <Login />
+                      </GuestRoute>
+                    }
+                  />
+                  <Route
+                    path="/signup"
+                    element={
+                      <GuestRoute>
+                        <SignUp />
+                      </GuestRoute>
+                    }
+                  />
+
+                  <Route element={<ProtectedRoute />}>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                  </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>

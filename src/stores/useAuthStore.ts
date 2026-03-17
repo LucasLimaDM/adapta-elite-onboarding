@@ -1,179 +1,151 @@
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react'
-import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 type AuthUser = {
+  id: string
   email: string
-  clientId: string
 }
 
-type SessionData = {
+type AuthSession = {
+  access_token: string
+  refresh_token: string
   user: AuthUser
-  token: string
-  expiresAt: number
-  lastRefresh: number
 }
 
 type AuthContextType = {
   user: AuthUser | null
+  token: string | null
   isLoading: boolean
   error: string | null
+  login: (email: string, password: string) => Promise<void>
+  signup: (email: string, password: string) => Promise<void>
   logout: () => void
 }
 
 const AuthContext = createContext<AuthContextType | null>(null)
 
-const mockValidateToken = async (token: string): Promise<AuthUser> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (token === 'invalid' || token === 'expired') {
-        reject(new Error('Invalid token'))
-      } else if (token === 'admin' || token === 'admin-token') {
-        resolve({ email: 'admin@adapta.org', clientId: 'ADM-001' })
-      } else {
-        resolve({ email: 'client@adaptaelite.com', clientId: 'CLI-9981' })
-      }
-    }, 1500)
-  })
-}
-
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const navigate = useNavigate()
-  const location = useLocation()
-
   const [user, setUser] = useState<AuthUser | null>(null)
+  const [token, setToken] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const hasInitialized = useRef(false)
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
   useEffect(() => {
-    const urlToken = searchParams.get('token')
-
-    if (hasInitialized.current && !urlToken) return
-    hasInitialized.current = true
-
     const initAuth = async () => {
-      const stored = localStorage.getItem('adapta_session')
-      let session: SessionData | null = stored ? JSON.parse(stored) : null
-      const now = Date.now()
-      const DAY_MS = 24 * 60 * 60 * 1000
-      const HALF_DAY_MS = 12 * 60 * 60 * 1000
-
-      if (urlToken) {
-        setIsLoading(true)
+      const stored = localStorage.getItem('adapta_auth_session')
+      if (stored) {
         try {
-          const res = await mockValidateToken(urlToken)
-          session = {
-            user: res,
-            token: urlToken,
-            expiresAt: now + DAY_MS,
-            lastRefresh: now,
-          }
-          localStorage.setItem('adapta_session', JSON.stringify(session))
-          setUser(res)
-          setError(null)
-
-          searchParams.delete('token')
-          setSearchParams(searchParams, { replace: true })
-
-          if (location.pathname === '/') {
-            // keep path if it's already on root
-          } else if (res.email.endsWith('@adapta.org') && location.pathname !== '/dashboard') {
-            navigate('/dashboard', { replace: true })
-          } else if (location.pathname !== '/') {
-            navigate('/', { replace: true })
-          }
-        } catch {
-          setError('Link expirado ou inválido. Solicite um novo link por email.')
-          localStorage.removeItem('adapta_session')
-        } finally {
-          setIsLoading(false)
+          const session: AuthSession = JSON.parse(stored)
+          setUser(session.user)
+          setToken(session.access_token)
+        } catch (e) {
+          localStorage.removeItem('adapta_auth_session')
         }
+      }
+      setIsLoading(false)
+    }
+    initAuth()
+  }, [])
+
+  const login = async (email: string, password: string) => {
+    setError(null)
+    if (!supabaseUrl || !supabaseKey) {
+      // Mock login for development without variables
+      await new Promise((r) => setTimeout(r, 1000))
+      if (password === 'password') {
+        const session = {
+          access_token: 'mock-token',
+          refresh_token: 'mock-refresh',
+          user: { id: 'mock-id', email },
+        }
+        localStorage.setItem('adapta_auth_session', JSON.stringify(session))
+        setUser(session.user)
+        setToken(session.access_token)
         return
       }
-
-      if (session) {
-        if (now > session.expiresAt) {
-          setError('Sessão expirada. Solicite um novo link por email.')
-          localStorage.removeItem('adapta_session')
-          setIsLoading(false)
-          return
-        }
-
-        setUser(session.user)
-        setIsLoading(false)
-
-        if (now - session.lastRefresh > HALF_DAY_MS) {
-          try {
-            const res = await mockValidateToken(session.token)
-            session.user = res
-            session.lastRefresh = now
-            session.expiresAt = now + DAY_MS
-            localStorage.setItem('adapta_session', JSON.stringify(session))
-            setUser(res)
-          } catch {
-            setError('Sessão expirada. Solicite um novo link por email.')
-            setUser(null)
-            localStorage.removeItem('adapta_session')
-          }
-        }
-      } else {
-        setError('Acesso negado. Utilize o link seguro enviado para seu email.')
-        setIsLoading(false)
-      }
+      throw new Error('Credenciais inválidas. (use a senha "password" para teste)')
     }
 
-    initAuth()
-  }, [searchParams, setSearchParams, navigate, location.pathname])
+    const res = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: supabaseKey,
+      },
+      body: JSON.stringify({ email, password }),
+    })
 
-  useEffect(() => {
-    if (!user) return
+    const data = await res.json()
+    if (!res.ok) {
+      throw new Error(data.error_description || data.msg || 'Erro ao fazer login')
+    }
 
-    const interval = setInterval(async () => {
-      const stored = localStorage.getItem('adapta_session')
-      if (!stored) return
+    const session = {
+      access_token: data.access_token,
+      refresh_token: data.refresh_token,
+      user: { id: data.user.id, email: data.user.email },
+    }
+    localStorage.setItem('adapta_auth_session', JSON.stringify(session))
+    setUser(session.user)
+    setToken(session.access_token)
+  }
 
-      const session: SessionData = JSON.parse(stored)
-      const now = Date.now()
-      const DAY_MS = 24 * 60 * 60 * 1000
-      const HALF_DAY_MS = 12 * 60 * 60 * 1000
-
-      if (now > session.expiresAt) {
-        setUser(null)
-        setError('Sessão expirada devido a inatividade (24h). Solicite um novo link.')
-        localStorage.removeItem('adapta_session')
-        return
+  const signup = async (email: string, password: string) => {
+    setError(null)
+    if (!supabaseUrl || !supabaseKey) {
+      // Mock signup for development without variables
+      await new Promise((r) => setTimeout(r, 1000))
+      const session = {
+        access_token: 'mock-token',
+        refresh_token: 'mock-refresh',
+        user: { id: 'mock-id', email },
       }
+      localStorage.setItem('adapta_auth_session', JSON.stringify(session))
+      setUser(session.user)
+      setToken(session.access_token)
+      return
+    }
 
-      if (now - session.lastRefresh > HALF_DAY_MS) {
-        try {
-          const res = await mockValidateToken(session.token)
-          session.user = res
-          session.lastRefresh = now
-          session.expiresAt = now + DAY_MS
-          localStorage.setItem('adapta_session', JSON.stringify(session))
-          setUser(res)
-        } catch {
-          setUser(null)
-          setError('Não foi possível renovar sua sessão. Solicite um novo link.')
-          localStorage.removeItem('adapta_session')
-        }
-      }
-    }, 60 * 1000)
+    const res = await fetch(`${supabaseUrl}/auth/v1/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: supabaseKey,
+      },
+      body: JSON.stringify({ email, password }),
+    })
 
-    return () => clearInterval(interval)
-  }, [user])
+    const data = await res.json()
+    if (!res.ok) {
+      throw new Error(data.error_description || data.msg || 'Erro ao criar conta')
+    }
+
+    const session = {
+      access_token: data.access_token || data.session?.access_token,
+      refresh_token: data.refresh_token || data.session?.refresh_token,
+      user: { id: data.user?.id || data.id, email: data.user?.email || data.email },
+    }
+
+    if (session.access_token) {
+      localStorage.setItem('adapta_auth_session', JSON.stringify(session))
+      setUser(session.user)
+      setToken(session.access_token)
+    } else {
+      throw new Error('Verifique seu e-mail para confirmar a conta.')
+    }
+  }
 
   const logout = () => {
-    localStorage.removeItem('adapta_session')
+    localStorage.removeItem('adapta_auth_session')
     setUser(null)
-    setError('Você saiu da sessão com segurança. Solicite um novo link para retornar.')
+    setToken(null)
   }
 
   return React.createElement(
     AuthContext.Provider,
-    { value: { user, isLoading, error, logout } },
+    { value: { user, token, isLoading, error, login, signup, logout } },
     children,
   )
 }

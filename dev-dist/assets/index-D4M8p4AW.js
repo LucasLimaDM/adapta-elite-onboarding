@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-CIx9NU8A.js","assets/api-C6MWyg_m.js","assets/Dashboard-AEN0RZsg.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Index-DGOHcOTm.js","assets/label-Dou-z1Th.js","assets/loader-circle-D_HlnIXX.js","assets/api-CpE6hUO2.js","assets/Dashboard-C0Lyf6gT.js","assets/Login-zyzEXp4j.js","assets/SignUp-CI6JI6yJ.js"])))=>i.map(i=>d[i]);
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -16330,6 +16330,30 @@ function DataRoutes({ routes, future, state, isStatic, onError }) {
 		future
 	});
 }
+function Navigate({ to, replace: replace2, state, relative }) {
+	invariant(useInRouterContext(), `<Navigate> may be used only in the context of a <Router> component.`);
+	let { static: isStatic } = import_react.useContext(NavigationContext);
+	warning(!isStatic, `<Navigate> must not be used on the initial render in a <StaticRouter>. This is a no-op, but you should modify your code so the <Navigate> is only ever rendered in response to some user interaction or state change.`);
+	let { matches } = import_react.useContext(RouteContext);
+	let { pathname: locationPathname } = useLocation();
+	let navigate = useNavigate();
+	let path = resolveTo(to, getResolveToMatches(matches), locationPathname, relative === "path");
+	let jsonPath = JSON.stringify(path);
+	import_react.useEffect(() => {
+		navigate(JSON.parse(jsonPath), {
+			replace: replace2,
+			state,
+			relative
+		});
+	}, [
+		navigate,
+		jsonPath,
+		relative,
+		replace2,
+		state
+	]);
+	return null;
+}
 function Outlet(props) {
 	return useOutlet(props.context);
 }
@@ -16441,21 +16465,6 @@ function isModifiedEvent(event) {
 }
 function shouldProcessLinkClick(event, target) {
 	return event.button === 0 && (!target || target === "_self") && !isModifiedEvent(event);
-}
-function createSearchParams(init = "") {
-	return new URLSearchParams(typeof init === "string" || Array.isArray(init) || init instanceof URLSearchParams ? init : Object.keys(init).reduce((memo2, key) => {
-		let value = init[key];
-		return memo2.concat(Array.isArray(value) ? value.map((v) => [key, v]) : [[key, value]]);
-	}, []));
-}
-function getSearchParamsForLocation(locationSearch, defaultSearchParams) {
-	let searchParams = createSearchParams(locationSearch);
-	if (defaultSearchParams) defaultSearchParams.forEach((_$1, key) => {
-		if (!searchParams.has(key)) defaultSearchParams.getAll(key).forEach((value) => {
-			searchParams.append(key, value);
-		});
-	});
-	return searchParams;
 }
 var _formDataSupportsSubmitter = null;
 function isFormDataSubmitterSupported() {
@@ -17100,19 +17109,6 @@ function useLinkClickHandler(to, { target, replace: replaceProp, unstable_mask, 
 		unstable_defaultShouldRevalidate,
 		unstable_useTransitions
 	]);
-}
-function useSearchParams(defaultInit) {
-	warning(typeof URLSearchParams !== "undefined", `You cannot use the \`useSearchParams\` hook in a browser that does not support the URLSearchParams API. If you need to support Internet Explorer 11, we recommend you load a polyfill such as https://github.com/ungap/url-search-params.`);
-	let defaultSearchParamsRef = import_react.useRef(createSearchParams(defaultInit));
-	let hasSetSearchParamsRef = import_react.useRef(false);
-	let location = useLocation();
-	let searchParams = import_react.useMemo(() => getSearchParamsForLocation(location.search, hasSetSearchParamsRef.current ? null : defaultSearchParamsRef.current), [location.search]);
-	let navigate = useNavigate();
-	return [searchParams, import_react.useCallback((nextInit, navigateOptions) => {
-		const newSearchParams = createSearchParams(typeof nextInit === "function" ? nextInit(new URLSearchParams(searchParams)) : nextInit);
-		hasSetSearchParamsRef.current = true;
-		navigate("?" + newSearchParams, navigateOptions);
-	}, [navigate, searchParams])];
 }
 var fetcherId = 0;
 var getUniqueFetcherId = () => `__${String(++fetcherId)}__`;
@@ -18983,6 +18979,20 @@ var CircleAlert = createLucideIcon("circle-alert", [
 		key: "4dfq90"
 	}]
 ]);
+var LogOut = createLucideIcon("log-out", [
+	["path", {
+		d: "m16 17 5-5-5-5",
+		key: "1bji2h"
+	}],
+	["path", {
+		d: "M21 12H9",
+		key: "dn1m92"
+	}],
+	["path", {
+		d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4",
+		key: "1uf3rs"
+	}]
+]);
 var RefreshCcw = createLucideIcon("refresh-ccw", [
 	["path", {
 		d: "M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8",
@@ -19001,6 +19011,15 @@ var RefreshCcw = createLucideIcon("refresh-ccw", [
 		key: "ccwih5"
 	}]
 ]);
+var User = createLucideIcon("user", [["path", {
+	d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2",
+	key: "975kel"
+}], ["circle", {
+	cx: "12",
+	cy: "7",
+	r: "4",
+	key: "17ys0d"
+}]]);
 var WifiOff = createLucideIcon("wifi-off", [
 	["path", {
 		d: "M12 20h.01",
@@ -23773,136 +23792,102 @@ var TooltipContent = import_react.forwardRef(({ className, sideOffset = 4, ...pr
 }));
 TooltipContent.displayName = Content2.displayName;
 var AuthContext = (0, import_react.createContext)(null);
-var mockValidateToken = async (token) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			if (token === "invalid" || token === "expired") reject(/* @__PURE__ */ new Error("Invalid token"));
-			else if (token === "admin" || token === "admin-token") resolve({
-				email: "admin@adapta.org",
-				clientId: "ADM-001"
-			});
-			else resolve({
-				email: "client@adaptaelite.com",
-				clientId: "CLI-9981"
-			});
-		}, 1500);
-	});
-};
 const AuthProvider = ({ children }) => {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const navigate = useNavigate();
-	const location = useLocation();
 	const [user, setUser] = (0, import_react.useState)(null);
+	const [token, setToken] = (0, import_react.useState)(null);
 	const [isLoading, setIsLoading] = (0, import_react.useState)(true);
 	const [error, setError] = (0, import_react.useState)(null);
-	const hasInitialized = (0, import_react.useRef)(false);
+	const supabaseUrl = void 0;
+	const supabaseKey = void 0;
 	(0, import_react.useEffect)(() => {
-		const urlToken = searchParams.get("token");
-		if (hasInitialized.current && !urlToken) return;
-		hasInitialized.current = true;
 		const initAuth = async () => {
-			const stored = localStorage.getItem("adapta_session");
-			let session = stored ? JSON.parse(stored) : null;
-			const now = Date.now();
-			const DAY_MS = 1440 * 60 * 1e3;
-			const HALF_DAY_MS = 720 * 60 * 1e3;
-			if (urlToken) {
-				setIsLoading(true);
-				try {
-					const res = await mockValidateToken(urlToken);
-					session = {
-						user: res,
-						token: urlToken,
-						expiresAt: now + DAY_MS,
-						lastRefresh: now
-					};
-					localStorage.setItem("adapta_session", JSON.stringify(session));
-					setUser(res);
-					setError(null);
-					searchParams.delete("token");
-					setSearchParams(searchParams, { replace: true });
-					if (location.pathname === "/") {} else if (res.email.endsWith("@adapta.org") && location.pathname !== "/dashboard") navigate("/dashboard", { replace: true });
-					else if (location.pathname !== "/") navigate("/", { replace: true });
-				} catch {
-					setError("Link expirado ou inválido. Solicite um novo link por email.");
-					localStorage.removeItem("adapta_session");
-				} finally {
-					setIsLoading(false);
-				}
-				return;
-			}
-			if (session) {
-				if (now > session.expiresAt) {
-					setError("Sessão expirada. Solicite um novo link por email.");
-					localStorage.removeItem("adapta_session");
-					setIsLoading(false);
-					return;
-				}
+			const stored = localStorage.getItem("adapta_auth_session");
+			if (stored) try {
+				const session = JSON.parse(stored);
 				setUser(session.user);
-				setIsLoading(false);
-				if (now - session.lastRefresh > HALF_DAY_MS) try {
-					const res = await mockValidateToken(session.token);
-					session.user = res;
-					session.lastRefresh = now;
-					session.expiresAt = now + DAY_MS;
-					localStorage.setItem("adapta_session", JSON.stringify(session));
-					setUser(res);
-				} catch {
-					setError("Sessão expirada. Solicite um novo link por email.");
-					setUser(null);
-					localStorage.removeItem("adapta_session");
-				}
-			} else {
-				setError("Acesso negado. Utilize o link seguro enviado para seu email.");
-				setIsLoading(false);
+				setToken(session.access_token);
+			} catch (e) {
+				localStorage.removeItem("adapta_auth_session");
 			}
+			setIsLoading(false);
 		};
 		initAuth();
-	}, [
-		searchParams,
-		setSearchParams,
-		navigate,
-		location.pathname
-	]);
-	(0, import_react.useEffect)(() => {
-		if (!user) return;
-		const interval = setInterval(async () => {
-			const stored = localStorage.getItem("adapta_session");
-			if (!stored) return;
-			const session = JSON.parse(stored);
-			const now = Date.now();
-			const DAY_MS = 1440 * 60 * 1e3;
-			const HALF_DAY_MS = 720 * 60 * 1e3;
-			if (now > session.expiresAt) {
-				setUser(null);
-				setError("Sessão expirada devido a inatividade (24h). Solicite um novo link.");
-				localStorage.removeItem("adapta_session");
-				return;
+	}, []);
+	const login = async (email, password) => {
+		setError(null);
+		await new Promise((r$1) => setTimeout(r$1, 1e3));
+		if (password === "password") {
+			const session = {
+				access_token: "mock-token",
+				refresh_token: "mock-refresh",
+				user: {
+					id: "mock-id",
+					email
+				}
+			};
+			localStorage.setItem("adapta_auth_session", JSON.stringify(session));
+			setUser(session.user);
+			setToken(session.access_token);
+			return;
+		}
+		throw new Error("Credenciais inválidas. (use a senha \"password\" para teste)");
+	};
+	const signup = async (email, password) => {
+		setError(null);
+		{
+			await new Promise((r$1) => setTimeout(r$1, 1e3));
+			const session$1 = {
+				access_token: "mock-token",
+				refresh_token: "mock-refresh",
+				user: {
+					id: "mock-id",
+					email
+				}
+			};
+			localStorage.setItem("adapta_auth_session", JSON.stringify(session$1));
+			setUser(session$1.user);
+			setToken(session$1.access_token);
+			return;
+		}
+		const res = await fetch(`${supabaseUrl}/auth/v1/signup`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				apikey: supabaseKey
+			},
+			body: JSON.stringify({
+				email,
+				password
+			})
+		});
+		const data = await res.json();
+		if (!res.ok) throw new Error(data.error_description || data.msg || "Erro ao criar conta");
+		const session = {
+			access_token: data.access_token || data.session?.access_token,
+			refresh_token: data.refresh_token || data.session?.refresh_token,
+			user: {
+				id: data.user?.id || data.id,
+				email: data.user?.email || data.email
 			}
-			if (now - session.lastRefresh > HALF_DAY_MS) try {
-				const res = await mockValidateToken(session.token);
-				session.user = res;
-				session.lastRefresh = now;
-				session.expiresAt = now + DAY_MS;
-				localStorage.setItem("adapta_session", JSON.stringify(session));
-				setUser(res);
-			} catch {
-				setUser(null);
-				setError("Não foi possível renovar sua sessão. Solicite um novo link.");
-				localStorage.removeItem("adapta_session");
-			}
-		}, 60 * 1e3);
-		return () => clearInterval(interval);
-	}, [user]);
+		};
+		if (session.access_token) {
+			localStorage.setItem("adapta_auth_session", JSON.stringify(session));
+			setUser(session.user);
+			setToken(session.access_token);
+		} else throw new Error("Verifique seu e-mail para confirmar a conta.");
+	};
 	const logout = () => {
-		localStorage.removeItem("adapta_session");
+		localStorage.removeItem("adapta_auth_session");
 		setUser(null);
-		setError("Você saiu da sessão com segurança. Solicite um novo link para retornar.");
+		setToken(null);
 	};
 	return import_react.createElement(AuthContext.Provider, { value: {
 		user,
+		token,
 		isLoading,
 		error,
+		login,
+		signup,
 		logout
 	} }, children);
 };
@@ -24159,93 +24144,230 @@ function NetworkStatus({ children }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children });
 }
 function Layout() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-uid": "src/components/Layout.tsx:5:5",
-		"data-prohibitions": "[]",
-		className: "min-h-screen bg-gradient-to-b from-[#0C0C0D] to-[#191919] text-foreground selection:bg-primary/30 selection:text-primary",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
-			"data-uid": "src/components/Layout.tsx:6:7",
-			"data-prohibitions": "[editContent]"
-		})
+	const { user, logout } = useAuthStore();
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		"data-uid": "src/components/Layout.tsx:10:5",
+		"data-prohibitions": "[editContent]",
+		className: "min-h-screen bg-gradient-to-b from-[#0C0C0D] to-[#191919] text-foreground selection:bg-primary/30 selection:text-primary flex flex-col",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
+			"data-uid": "src/components/Layout.tsx:11:7",
+			"data-prohibitions": "[editContent]",
+			className: "border-b border-[#333333] bg-[#111111]/50 sticky top-0 z-50 backdrop-blur-md",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-uid": "src/components/Layout.tsx:12:9",
+				"data-prohibitions": "[editContent]",
+				className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					"data-uid": "src/components/Layout.tsx:13:11",
+					"data-prohibitions": "[]",
+					className: "flex items-center gap-2",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+						"data-uid": "src/components/Layout.tsx:14:13",
+						"data-prohibitions": "[]",
+						to: "/",
+						className: "font-display font-bold text-xl text-primary",
+						children: "Adapta Elite"
+					})
+				}), user && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-uid": "src/components/Layout.tsx:19:13",
+					"data-prohibitions": "[editContent]",
+					className: "flex items-center gap-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						"data-uid": "src/components/Layout.tsx:20:15",
+						"data-prohibitions": "[editContent]",
+						className: "hidden sm:flex items-center gap-2 text-sm text-muted-foreground",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(User, {
+							"data-uid": "src/components/Layout.tsx:21:17",
+							"data-prohibitions": "[editContent]",
+							className: "w-4 h-4"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							"data-uid": "src/components/Layout.tsx:22:17",
+							"data-prohibitions": "[editContent]",
+							children: user.email
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+						"data-uid": "src/components/Layout.tsx:24:15",
+						"data-prohibitions": "[]",
+						variant: "ghost",
+						size: "sm",
+						onClick: logout,
+						className: "text-muted-foreground hover:text-foreground",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(LogOut, {
+							"data-uid": "src/components/Layout.tsx:30:17",
+							"data-prohibitions": "[editContent]",
+							className: "w-4 h-4 mr-2"
+						}), "Sair"]
+					})]
+				})]
+			})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("main", {
+			"data-uid": "src/components/Layout.tsx:37:7",
+			"data-prohibitions": "[]",
+			className: "flex-1 w-full",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
+				"data-uid": "src/components/Layout.tsx:38:9",
+				"data-prohibitions": "[editContent]"
+			})
+		})]
 	});
 }
-var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-CIx9NU8A.js"), __vite__mapDeps([0,1])));
-var Dashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-AEN0RZsg.js"), __vite__mapDeps([2,1])));
-var NotFound = (0, import_react.lazy)(() => __vitePreload(() => import("./NotFound-BUF1GcGK.js"), []));
+function ProtectedRoute() {
+	const { user, isLoading } = useAuthStore();
+	const location = useLocation();
+	if (isLoading) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		"data-uid": "src/components/ProtectedRoute.tsx:10:7",
+		"data-prohibitions": "[]",
+		className: "min-h-screen flex items-center justify-center bg-transparent",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			"data-uid": "src/components/ProtectedRoute.tsx:11:9",
+			"data-prohibitions": "[]",
+			className: "w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"
+		})
+	});
+	if (!user) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigate, {
+		"data-uid": "src/components/ProtectedRoute.tsx:17:12",
+		"data-prohibitions": "[editContent]",
+		to: "/login",
+		state: { from: location },
+		replace: true
+	});
+	if (location.pathname === "/dashboard" && !user.email.endsWith("@adapta.org")) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigate, {
+		"data-uid": "src/components/ProtectedRoute.tsx:22:12",
+		"data-prohibitions": "[editContent]",
+		to: "/",
+		replace: true
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {
+		"data-uid": "src/components/ProtectedRoute.tsx:25:10",
+		"data-prohibitions": "[editContent]"
+	});
+}
+var Index = (0, import_react.lazy)(() => __vitePreload(() => import("./Index-DGOHcOTm.js"), __vite__mapDeps([0,1,2,3])));
+var Dashboard = (0, import_react.lazy)(() => __vitePreload(() => import("./Dashboard-C0Lyf6gT.js"), __vite__mapDeps([4,2,3])));
+var NotFound = (0, import_react.lazy)(() => __vitePreload(() => import("./NotFound-CjUesKGr.js"), []));
+var Login = (0, import_react.lazy)(() => __vitePreload(() => import("./Login-zyzEXp4j.js"), __vite__mapDeps([5,1,2])));
+var SignUp = (0, import_react.lazy)(() => __vitePreload(() => import("./SignUp-CI6JI6yJ.js"), __vite__mapDeps([6,1,2])));
+function GuestRoute({ children }) {
+	const { user, isLoading } = useAuthStore();
+	if (isLoading) return null;
+	if (user) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Navigate, {
+		"data-uid": "src/App.tsx:22:20",
+		"data-prohibitions": "[editContent]",
+		to: "/",
+		replace: true
+	});
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_jsx_runtime.Fragment, { children });
+}
 var App = () => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorBoundary, {
-	"data-uid": "src/App.tsx:16:3",
+	"data-uid": "src/App.tsx:27:3",
 	"data-prohibitions": "[]",
 	children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NetworkStatus, {
-		"data-uid": "src/App.tsx:17:5",
+		"data-uid": "src/App.tsx:28:5",
 		"data-prohibitions": "[]",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(BrowserRouter, {
-			"data-uid": "src/App.tsx:18:7",
+			"data-uid": "src/App.tsx:29:7",
 			"data-prohibitions": "[]",
 			future: {
 				v7_startTransition: false,
 				v7_relativeSplatPath: false
 			},
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AuthProvider, {
-				"data-uid": "src/App.tsx:19:9",
+				"data-uid": "src/App.tsx:30:9",
 				"data-prohibitions": "[]",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(TooltipProvider, {
-					"data-uid": "src/App.tsx:20:11",
+					"data-uid": "src/App.tsx:31:11",
 					"data-prohibitions": "[]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster, {
-							"data-uid": "src/App.tsx:21:13",
+							"data-uid": "src/App.tsx:32:13",
 							"data-prohibitions": "[editContent]"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Toaster$1, {
-							"data-uid": "src/App.tsx:22:13",
+							"data-uid": "src/App.tsx:33:13",
 							"data-prohibitions": "[editContent]"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.Suspense, {
-							"data-uid": "src/App.tsx:23:13",
+							"data-uid": "src/App.tsx:34:13",
 							"data-prohibitions": "[]",
 							fallback: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								"data-uid": "src/App.tsx:25:17",
+								"data-uid": "src/App.tsx:36:17",
 								"data-prohibitions": "[]",
 								className: "min-h-screen flex items-center justify-center bg-transparent",
 								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									"data-uid": "src/App.tsx:26:19",
+									"data-uid": "src/App.tsx:37:19",
 									"data-prohibitions": "[]",
 									className: "w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin"
 								})
 							}),
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Routes, {
-								"data-uid": "src/App.tsx:30:15",
+								"data-uid": "src/App.tsx:41:15",
 								"data-prohibitions": "[]",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
-									"data-uid": "src/App.tsx:31:17",
+									"data-uid": "src/App.tsx:42:17",
 									"data-prohibitions": "[]",
 									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Layout, {
-										"data-uid": "src/App.tsx:31:33",
+										"data-uid": "src/App.tsx:42:33",
 										"data-prohibitions": "[editContent]"
 									}),
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-										"data-uid": "src/App.tsx:32:19",
-										"data-prohibitions": "[editContent]",
-										path: "/",
-										element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
-											"data-uid": "src/App.tsx:32:44",
-											"data-prohibitions": "[editContent]"
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+											"data-uid": "src/App.tsx:43:19",
+											"data-prohibitions": "[editContent]",
+											path: "/login",
+											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuestRoute, {
+												"data-uid": "src/App.tsx:46:23",
+												"data-prohibitions": "[]",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Login, {
+													"data-uid": "src/App.tsx:47:25",
+													"data-prohibitions": "[editContent]"
+												})
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+											"data-uid": "src/App.tsx:51:19",
+											"data-prohibitions": "[editContent]",
+											path: "/signup",
+											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(GuestRoute, {
+												"data-uid": "src/App.tsx:54:23",
+												"data-prohibitions": "[]",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SignUp, {
+													"data-uid": "src/App.tsx:55:25",
+													"data-prohibitions": "[editContent]"
+												})
+											})
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Route, {
+											"data-uid": "src/App.tsx:60:19",
+											"data-prohibitions": "[]",
+											element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProtectedRoute, {
+												"data-uid": "src/App.tsx:60:35",
+												"data-prohibitions": "[editContent]"
+											}),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+												"data-uid": "src/App.tsx:61:21",
+												"data-prohibitions": "[editContent]",
+												path: "/",
+												element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Index, {
+													"data-uid": "src/App.tsx:61:46",
+													"data-prohibitions": "[editContent]"
+												})
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
+												"data-uid": "src/App.tsx:62:21",
+												"data-prohibitions": "[editContent]",
+												path: "/dashboard",
+												element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dashboard, {
+													"data-uid": "src/App.tsx:62:55",
+													"data-prohibitions": "[editContent]"
+												})
+											})]
 										})
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-										"data-uid": "src/App.tsx:33:19",
-										"data-prohibitions": "[editContent]",
-										path: "/dashboard",
-										element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Dashboard, {
-											"data-uid": "src/App.tsx:33:53",
-											"data-prohibitions": "[editContent]"
-										})
-									})]
+									]
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Route, {
-									"data-uid": "src/App.tsx:35:17",
+									"data-uid": "src/App.tsx:65:17",
 									"data-prohibitions": "[editContent]",
 									path: "*",
 									element: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(NotFound, {
-										"data-uid": "src/App.tsx:35:42",
+										"data-uid": "src/App.tsx:65:42",
 										"data-prohibitions": "[editContent]"
 									})
 								})]
@@ -24262,6 +24384,6 @@ var App_default = App;
 	"data-uid": "src/main.tsx:7:53",
 	"data-prohibitions": "[editContent]"
 }));
-export { composeEventHandlers as C, require_react_dom as D, useLocation as E, require_react as O, useComposedRefs as S, Link as T, createCollection as _, useId as a, createContextScope as b, CircleAlert as c, useControllableState as d, Presence as f, Primitive as g, useCallbackRef as h, useSize as i, __toESM as k, createLucideIcon as l, DismissableLayer as m, createSlot as n, cn as o, Portal as p, useAuthStore as r, X as s, Button as t, cva as u, createSlot$1 as v, useToast as w, require_jsx_runtime as x, createContext2 as y };
+export { require_react as A, useComposedRefs as C, useLocation as D, Link as E, useNavigate as O, require_jsx_runtime as S, useToast as T, Primitive as _, useId as a, createContext2 as b, LogOut as c, cva as d, useControllableState as f, useCallbackRef as g, DismissableLayer as h, useSize as i, __toESM as j, require_react_dom as k, CircleAlert as l, Portal as m, createSlot as n, cn as o, Presence as p, useAuthStore as r, X as s, Button as t, createLucideIcon as u, createCollection as v, composeEventHandlers as w, createContextScope as x, createSlot$1 as y };
 
-//# sourceMappingURL=index-B2FgPP9s.js.map
+//# sourceMappingURL=index-D4M8p4AW.js.map

@@ -1,5 +1,7 @@
-import { n as upsertSubmission, r as LoaderCircle } from "./api-C6MWyg_m.js";
-import { C as composeEventHandlers, D as require_react_dom, O as require_react, S as useComposedRefs, _ as createCollection, a as useId, b as createContextScope$1, c as CircleAlert, d as useControllableState, f as Presence, g as Primitive$1, h as useCallbackRef$1, i as useSize, k as __toESM, l as createLucideIcon, m as DismissableLayer, n as createSlot$1, o as cn, p as Portal, s as X, t as Button, u as cva, v as createSlot, w as useToast, x as require_jsx_runtime, y as createContext2 } from "./index-B2FgPP9s.js";
+import { t as LoaderCircle } from "./loader-circle-D_HlnIXX.js";
+import { A as require_react, C as useComposedRefs, S as require_jsx_runtime, T as useToast, _ as Primitive$1, a as useId, b as createContext2, d as cva, f as useControllableState, g as useCallbackRef$1, h as DismissableLayer, i as useSize, j as __toESM, l as CircleAlert, m as Portal, o as cn, p as Presence, r as useAuthStore, s as X, t as Button, u as createLucideIcon, v as createCollection, w as composeEventHandlers, x as createContextScope$1, y as createSlot } from "./index-D4M8p4AW.js";
+import { n as upsertSubmission } from "./api-CpE6hUO2.js";
+import { n as Primitive, r as Input, t as Label } from "./label-Dou-z1Th.js";
 var ArrowLeft = createLucideIcon("arrow-left", [["path", {
 	d: "m12 19-7-7 7-7",
 	key: "1l729n"
@@ -103,76 +105,6 @@ var Circle = createLucideIcon("circle", [["circle", {
 }]]);
 var import_react = /* @__PURE__ */ __toESM(require_react(), 1);
 var import_jsx_runtime = /* @__PURE__ */ __toESM(require_jsx_runtime(), 1);
-var Input = import_react.forwardRef(({ className, type, ...props }, ref) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-		"data-uid": "src/components/ui/input.tsx:8:7",
-		"data-prohibitions": "[editContent]",
-		type,
-		className: cn("flex h-10 w-full rounded-xl border border-border bg-[#111111]/80 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 md:text-sm transition-all duration-300 hover:border-primary/50", className),
-		ref,
-		...props
-	});
-});
-Input.displayName = "Input";
-require_react_dom();
-var Primitive = [
-	"a",
-	"button",
-	"div",
-	"form",
-	"h2",
-	"h3",
-	"img",
-	"input",
-	"label",
-	"li",
-	"nav",
-	"ol",
-	"p",
-	"select",
-	"span",
-	"svg",
-	"ul"
-].reduce((primitive, node) => {
-	const Slot$1 = createSlot$1(`Primitive.${node}`);
-	const Node$1 = import_react.forwardRef((props, forwardedRef) => {
-		const { asChild, ...primitiveProps } = props;
-		const Comp = asChild ? Slot$1 : node;
-		if (typeof window !== "undefined") window[Symbol.for("radix-ui")] = true;
-		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Comp, {
-			...primitiveProps,
-			ref: forwardedRef
-		});
-	});
-	Node$1.displayName = `Primitive.${node}`;
-	return {
-		...primitive,
-		[node]: Node$1
-	};
-}, {});
-var NAME$1 = "Label";
-var Label$1 = import_react.forwardRef((props, forwardedRef) => {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Primitive.label, {
-		...props,
-		ref: forwardedRef,
-		onMouseDown: (event) => {
-			if (event.target.closest("button, input, select, textarea")) return;
-			props.onMouseDown?.(event);
-			if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
-		}
-	});
-});
-Label$1.displayName = NAME$1;
-var Root$4 = Label$1;
-var labelVariants = cva("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70");
-var Label = import_react.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Root$4, {
-	"data-uid": "src/components/ui/label.tsx:16:3",
-	"data-prohibitions": "[editContent]",
-	ref,
-	className: cn(labelVariants(), className),
-	...props
-}));
-Label.displayName = Root$4.displayName;
 var alertVariants = cva("relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground", {
 	variants: { variant: {
 		default: "bg-background text-foreground",
@@ -2883,21 +2815,30 @@ var INITIAL_DATA = {
 	}
 };
 function Index() {
+	const { user } = useAuthStore();
 	const [step, setStep] = (0, import_react.useState)(1);
-	const [data, setData] = (0, import_react.useState)(INITIAL_DATA);
+	const [data, setData] = (0, import_react.useState)({
+		...INITIAL_DATA,
+		additionalData: {
+			...INITIAL_DATA.additionalData,
+			email: user?.email || ""
+		}
+	});
 	const [isSubmitting, setIsSubmitting] = (0, import_react.useState)(false);
 	const { toast } = useToast();
 	(0, import_react.useEffect)(() => {
 		const savedData = localStorage.getItem("adapta_onboarding_data");
 		const savedStep = localStorage.getItem("adapta_onboarding_step");
 		if (savedData) try {
-			setData(JSON.parse(savedData));
+			const parsed = JSON.parse(savedData);
+			if (user?.email && (!parsed.additionalData.email || parsed.additionalData.email === "")) parsed.additionalData.email = user.email;
+			setData(parsed);
 		} catch (e) {}
 		if (savedStep) {
 			const parsedStep = parseInt(savedStep, 10);
 			if (parsedStep > 1 && parsedStep <= 7) setStep(parsedStep);
 		}
-	}, []);
+	}, [user]);
 	(0, import_react.useEffect)(() => {
 		localStorage.setItem("adapta_onboarding_data", JSON.stringify(data));
 		localStorage.setItem("adapta_onboarding_step", step.toString());
@@ -2951,11 +2892,11 @@ function Index() {
 		}
 	};
 	if (step === 7) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		"data-uid": "src/pages/Index.tsx:119:7",
+		"data-uid": "src/pages/Index.tsx:128:7",
 		"data-prohibitions": "[]",
 		className: "w-full max-w-3xl mx-auto animate-in fade-in duration-500 pt-12",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step7, {
-			"data-uid": "src/pages/Index.tsx:120:9",
+			"data-uid": "src/pages/Index.tsx:129:9",
 			"data-prohibitions": "[editContent]",
 			data,
 			updateData,
@@ -2963,20 +2904,20 @@ function Index() {
 		})
 	});
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-		"data-uid": "src/pages/Index.tsx:126:5",
+		"data-uid": "src/pages/Index.tsx:135:5",
 		"data-prohibitions": "[editContent]",
 		className: "w-full max-w-3xl mx-auto space-y-8 animate-in fade-in duration-500 pt-12 p-4 sm:p-6 lg:p-8",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:127:7",
+				"data-uid": "src/pages/Index.tsx:136:7",
 				"data-prohibitions": "[editContent]",
 				className: "space-y-3 bg-[#111111]/50 p-5 sm:p-6 rounded-2xl border border-[#333333] shadow-elevation",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					"data-uid": "src/pages/Index.tsx:128:9",
+					"data-uid": "src/pages/Index.tsx:137:9",
 					"data-prohibitions": "[editContent]",
 					className: "flex justify-between text-sm font-medium",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						"data-uid": "src/pages/Index.tsx:129:11",
+						"data-uid": "src/pages/Index.tsx:138:11",
 						"data-prohibitions": "[editContent]",
 						className: "text-muted-foreground font-display tracking-wide",
 						children: [
@@ -2985,60 +2926,60 @@ function Index() {
 							" de 6"
 						]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-						"data-uid": "src/pages/Index.tsx:132:11",
+						"data-uid": "src/pages/Index.tsx:141:11",
 						"data-prohibitions": "[editContent]",
 						className: "text-primary",
 						children: [Math.round(step / 6 * 100), "%"]
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Progress, {
-					"data-uid": "src/pages/Index.tsx:134:9",
+					"data-uid": "src/pages/Index.tsx:143:9",
 					"data-prohibitions": "[editContent]",
 					value: step / 6 * 100,
 					className: "h-2 bg-[#222222]"
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:137:7",
+				"data-uid": "src/pages/Index.tsx:146:7",
 				"data-prohibitions": "[editContent]",
 				className: "min-h-[400px]",
 				children: [
 					step === 1 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step1, {
-						"data-uid": "src/pages/Index.tsx:139:11",
-						"data-prohibitions": "[editContent]",
-						data,
-						updateData,
-						updateAdditionalData
-					}),
-					step === 2 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step2, {
-						"data-uid": "src/pages/Index.tsx:142:11",
-						"data-prohibitions": "[editContent]",
-						data,
-						updateData,
-						updateAdditionalData
-					}),
-					step === 3 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step3, {
-						"data-uid": "src/pages/Index.tsx:145:11",
-						"data-prohibitions": "[editContent]",
-						data,
-						updateData,
-						updateAdditionalData
-					}),
-					step === 4 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step4, {
 						"data-uid": "src/pages/Index.tsx:148:11",
 						"data-prohibitions": "[editContent]",
 						data,
 						updateData,
 						updateAdditionalData
 					}),
-					step === 5 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step5, {
+					step === 2 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step2, {
 						"data-uid": "src/pages/Index.tsx:151:11",
 						"data-prohibitions": "[editContent]",
 						data,
 						updateData,
 						updateAdditionalData
 					}),
-					step === 6 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step6, {
+					step === 3 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step3, {
 						"data-uid": "src/pages/Index.tsx:154:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 4 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step4, {
+						"data-uid": "src/pages/Index.tsx:157:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 5 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step5, {
+						"data-uid": "src/pages/Index.tsx:160:11",
+						"data-prohibitions": "[editContent]",
+						data,
+						updateData,
+						updateAdditionalData
+					}),
+					step === 6 && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Step6, {
+						"data-uid": "src/pages/Index.tsx:163:11",
 						"data-prohibitions": "[editContent]",
 						data,
 						updateData,
@@ -3047,11 +2988,11 @@ function Index() {
 				]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-uid": "src/pages/Index.tsx:158:7",
+				"data-uid": "src/pages/Index.tsx:167:7",
 				"data-prohibitions": "[editContent]",
 				className: "flex items-center justify-between pt-8 border-t border-[#333333]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:159:9",
+					"data-uid": "src/pages/Index.tsx:168:9",
 					"data-prohibitions": "[]",
 					variant: "outline",
 					size: "lg",
@@ -3059,12 +3000,12 @@ function Index() {
 					disabled: step === 1 || isSubmitting,
 					className: "w-[120px] sm:w-[130px] h-12 text-sm sm:text-base",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-						"data-uid": "src/pages/Index.tsx:166:11",
+						"data-uid": "src/pages/Index.tsx:175:11",
 						"data-prohibitions": "[editContent]",
 						className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
 					}), "Voltar"]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
-					"data-uid": "src/pages/Index.tsx:170:9",
+					"data-uid": "src/pages/Index.tsx:179:9",
 					"data-prohibitions": "[editContent]",
 					size: "lg",
 					onClick: handleNext,
@@ -3072,17 +3013,17 @@ function Index() {
 					className: "w-[140px] sm:w-[160px] h-12 text-sm sm:text-base flex items-center justify-center",
 					children: [
 						isSubmitting ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoaderCircle, {
-							"data-uid": "src/pages/Index.tsx:177:13",
+							"data-uid": "src/pages/Index.tsx:186:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin"
 						}) : step === 6 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-							"data-uid": "src/pages/Index.tsx:179:13",
+							"data-uid": "src/pages/Index.tsx:188:13",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 sm:w-5 sm:h-5 mr-2"
 						}) : null,
 						step === 6 ? "Finalizar" : "Continuar",
 						step < 6 && !isSubmitting && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-							"data-uid": "src/pages/Index.tsx:182:41",
+							"data-uid": "src/pages/Index.tsx:191:41",
 							"data-prohibitions": "[editContent]",
 							className: "w-4 h-4 sm:w-5 sm:h-5 ml-2"
 						})
@@ -3094,4 +3035,4 @@ function Index() {
 }
 export { Index as default };
 
-//# sourceMappingURL=Index-CIx9NU8A.js.map
+//# sourceMappingURL=Index-DGOHcOTm.js.map
