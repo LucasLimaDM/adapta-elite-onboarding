@@ -14,7 +14,7 @@ import { Loader2, LayoutDashboard, LogOut, ShieldAlert } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export default function Dashboard() {
-  const { user, isLoading: isAuthLoading, logout } = useAuthStore()
+  const { user, token, isLoading: isAuthLoading, logout } = useAuthStore()
   const [data, setData] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -24,9 +24,9 @@ export default function Dashboard() {
     const fetchSubmissions = async () => {
       setIsLoading(true)
       try {
-        const result = await getSubmissions(user.email)
+        const result = await getSubmissions(token!)
         setData(result || [])
-      } catch (error) {
+      } catch {
         setData([])
       } finally {
         setIsLoading(false)
@@ -62,7 +62,7 @@ export default function Dashboard() {
   const isAuthorized = user.email.endsWith('@adapta.org')
 
   return (
-    <div className="min-h-screen p-4 md:p-8 animate-in fade-in duration-500 max-w-6xl mx-auto space-y-8 pt-12">
+    <div className="min-h-screen p-4 md:p-8 animate-in fade-in duration-500 max-w-7xl mx-auto space-y-8 pt-12">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#111111]/50 p-6 rounded-2xl border border-[#333333] shadow-elevation">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-primary/10 text-primary border border-primary/20 rounded-[8px] flex items-center justify-center">
@@ -70,9 +70,7 @@ export default function Dashboard() {
           </div>
           <div>
             <h1 className="text-2xl font-display font-bold">Dashboard Admin</h1>
-            <p className="text-muted-foreground text-sm">
-              Gerenciamento de submissões de clientes.
-            </p>
+            <p className="text-muted-foreground text-sm">Gerenciamento de submissões de clientes.</p>
           </div>
         </div>
         <div className="flex items-center gap-4 w-full sm:w-auto">
@@ -88,9 +86,7 @@ export default function Dashboard() {
       <Card className="bg-[#111111]/80 border-[#333333] shadow-elevation overflow-hidden">
         <CardHeader className="border-b border-[#333333] bg-[#0C0C0D]/50">
           <CardTitle>Submissões Recentes</CardTitle>
-          <CardDescription>
-            Resultados do pré-onboarding de clientes de alto padrão.
-          </CardDescription>
+          <CardDescription>Resultados do pré-onboarding de clientes.</CardDescription>
         </CardHeader>
         <CardContent className="p-0">
           {isLoading ? (
@@ -112,11 +108,12 @@ export default function Dashboard() {
               <Table>
                 <TableHeader className="bg-[#0C0C0D]/80">
                   <TableRow className="border-[#333333] hover:bg-transparent">
-                    <TableHead className="w-[200px]">Nome</TableHead>
+                    <TableHead>Nome</TableHead>
                     <TableHead>Email</TableHead>
-                    <TableHead>Profissão</TableHead>
-                    <TableHead>Portfólio</TableHead>
-                    <TableHead>Risco</TableHead>
+                    <TableHead>Empresa</TableHead>
+                    <TableHead>Cargo</TableHead>
+                    <TableHead>Nicho</TableHead>
+                    <TableHead>Usa IA</TableHead>
                     <TableHead className="text-center">VSL</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -126,13 +123,14 @@ export default function Dashboard() {
                       key={item.id || index}
                       className="border-[#333333] hover:bg-[#222222]/50 transition-colors"
                     >
-                      <TableCell className="font-medium text-foreground">
-                        {item.name || '-'}
-                      </TableCell>
+                      <TableCell className="font-medium text-foreground">{item.name || '-'}</TableCell>
                       <TableCell className="text-muted-foreground">{item.email}</TableCell>
-                      <TableCell>{item.profession || '-'}</TableCell>
-                      <TableCell>{item.portfolio || '-'}</TableCell>
-                      <TableCell>{item.risk || '-'}</TableCell>
+                      <TableCell>{item.company_name || '-'}</TableCell>
+                      <TableCell>{item.role || '-'}</TableCell>
+                      <TableCell>{item.niche || '-'}</TableCell>
+                      <TableCell>
+                        {item.uses_ai === null || item.uses_ai === undefined ? '-' : item.uses_ai ? 'Sim' : 'Não'}
+                      </TableCell>
                       <TableCell className="text-center">
                         <span
                           className={`inline-flex items-center justify-center px-2 py-1 rounded-full text-xs font-medium ${

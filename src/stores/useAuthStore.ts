@@ -16,6 +16,7 @@ type AuthContextType = {
   token: string | null
   isLoading: boolean
   error: string | null
+  recoveryToken: string | null
   login: (email: string, password: string) => Promise<void>
   signup: (email: string, password: string) => Promise<void>
   logout: () => void
@@ -30,6 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [recoveryToken, setRecoveryToken] = useState<string | null>(null)
 
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
   const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -39,9 +41,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const hashParams = new URLSearchParams(window.location.hash.substring(1))
       const accessToken = hashParams.get('access_token')
       const refreshToken = hashParams.get('refresh_token')
+      const tokenType = hashParams.get('type')
 
       if (accessToken) {
-        if (supabaseUrl && supabaseKey) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search)
+
+        if (tokenType === 'recovery') {
+          setRecoveryToken(accessToken)
+        } else if (supabaseUrl && supabaseKey) {
           try {
             const res = await fetch(`${supabaseUrl}/auth/v1/user`, {
               headers: {
@@ -59,11 +66,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
               localStorage.setItem('adapta_auth_session', JSON.stringify(session))
               setUser(session.user)
               setToken(accessToken)
-              window.history.replaceState(
-                null,
-                '',
-                window.location.pathname + window.location.search,
-              )
             }
           } catch (e) {
             console.error('Error fetching user from hash token', e)
@@ -78,7 +80,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           localStorage.setItem('adapta_auth_session', JSON.stringify(session))
           setUser(session.user)
           setToken(accessToken)
-          window.history.replaceState(null, '', window.location.pathname + window.location.search)
         }
       } else {
         const stored = localStorage.getItem('adapta_auth_session')
@@ -129,6 +130,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       throw new Error(data.error_description || data.msg || 'Erro ao fazer login')
     }
 
+    if (!data.user.email.endsWith('@adapta.org')) {
+      throw Object.assign(new Error('UNAUTHORIZED_DOMAIN'), { code: 'UNAUTHORIZED_DOMAIN' })
+    }
+
     const session = {
       access_token: data.access_token,
       refresh_token: data.refresh_token,
@@ -154,32 +159,23 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       return
     }
 
-    const res = await fetch(`${supabaseUrl}/auth/v1/signup`, {
+    const redirectTo = `${window.location.origin}/`
+    const res = await fetch(`${supabaseUrl}/functions/v1/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         apikey: supabaseKey,
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, redirect_to: redirectTo }),
     })
 
     const data = await res.json()
     if (!res.ok) {
-      throw new Error(data.error_description || data.msg || 'Erro ao criar conta')
+      throw new Error(data.error || 'Erro ao criar conta')
     }
 
-    const session = {
-      access_token: data.access_token || data.session?.access_token,
-      refresh_token: data.refresh_token || data.session?.refresh_token,
-      user: { id: data.user?.id || data.id, email: data.user?.email || data.email },
-    }
-
-    if (session.access_token) {
-      localStorage.setItem('adapta_auth_session', JSON.stringify(session))
-      setUser(session.user)
-      setToken(session.access_token)
-    } else {
-      throw new Error('Verifique seu e-mail para confirmar a conta.')
+    if (data.pendingConfirmation) {
+      throw Object.assign(new Error('CONFIRM_EMAIL'), { code: 'CONFIRM_EMAIL' })
     }
   }
 
@@ -196,21 +192,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       return
     }
 
-    const redirectUrl = encodeURIComponent(`${window.location.origin}/reset-password`)
-    const res = await fetch(`${supabaseUrl}/auth/v1/recover?redirect_to=${redirectUrl}`, {
+    const redirectUrl = `${window.location.origin}/reset-password`
+    const res = await fetch(`${supabaseUrl}/functions/v1/reset-password-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         apikey: supabaseKey,
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, redirect_to: redirectUrl }),
     })
 
     if (!res.ok) {
       const data = await res.json()
-      throw new Error(
-        data.error_description || data.msg || 'Erro ao solicitar redefinição de senha',
-      )
+      throw new Error(data.error || 'Erro ao solicitar redefinição de senha')
     }
   }
 
@@ -218,17 +212,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setError(null)
     if (!supabaseUrl || !supabaseKey) {
       await new Promise((r) => setTimeout(r, 1000))
+      setRecoveryToken(null)
       return
     }
 
-    if (!token) throw new Error('Sessão expirada ou inválida. Tente o link novamente.')
+    const tokenToUse = recoveryToken || token
+    if (!tokenToUse) throw new Error('Sessão expirada ou inválida. Tente o link novamente.')
 
     const res = await fetch(`${supabaseUrl}/auth/v1/user`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         apikey: supabaseKey,
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${tokenToUse}`,
       },
       body: JSON.stringify({ password }),
     })
@@ -237,6 +233,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const data = await res.json()
       throw new Error(data.error_description || data.msg || 'Erro ao atualizar senha')
     }
+
+    setRecoveryToken(null)
   }
 
   return React.createElement(
@@ -247,6 +245,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         token,
         isLoading,
         error,
+        recoveryToken,
         login,
         signup,
         logout,

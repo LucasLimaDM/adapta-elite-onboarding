@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,9 +11,16 @@ export default function ResetPassword() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const { updatePassword, logout } = useAuthStore()
+  const isUpdating = useRef(false)
+  const { updatePassword, logout, recoveryToken, user, isLoading } = useAuthStore()
   const navigate = useNavigate()
   const { toast } = useToast()
+
+  useEffect(() => {
+    if (!isLoading && !recoveryToken && !user && !isUpdating.current) {
+      navigate('/forgot-password', { replace: true })
+    }
+  }, [isLoading, recoveryToken, user, navigate])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,6 +43,7 @@ export default function ResetPassword() {
       return
     }
 
+    isUpdating.current = true
     setIsSubmitting(true)
     try {
       await updatePassword(password)
@@ -46,6 +54,7 @@ export default function ResetPassword() {
       logout()
       navigate('/login', { replace: true })
     } catch (err: any) {
+      isUpdating.current = false
       toast({
         title: 'Erro',
         description: err.message || 'Ocorreu um erro ao atualizar sua senha.',

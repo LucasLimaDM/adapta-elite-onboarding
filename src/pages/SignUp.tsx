@@ -5,19 +5,30 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import useAuthStore from '@/stores/useAuthStore'
 import { useToast } from '@/hooks/use-toast'
-import { Loader2 } from 'lucide-react'
+import { Loader2, MailCheck } from 'lucide-react'
 
 export default function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [pendingConfirmation, setPendingConfirmation] = useState(false)
   const { signup } = useAuthStore()
   const navigate = useNavigate()
   const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!email.endsWith('@adapta.org')) {
+      toast({
+        title: 'Email não autorizado',
+        description: 'Apenas emails @adapta.org podem se cadastrar.',
+        variant: 'destructive',
+      })
+      return
+    }
+
     if (password !== confirmPassword) {
       toast({
         title: 'Senhas não coincidem',
@@ -41,14 +52,50 @@ export default function SignUp() {
       await signup(email, password)
       navigate('/', { replace: true })
     } catch (err: any) {
-      toast({
-        title: 'Erro no cadastro',
-        description: err.message || 'Não foi possível criar a conta.',
-        variant: 'destructive',
-      })
+      if (err.code === 'CONFIRM_EMAIL') {
+        setPendingConfirmation(true)
+      } else {
+        toast({
+          title: 'Erro no cadastro',
+          description: err.message || 'Não foi possível criar a conta.',
+          variant: 'destructive',
+        })
+      }
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  if (pendingConfirmation) {
+    return (
+      <div className="min-h-[80vh] flex items-center justify-center p-4">
+        <div className="w-full max-w-md space-y-6 bg-[#111111]/80 p-8 rounded-2xl border border-[#333333] shadow-elevation animate-in fade-in duration-500 text-center">
+          <div className="flex justify-center">
+            <div className="w-16 h-16 bg-primary/10 border border-primary/20 rounded-full flex items-center justify-center">
+              <MailCheck className="w-8 h-8 text-primary" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold font-display tracking-tight">Confirme seu email</h1>
+            <p className="text-muted-foreground">
+              Enviamos um link de confirmação para{' '}
+              <span className="text-foreground font-medium">{email}</span>.
+              <br />
+              Clique no link para ativar sua conta.
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground">
+            Não recebeu?{' '}
+            <button
+              className="text-primary hover:underline font-medium"
+              onClick={() => setPendingConfirmation(false)}
+            >
+              Tentar novamente
+            </button>
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -66,7 +113,7 @@ export default function SignUp() {
               <Input
                 id="email"
                 type="email"
-                placeholder="nome@exemplo.com"
+                placeholder="nome@adapta.org"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

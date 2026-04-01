@@ -1,24 +1,38 @@
 import { FormData } from '@/components/onboarding/Steps'
 
-export async function upsertSubmission(data: FormData, isFinal: boolean = false) {
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+export async function upsertSubmission(
+  data: FormData,
+  isFinal: boolean = false,
+  userToken: string,
+  userId: string,
+) {
   if (!data.additionalData.email) return
 
+  const { additionalData, niche, useCases, otherUseCase } = data
+
   const payload = {
-    name: data.additionalData.name || '',
-    email: data.additionalData.email,
-    profession: data.profession || '',
-    use_cases: data.useCases || [],
-    portfolio: data.additionalData.portfolio || '',
-    risk: data.additionalData.risk || '',
-    vsl_watched: data.additionalData.vslWatched || false,
+    user_id: userId,
+    name: additionalData.name || '',
+    email: additionalData.email,
+    vsl_watched: additionalData.vslWatched || false,
+    company_name: additionalData.companyName || '',
+    employee_count: additionalData.employeeCount || '',
+    role: additionalData.role || '',
+    niche: niche || '',
+    use_cases: useCases || [],
+    other_use_case: otherUseCase || '',
+    uses_ai: additionalData.usesAI,
+    ai_tools: additionalData.aiTools || '',
+    ai_usage: additionalData.aiUsage || '',
+    main_objective: additionalData.mainObjective || '',
+    additional_info: additionalData.additionalInfo || '',
     full_payload: data,
   }
 
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
   if (!supabaseUrl || !supabaseKey) {
-    // Mock successful network request if no env vars are present
     await new Promise((resolve) => setTimeout(resolve, isFinal ? 1000 : 300))
     return { success: true }
   }
@@ -28,7 +42,7 @@ export async function upsertSubmission(data: FormData, isFinal: boolean = false)
     headers: {
       'Content-Type': 'application/json',
       apikey: supabaseKey,
-      Authorization: `Bearer ${supabaseKey}`,
+      Authorization: `Bearer ${userToken}`,
       Prefer: 'resolution=merge-duplicates',
     },
     body: JSON.stringify(payload),
@@ -41,38 +55,23 @@ export async function upsertSubmission(data: FormData, isFinal: boolean = false)
   return { success: true }
 }
 
-export async function getSubmissions(userEmail: string) {
-  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
+export async function getSubmissions(userToken: string) {
   if (!supabaseUrl || !supabaseKey) {
-    // Mock successful network request if no env vars are present
     await new Promise((resolve) => setTimeout(resolve, 800))
-    if (userEmail.endsWith('@adapta.org')) {
-      return [
-        {
-          id: '1',
-          name: 'João Silva',
-          email: 'joao.silva@exemplo.com',
-          profession: 'Empresário',
-          portfolio: 'R$ 5M - R$ 15M',
-          risk: 'Moderado',
-          vsl_watched: true,
-          created_at: new Date().toISOString(),
-        },
-        {
-          id: '2',
-          name: 'Maria Oliveira',
-          email: 'maria.oliveira@exemplo.com',
-          profession: 'Médico',
-          portfolio: 'R$ 15M - R$ 50M',
-          risk: 'Arrojado',
-          vsl_watched: false,
-          created_at: new Date().toISOString(),
-        },
-      ]
-    }
-    return []
+    return [
+      {
+        id: '1',
+        name: 'João Silva',
+        email: 'joao@exemplo.com',
+        company_name: 'Acme Ltda',
+        employee_count: '21 a 50',
+        role: 'Empreendedor, Sócio ou CEO',
+        niche: 'Tecnologia',
+        uses_ai: true,
+        vsl_watched: true,
+        created_at: new Date().toISOString(),
+      },
+    ]
   }
 
   const res = await fetch(`${supabaseUrl}/rest/v1/onboarding_submissions?select=*`, {
@@ -80,20 +79,11 @@ export async function getSubmissions(userEmail: string) {
     headers: {
       'Content-Type': 'application/json',
       apikey: supabaseKey,
-      Authorization: `Bearer ${supabaseKey}`,
-      'x-user-email': userEmail,
+      Authorization: `Bearer ${userToken}`,
     },
   })
 
-  if (!res.ok) {
-    return []
-  }
+  if (!res.ok) return []
 
-  const data = await res.json()
-
-  if (!userEmail.endsWith('@adapta.org')) {
-    return []
-  }
-
-  return data
+  return await res.json()
 }

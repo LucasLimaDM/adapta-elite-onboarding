@@ -1,90 +1,78 @@
-import { useState, useRef, useEffect } from 'react'
-import { AlertCircle } from 'lucide-react'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { useEffect, useRef } from 'react'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+
+const VIDEO_ID = 'dfxXZWHXkvo'
 
 interface VslVideoProps {
   isCompleted: boolean
   onComplete: () => void
 }
 
+declare global {
+  interface Window {
+    YT: any
+    onYouTubeIframeAPIReady: () => void
+  }
+}
+
 export function VslVideo({ isCompleted, onComplete }: VslVideoProps) {
-  const [error, setError] = useState<string | null>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-    const video = e.currentTarget
-    localStorage.setItem('adapta_vsl_progress', video.currentTime.toString())
-
-    if (video.duration) {
-      const progress = video.currentTime / video.duration
-      if (progress >= 0.98 && !isCompleted) {
-        onComplete()
-      }
-    }
-  }
-
-  const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-    const video = e.currentTarget
-    const savedProgress = localStorage.getItem('adapta_vsl_progress')
-    if (savedProgress) {
-      const time = parseFloat(savedProgress)
-      if (time > 0 && time < video.duration) {
-        video.currentTime = time
-      }
-    }
-  }
-
-  const handleError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
-    const target = e.currentTarget
-    if (!target.error) return
-
-    switch (target.error.code) {
-      case target.error.MEDIA_ERR_NETWORK:
-        setError('Verifique sua conexão de internet.')
-        break
-      case target.error.MEDIA_ERR_SRC_NOT_SUPPORTED:
-        setError('Você não tem permissão para acessar este vídeo.')
-        break
-      default:
-        setError('Não foi possível carregar o vídeo. Tente novamente.')
-    }
-  }
+  const containerRef = useRef<HTMLDivElement>(null)
+  const playerRef = useRef<any>(null)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const onCompleteRef = useRef(onComplete)
 
   useEffect(() => {
-    const progress = localStorage.getItem('adapta_vsl_progress')
-    if (progress && videoRef.current && isCompleted) {
-      // Small visual assurance on load if already completed
-      videoRef.current.currentTime = parseFloat(progress)
-    }
-  }, [isCompleted])
+    onCompleteRef.current = onComplete
+  }, [onComplete])
 
-  if (error) {
-    return (
-      <Alert
-        variant="destructive"
-        className="mb-4 bg-destructive/10 border-destructive/20 text-destructive"
-      >
-        <AlertCircle className="h-4 w-4" color="currentColor" />
-        <AlertTitle>Erro na reprodução</AlertTitle>
-        <AlertDescription>{error}</AlertDescription>
-      </Alert>
-    )
-  }
+  useEffect(() => {
+    const initPlayer = () => {
+      if (!containerRef.current) return
+      playerRef.current = new window.YT.Player(containerRef.current, {
+        videoId: VIDEO_ID,
+        playerVars: { rel: 0, modestbranding: 1, controls: 1 },
+        events: {
+          onStateChange: (event: any) => {
+            if (event.data === window.YT.PlayerState.PLAYING) {
+              intervalRef.current = setInterval(() => {
+                const player = playerRef.current
+                if (!player) return
+                const duration = player.getDuration()
+                const current = player.getCurrentTime()
+                if (duration > 0 && current / duration >= 0.98) {
+                  onCompleteRef.current()
+                  if (intervalRef.current) clearInterval(intervalRef.current)
+                }
+              }, 2000)
+            } else {
+              if (intervalRef.current) clearInterval(intervalRef.current)
+            }
+          },
+        },
+      })
+    }
+
+    if (window.YT?.Player) {
+      initPlayer()
+    } else {
+      window.onYouTubeIframeAPIReady = initPlayer
+      if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+        const tag = document.createElement('script')
+        tag.src = 'https://www.youtube.com/iframe_api'
+        document.head.appendChild(tag)
+      }
+    }
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      playerRef.current?.destroy?.()
+    }
+  }, [])
 
   return (
     <div className="w-full max-w-[600px] mx-auto rounded-2xl overflow-hidden shadow-elevation border border-[#333333] bg-[#0C0C0D] transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-glow">
       <AspectRatio ratio={16 / 9}>
-        <video
-          ref={videoRef}
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
-          controls
-          className="w-full h-full object-cover bg-black"
-          controlsList="nodownload"
-          onTimeUpdate={handleTimeUpdate}
-          onLoadedMetadata={handleLoadedMetadata}
-          onError={handleError}
-        />
+        <div ref={containerRef} className="w-full h-full" />
       </AspectRatio>
     </div>
   )
